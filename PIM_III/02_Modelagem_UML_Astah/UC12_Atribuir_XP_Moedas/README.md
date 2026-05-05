@@ -1,42 +1,41 @@
-# 📘 Guia de Modelagem Detalhado: Atribuir XP e Moedas
+# 📘 Guia de Modelagem Astah (Fiel à v10.x): Atribuir XP e Moedas
 
 ## 🎯 Objetivo
-Motor de recompensas automático baseado na conclusão de atividades.
+Motor de recompensas.
 
 > [!IMPORTANT]
-> Dica Astah: A dependência aqui mostra que a Gamificação 'atualiza' o Aluno.
+> Dica Astah: Gamificacao é um <<Controle>>.
 
-## 🚀 Tutorial de Execução Passo a Passo no Astah
+## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
-### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
-Siga esta ordem exata para garantir a consistência:
-   - [ ] 1. **Crie 'MD_Gamificacao' e 'MD_Alunos'.**
-   - [ ] 2. **Em 'MD_Alunos', certifique-se de ter os atributos '+ pontos' e '+ moedas'.**
-   - [ ] 3. **Desenhe uma 'Dependência' de MD_Gamificacao para MD_Alunos.**
+### 1️⃣ Diagrama de Classe (Estrutura)
+   - [ ] 1. **Crie 'MD_Gamificacao' (<<Controle>>) e 'MD_Alunos'.**
+   - [ ] 2. **Alunos: '+ pontos : int', '+ moedas : int'.**
+   - [ ] 3. **Dependência de Gamificação para Alunos.**
 
-**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+**Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
-### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
-Desenhe a interação temporal entre as classes:
-   - [ ] 1. **O Sistema notifica o motor de 'MD_Gamificacao' sobre uma tarefa concluída.**
-   - [ ] 2. **O motor executa o cálculo de bônus internamente ('calcularBonus').**
-   - [ ] 3. **O motor chama 'creditarXP(valor)' no objeto Aluno correspondente.**
+### 2️⃣ Diagrama de Sequência (Processo)
+   - [ ] 1. **Sistema notifica :MD_Gamificacao.**
+   - [ ] 2. **Gamificação calcula bônus.**
+   - [ ] 3. **Gamificação chama 'creditarXP()' no Aluno.**
 
-**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
+**Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
 ---
 
-## 📊 Referência Visual (Modelo Final)
+## 📊 Referência Visual (Estilo Astah UML)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_Gamificacao {
+        <<Controle>>
         +calcularBonus()
-        +creditarXP(id, valor)
     }
     class MD_Alunos {
-        +int pontos
-        +int moedas
+        <<Entidade>>
+        +pontos : int
+        +moedas : int
     }
     MD_Gamificacao ..> MD_Alunos : credita
 ```
@@ -45,16 +44,14 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant S as Sistema
-    participant G as MD_Gamificacao
-    participant A as MD_Alunos
-    S->>G: notificarConclusao()
-    activate G
-    G->>G: calcularBonus()
-    G->>A: creditarXP(id, 100)
-    G-->>S: Atualizado
-    deactivate G
+    participant S as :Sistema
+    participant G as :MD_Gamificacao
+    participant A as :MD_Alunos
+    S->>G: concluirTarefa()
+    G->>G: calcular()
+    G->>A: creditarXP(100)
+    G-->>S: Ok
 ```
 
 ---
-*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*
+*Este manual foi otimizado para a versão 10.1.0 do Astah UML.*

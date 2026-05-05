@@ -1,41 +1,41 @@
-# 📘 Guia de Modelagem Detalhado: Criar Flashcards
+# 📘 Guia de Modelagem Astah (Fiel à v10.x): Criar Flashcards
 
 ## 🎯 Objetivo
-Funcionalidade que permite ao aluno personalizar seu próprio deck de estudos.
+Personalização de deck.
 
 > [!IMPORTANT]
-> Dica Astah: Use a multiplicidade '1' no Aluno e '*' no Flashcard para indicar posse.
+> Dica Astah: Editor é uma classe de <<Fronteira>>.
 
-## 🚀 Tutorial de Execução Passo a Passo no Astah
+## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
-### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
-Siga esta ordem exata para garantir a consistência:
+### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'MD_Alunos' e 'MD_Flashcards'.**
-   - [ ] 2. **Adicione em MD_Alunos o método '+ criarCarta()'.**
-   - [ ] 3. **Desenhe uma 'Associação' de MD_Alunos para MD_Flashcards.**
+   - [ ] 2. **Método em Aluno: '+ criarCarta()'.**
+   - [ ] 3. **Associação 1..*.**
 
-**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+**Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
-### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
-Desenhe a interação temporal entre as classes:
-   - [ ] 1. **O Aluno utiliza um 'Editor' (Interface) para digitar pergunta e resposta.**
-   - [ ] 2. **O Editor envia os dados para 'MD_Flashcards' via comando '<<create>>'.**
-   - [ ] 3. **A nova carta é salva vinculada ao ID do Aluno.**
+### 2️⃣ Diagrama de Sequência (Processo)
+   - [ ] 1. **Aluno usa :Editor para digitar dados.**
+   - [ ] 2. **Editor envia dados para criar :MD_Flashcards.**
+   - [ ] 3. **Confirmação de salvamento.**
 
-**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
+**Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
 ---
 
-## 📊 Referência Visual (Modelo Final)
+## 📊 Referência Visual (Estilo Astah UML)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_Alunos {
+        <<Entidade>>
         +criarCarta()
     }
     class MD_Flashcards {
-        +string pergunta
-        +string resposta
+        <<Entidade>>
+        +pergunta : string
+        +resposta : string
     }
     MD_Alunos "1" --> "*" MD_Flashcards : cria
 ```
@@ -44,13 +44,13 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant A as Aluno
-    participant E as Editor
-    participant F as MD_Flashcards
-    A->>E: entradaDados(p, r)
-    E->>F: <<create>>(p, r, usuario_id)
-    F-->>A: Carta Adicionada ao Deck
+    participant A as :Aluno
+    participant E as :Editor
+    participant F as :MD_Flashcards
+    A->>E: entrada(p, r)
+    E->>F: <<create>>(p, r)
+    F-->>A: Sucesso
 ```
 
 ---
-*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*
+*Este manual foi otimizado para a versão 10.1.0 do Astah UML.*

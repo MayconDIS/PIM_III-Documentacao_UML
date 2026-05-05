@@ -1,4 +1,4 @@
-# 📘 Guia de Modelagem Detalhado: Realizar Login
+# 📘 Guia de Modelagem Astah (Fiel à v10.x): Realizar Login
 
 ## 🎯 Objetivo
 Acesso seguro do usuário ao sistema através de validação de credenciais.
@@ -6,39 +6,39 @@ Acesso seguro do usuário ao sistema através de validação de credenciais.
 > [!IMPORTANT]
 > Dica Astah: Utilize 'Activation Bars' para mostrar o processamento no Controlador.
 
-## 🚀 Tutorial de Execução Passo a Passo no Astah
+## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
-### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
-Siga esta ordem exata para garantir a consistência:
-   - [ ] 1. **Crie a classe 'MD_Usuarios' (Entidade de Dados).**
-   - [ ] 2. **Adicione os atributos: '+ email: texto' e '+ senha: texto'.**
-   - [ ] 3. **Crie a classe 'ControladorAutenticacao' (Lógica de Controle).**
-   - [ ] 4. **Adicione o método: '+ autenticar(email, senha)'.**
+### 1️⃣ Diagrama de Classe (Estrutura)
+   - [ ] 1. **Crie a classe 'MD_Usuarios' e aplique o Estereótipo <<Entidade>>.**
+   - [ ] 2. **Adicione os atributos: '+ email : string' e '+ senha : string'.**
+   - [ ] 3. **Crie a classe 'ControladorAutenticacao' e aplique o Estereótipo <<Controle>>.**
+   - [ ] 4. **Adicione o método: '+ autenticar(email : string, senha : string) : bool'.**
    - [ ] 5. **Desenhe uma seta de 'Dependência' (tracejada) saindo do Controlador para a Entidade.**
 
-**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+**Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
-### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
-Desenhe a interação temporal entre as classes:
-   - [ ] 1. **Adicione o Ator 'Usuario' e o Participante 'ControladorAutenticacao'.**
-   - [ ] 2. **Desenhe uma 'Mensagem Síncrona' do Usuario para o Controlador chamando 'login(email, senha)'.**
-   - [ ] 3. **No Controlador, adicione uma 'Mensagem para si mesmo' (Self-Message) chamada 'validarCredenciais()'.**
-   - [ ] 4. **Desenhe a 'Mensagem de Resposta' (seta tracejada) voltando para o Usuario com o resultado.**
+### 2️⃣ Diagrama de Sequência (Processo)
+   - [ ] 1. **Adicione o Ator 'Usuario' e a Linha de Vida ':ControladorAutenticacao'.**
+   - [ ] 2. **Mensagem 1: Usuario envia 'login(email, senha)' para o Controlador.**
+   - [ ] 3. **Mensagem 1.1: O Controlador executa nele mesmo 'validarCredenciais()'.**
+   - [ ] 4. **Mensagem de Retorno: Seta tracejada voltando para o Usuario com o Resultado.**
 
-**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
+**Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
 ---
 
-## 📊 Referência Visual (Modelo Final)
+## 📊 Referência Visual (Estilo Astah UML)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_Usuarios {
-        +string email
-        +string senha
+        <<Entidade>>
+        +email : string
+        +senha : string
     }
     class ControladorAutenticacao {
-        +autenticar(email, senha)
+        <<Controle>>
+        +autenticar(email : string, senha : string) : bool
     }
     ControladorAutenticacao ..> MD_Usuarios : consulta
 ```
@@ -47,14 +47,14 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant U as Usuario
-    participant C as ControladorAutenticacao
+    participant U as Usuário (Ator)
+    participant C as :ControladorAutenticacao
     U->>C: login(email, senha)
     activate C
     C->>C: validarCredenciais()
-    C-->>U: Retorno (Sucesso/Erro)
+    C-->>U: Resultado (Sucesso/Erro)
     deactivate C
 ```
 
 ---
-*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*
+*Este manual foi otimizado para a versão 10.1.0 do Astah UML.*

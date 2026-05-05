@@ -1,41 +1,41 @@
-# 📘 Guia de Modelagem Detalhado: Consultar Agente IA
+# 📘 Guia de Modelagem Astah (Fiel à v10.x): Consultar Agente IA
 
 ## 🎯 Objetivo
-Interação instantânea com o especialista virtual para dúvidas pontuais.
+Interação instantânea.
 
 > [!IMPORTANT]
-> Dica Astah: A dependência aqui indica que a IA 'conhece' a estrutura das dúvidas salvas.
+> Dica Astah: Represente MD_Duvidas como <<Entidade>>.
 
-## 🚀 Tutorial de Execução Passo a Passo no Astah
+## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
-### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
-Siga esta ordem exata para garantir a consistência:
-   - [ ] 1. **Crie 'AgenteIA' com '+ responder(pergunta)'.**
-   - [ ] 2. **Crie 'MD_Duvidas' com os atributos '+ pergunta: texto' e '+ resposta: texto'.**
-   - [ ] 3. **Desenhe uma 'Dependência' da IA para a classe MD_Duvidas.**
+### 1️⃣ Diagrama de Classe (Estrutura)
+   - [ ] 1. **Crie 'AgenteIA' com '+ responder()'.**
+   - [ ] 2. **Crie 'MD_Duvidas' com '+ pergunta : string' e '+ resposta : string'.**
+   - [ ] 3. **Dependência da IA para MD_Duvidas.**
 
-**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+**Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
-### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
-Desenhe a interação temporal entre as classes:
-   - [ ] 1. **O Aluno envia sua dúvida para o AgenteIA.**
-   - [ ] 2. **O AgenteIA ativa seu processamento de linguagem natural ('processarLinguagemNatural').**
-   - [ ] 3. **O AgenteIA gera uma resposta e a entrega instantaneamente ao Aluno.**
+### 2️⃣ Diagrama de Sequência (Processo)
+   - [ ] 1. **Aluno envia dúvida para :AgenteIA.**
+   - [ ] 2. **AgenteIA processa linguagem natural.**
+   - [ ] 3. **AgenteIA retorna resposta ao Aluno.**
 
-**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
+**Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
 ---
 
-## 📊 Referência Visual (Modelo Final)
+## 📊 Referência Visual (Estilo Astah UML)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
     class AgenteIA {
+        <<Controle>>
         +responder(pergunta)
     }
     class MD_Duvidas {
-        +string pergunta
-        +string resposta
+        <<Entidade>>
+        +pergunta : string
+        +resposta : string
     }
     AgenteIA ..> MD_Duvidas : consulta
 ```
@@ -44,14 +44,12 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant A as Aluno
-    participant IA as AgenteIA
+    participant A as :Aluno
+    participant IA as :AgenteIA
     A->>IA: enviarDuvida(texto)
-    activate IA
-    IA->>IA: processarLinguagemNatural()
-    IA-->>A: Resposta Sugerida
-    deactivate IA
+    IA->>IA: processarLinguagem()
+    IA-->>A: Resposta
 ```
 
 ---
-*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*
+*Este manual foi otimizado para a versão 10.1.0 do Astah UML.*

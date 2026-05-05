@@ -1,33 +1,31 @@
-# 📘 Guia de Modelagem Detalhado: Gerenciar Perfis e Acessos
+# 📘 Guia de Modelagem Astah (Fiel à v10.x): Gerenciar Perfis e Acessos
 
 ## 🎯 Objetivo
-Administração de papéis (Admin, Tutor, Aluno) e permissões de sistema.
+Administração de papéis e permissões.
 
 > [!IMPORTANT]
-> Dica Astah: Utilize 'Notes' (Notas) para explicar o que cada papel (role) pode fazer.
+> Dica Astah: O GerenciadorAcesso é um <<Controle>>.
 
-## 🚀 Tutorial de Execução Passo a Passo no Astah
+## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
-### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
-Siga esta ordem exata para garantir a consistência:
+### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'MD_Admin' e 'MD_Usuarios'.**
-   - [ ] 2. **Em 'MD_Usuarios', adicione o atributo '+ papel: texto'.**
-   - [ ] 3. **Crie 'GerenciadorAcesso' para mediar a troca de papéis.**
-   - [ ] 4. **Desenhe uma seta de 'Associação' de Admin para Usuarios.**
+   - [ ] 2. **Em 'MD_Usuarios', adicione '+ papel : string'.**
+   - [ ] 3. **Crie 'GerenciadorAcesso' (<<Controle>>).**
+   - [ ] 4. **Desenhe uma 'Associação' simples de Admin para Usuarios.**
 
-**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+**Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
-### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
-Desenhe a interação temporal entre as classes:
+### 2️⃣ Diagrama de Sequência (Processo)
    - [ ] 1. **O Admin solicita 'alterarPapel()' ao GerenciadorAcesso.**
-   - [ ] 2. **O GerenciadorAcesso valida a permissão e chama 'setPapel()' no MD_Usuarios alvo.**
-   - [ ] 3. **O MD_Usuarios confirma a atualização e o Gerenciador retorna o sucesso ao Admin.**
+   - [ ] 2. **O GerenciadorAcesso chama 'setPapel()' no MD_Usuarios alvo.**
+   - [ ] 3. **Retorno de confirmação para o Admin.**
 
-**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
+**Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
 ---
 
-## 📊 Referência Visual (Modelo Final)
+## 📊 Referência Visual (Estilo Astah UML)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
@@ -35,7 +33,8 @@ classDiagram
         +gerenciarAcesso()
     }
     class MD_Usuarios {
-        +string papel
+        <<Entidade>>
+        +papel : string
     }
     MD_Admin --> MD_Usuarios : administra
 ```
@@ -44,16 +43,16 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant A as Admin
-    participant M as GerenciadorAcesso
-    participant U as MD_Usuarios
-    A->>M: alterarPapel(usuario_id, papel)
+    participant A as :Admin
+    participant M as :GerenciadorAcesso
+    participant U as :MD_Usuarios
+    A->>M: alterarPapel(id, papel)
     activate M
     M->>U: setPapel(papel)
     U-->>M: ok
-    M-->>A: Alteração Concluída
+    M-->>A: Sucesso
     deactivate M
 ```
 
 ---
-*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*
+*Este manual foi otimizado para a versão 10.1.0 do Astah UML.*

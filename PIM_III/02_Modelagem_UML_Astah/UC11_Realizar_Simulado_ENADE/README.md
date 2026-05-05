@@ -1,43 +1,41 @@
-# 📘 Guia de Modelagem Detalhado: Realizar Simulado ENADE
+# 📘 Guia de Modelagem Astah (Fiel à v10.x): Realizar Simulado ENADE
 
 ## 🎯 Objetivo
-Treinamento intensivo com tempo controlado e questões de exames oficiais.
+Treinamento intensivo.
 
 > [!IMPORTANT]
-> Dica Astah: Utilize o 'Combined Fragment' do tipo 'Loop' para as questões e 'Opt' para o estouro de tempo.
+> Dica Astah: Questao é uma <<Entidade>>.
 
-## 🚀 Tutorial de Execução Passo a Passo no Astah
+## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
-### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
-Siga esta ordem exata para garantir a consistência:
+### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'MD_Simulado' e 'Questao'.**
-   - [ ] 2. **Ligue-as com uma 'Composição' (losango preto no Simulado).**
-   - [ ] 3. **Em 'MD_Simulado', adicione '+ tempoRestante: int' e '+ calcularNota()'.**
+   - [ ] 2. **Composição (losango preto).**
+   - [ ] 3. **Simulado: '+ tempoRestante : int'.**
 
-**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+**Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
-### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
-Desenhe a interação temporal entre as classes:
-   - [ ] 1. **O Aluno inicia o Simulado.**
-   - [ ] 2. **O Simulado aciona um 'Temporizador' para controlar os 120 minutos.**
-   - [ ] 3. **Dentro de um 'Loop', o Aluno responde cada questão.**
-   - [ ] 4. **Ao final, o Simulado desliga o cronômetro e devolve a Nota Final.**
+### 2️⃣ Diagrama de Sequência (Processo)
+   - [ ] 1. **Aluno inicia Simulado.**
+   - [ ] 2. **Simulado liga o :Temporizador.**
+   - [ ] 3. **Após responder tudo, Simulado desliga e dá a nota.**
 
-**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
+**Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
 ---
 
-## 📊 Referência Visual (Modelo Final)
+## 📊 Referência Visual (Estilo Astah UML)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_Simulado {
-        +int tempoRestante
+        <<Entidade>>
+        +tempoRestante : int
         +iniciarTeste()
-        +calcularNota()
     }
     class Questao {
-        +string texto
+        <<Entidade>>
+        +texto : string
     }
     MD_Simulado "1" *-- "*" Questao
 ```
@@ -46,20 +44,14 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant A as Aluno
-    participant S as MD_Simulado
-    participant T as Temporizador
+    participant A as :Aluno
+    participant S as :MD_Simulado
+    participant T as :Temporizador
     A->>S: iniciarTeste()
-    activate S
-    S->>T: iniciar(120min)
-    loop Cada Questão
-        A->>S: responder(id, opcao)
-    end
-    A->>S: finalizar()
-    S->>T: parar()
-    S-->>A: Nota e Feedback
-    deactivate S
+    S->>T: iniciar()
+    A->>S: responder()
+    S-->>A: Nota Final
 ```
 
 ---
-*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*
+*Este manual foi otimizado para a versão 10.1.0 do Astah UML.*

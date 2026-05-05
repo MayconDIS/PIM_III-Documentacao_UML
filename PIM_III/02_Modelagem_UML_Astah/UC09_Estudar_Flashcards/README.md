@@ -1,41 +1,40 @@
-# 📘 Guia de Modelagem Detalhado: Estudar Flashcards (SM-2)
+# 📘 Guia de Modelagem Astah (Fiel à v10.x): Estudar Flashcards (SM-2)
 
 ## 🎯 Objetivo
-Ciclo de estudo principal utilizando o algoritmo de repetição espaçada.
+Repetição espaçada.
 
 > [!IMPORTANT]
-> Dica Astah: No Astah, use o símbolo de 'Loop' (Combined Fragment) para cercar a revisão de cartas.
+> Dica Astah: No Astah, use 'Self-Message' para o algoritmo SM-2.
 
-## 🚀 Tutorial de Execução Passo a Passo no Astah
+## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
-### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
-Siga esta ordem exata para garantir a consistência:
-   - [ ] 1. **Crie 'MD_MotorSM2' e 'MD_Flashcards'.**
-   - [ ] 2. **Em 'MD_MotorSM2', adicione o método '+ aplicarSM2(feedback)'.**
-   - [ ] 3. **Desenhe uma seta de 'Associação' do Motor para o Flashcard.**
+### 1️⃣ Diagrama de Classe (Estrutura)
+   - [ ] 1. **Crie 'MD_MotorSM2' (<<Controle>>) e 'MD_Flashcards'.**
+   - [ ] 2. **Atributos no Flashcard: '+ proximaRevisao : date'.**
+   - [ ] 3. **Associação do Motor para o Flashcard.**
 
-**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+**Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
-### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
-Desenhe a interação temporal entre as classes:
-   - [ ] 1. **O Aluno lê uma pergunta no MD_Flashcards.**
-   - [ ] 2. **O Aluno informa a dificuldade (feedback de 1 a 5) ao MD_MotorSM2.**
-   - [ ] 3. **O Motor processa o algoritmo ('aplicarSM2') e chama 'setProximaRevisao(data)' no Flashcard.**
-   - [ ] 4. **O Flashcard é agendado para o futuro e o processo termina.**
+### 2️⃣ Diagrama de Sequência (Processo)
+   - [ ] 1. **Aluno lê pergunta.**
+   - [ ] 2. **Aluno informa dificuldade (1-5) ao :MD_MotorSM2.**
+   - [ ] 3. **Motor aplica algoritmo e atualiza data no Flashcard.**
 
-**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
+**Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
 ---
 
-## 📊 Referência Visual (Modelo Final)
+## 📊 Referência Visual (Estilo Astah UML)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_MotorSM2 {
+        <<Controle>>
         +aplicarSM2(feedback)
     }
     class MD_Flashcards {
-        +date proximaRevisao
+        <<Entidade>>
+        +proximaRevisao : date
     }
     MD_MotorSM2 --> MD_Flashcards : atualiza
 ```
@@ -44,16 +43,15 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant A as Aluno
-    participant M as MD_MotorSM2
-    participant F as MD_Flashcards
+    participant A as :Aluno
+    participant M as :MD_MotorSM2
+    participant F as :MD_Flashcards
     A->>F: lerPergunta()
-    A->>F: verResposta()
     A->>M: informarDificuldade(1-5)
     M->>M: aplicarSM2()
     M->>F: setProximaRevisao(data)
-    F-->>A: Carta Agendada
+    F-->>A: Ok
 ```
 
 ---
-*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*
+*Este manual foi otimizado para a versão 10.1.0 do Astah UML.*

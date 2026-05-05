@@ -1,32 +1,30 @@
-# 📘 Guia de Modelagem Detalhado: Acompanhar Desempenho
+# 📘 Guia de Modelagem Astah (Fiel à v10.x): Acompanhar Desempenho
 
 ## 🎯 Objetivo
-Visualização de métricas de progresso e engajamento dos alunos.
+Métricas de progresso.
 
 > [!IMPORTANT]
-> Dica Astah: O PainelVisual é uma classe de 'Fronteira' (Interface de Usuário).
+> Dica Astah: PainelVisual deve usar o Estereótipo <<Fronteira>> (Boundary).
 
-## 🚀 Tutorial de Execução Passo a Passo no Astah
+## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
-### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
-Siga esta ordem exata para garantir a consistência:
-   - [ ] 1. **Crie as classes 'MD_Tutor', 'MD_Alunos' e 'PainelVisual'.**
-   - [ ] 2. **Em 'MD_Alunos', defina '+ progresso: decimal'.**
-   - [ ] 3. **Desenhe uma 'Dependência' do Tutor para o Aluno através do PainelVisual.**
+### 1️⃣ Diagrama de Classe (Estrutura)
+   - [ ] 1. **Crie 'MD_Tutor', 'MD_Alunos' e 'PainelVisual' (<<Fronteira>>).**
+   - [ ] 2. **Em Alunos: '+ progresso : float'.**
+   - [ ] 3. **Ligue Tutor a Aluno via Dependência através do Painel.**
 
-**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+**Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
-### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
-Desenhe a interação temporal entre as classes:
-   - [ ] 1. **Tutor interage com 'PainelVisual' solicitando 'visualizar(aluno_id)'.**
-   - [ ] 2. **O PainelVisual busca dados reais no objeto 'MD_Alunos' chamando 'obterMetricas()'.**
-   - [ ] 3. **O Aluno devolve os dados e o Painel renderiza o relatório final para o Tutor.**
+### 2️⃣ Diagrama de Sequência (Processo)
+   - [ ] 1. **Tutor pede 'visualizar(id)' no PainelVisual.**
+   - [ ] 2. **PainelVisual chama 'obterMetricas()' no objeto :MD_Alunos.**
+   - [ ] 3. **Painel renderiza o relatório final.**
 
-**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
+**Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
 ---
 
-## 📊 Referência Visual (Modelo Final)
+## 📊 Referência Visual (Estilo Astah UML)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
@@ -34,7 +32,12 @@ classDiagram
         +acompanharDesempenho()
     }
     class MD_Alunos {
-        +float progresso
+        <<Entidade>>
+        +progresso : float
+    }
+    class PainelVisual {
+        <<Fronteira>>
+        +renderizar()
     }
     MD_Tutor ..> MD_Alunos : visualiza
 ```
@@ -43,16 +46,16 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant T as Tutor
-    participant D as PainelVisual
-    participant A as MD_Alunos
-    T->>D: visualizar(aluno_id)
+    participant T as :Tutor
+    participant D as :PainelVisual
+    participant A as :MD_Alunos
+    T->>D: visualizar(id)
     activate D
     D->>A: obterMetricas()
-    A-->>D: dados_progresso
+    A-->>D: dados
     D-->>T: Relatório Visual
     deactivate D
 ```
 
 ---
-*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*
+*Este manual foi otimizado para a versão 10.1.0 do Astah UML.*

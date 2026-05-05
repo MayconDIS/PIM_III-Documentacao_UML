@@ -1,41 +1,41 @@
-# 📘 Guia de Modelagem Detalhado: Desbloquear Fases e Módulos
+# 📘 Guia de Modelagem Astah (Fiel à v10.x): Desbloquear Fases e Módulos
 
 ## 🎯 Objetivo
-Progressão de conteúdo condicionada ao desempenho nas fases anteriores.
+Progressão condicionada.
 
 > [!IMPORTANT]
-> Dica Astah: Use a Dependência para mostrar que as Fases dependem do progresso do Aluno.
+> Dica Astah: Use Dependência para mostrar verificação de progresso.
 
-## 🚀 Tutorial de Execução Passo a Passo no Astah
+## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
-### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
-Siga esta ordem exata para garantir a consistência:
-   - [ ] 1. **Crie 'MD_Fases' com '+ bloqueada: booleano' e '+ desbloquear()'.**
-   - [ ] 2. **Crie 'GerenciadorProgresso' (Controle).**
-   - [ ] 3. **Desenhe uma 'Dependência' do Gerenciador para MD_Alunos e MD_Fases.**
+### 1️⃣ Diagrama de Classe (Estrutura)
+   - [ ] 1. **Crie 'MD_Fases' com '+ bloqueada : bool'.**
+   - [ ] 2. **Crie 'GerenciadorProgresso' (<<Controle>>).**
+   - [ ] 3. **Dependência do Gerenciador para Alunos e Fases.**
 
-**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+**Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
-### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
-Desenhe a interação temporal entre as classes:
-   - [ ] 1. **O GerenciadorProgresso solicita ao Aluno o seu 'obterProgressoTotal()'.**
-   - [ ] 2. **Se o valor for satisfatório, o Gerenciador chama 'desbloquear()' na classe MD_Fases.**
-   - [ ] 3. **A classe Fases altera seu estado interno de 'bloqueada' para falso.**
+### 2️⃣ Diagrama de Sequência (Processo)
+   - [ ] 1. **Gerenciador pede progresso ao Aluno.**
+   - [ ] 2. **Se ok, chama 'desbloquear()' na :MD_Fases.**
+   - [ ] 3. **Fase muda estado para liberada.**
 
-**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
+**Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
 ---
 
-## 📊 Referência Visual (Modelo Final)
+## 📊 Referência Visual (Estilo Astah UML)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_Fases {
-        +bool bloqueada
+        <<Entidade>>
+        +bloqueada : bool
         +desbloquear()
     }
     class MD_Alunos {
-        +float progresso
+        <<Entidade>>
+        +progresso : float
     }
     MD_Fases ..> MD_Alunos : verifica
 ```
@@ -44,15 +44,13 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant M as GerenciadorProgresso
-    participant A as MD_Alunos
-    participant F as MD_Fases
-    M->>A: obterProgressoTotal()
-    A-->>M: 0.85
+    participant M as :GerenciadorProgresso
+    participant A as :MD_Alunos
+    participant F as :MD_Fases
+    M->>A: obterProgresso()
     M->>F: desbloquear()
-    F->>F: setBloqueada(false)
-    F-->>M: Liberada
+    F-->>M: Sucesso
 ```
 
 ---
-*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*
+*Este manual foi otimizado para a versão 10.1.0 do Astah UML.*

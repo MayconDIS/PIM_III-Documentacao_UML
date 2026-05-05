@@ -1,6 +1,6 @@
-# 🚀 Painel de Modelagem: 15 Casos de Uso
+# 🚀 Painel de Modelagem (Padrão Astah 10.x)
 
-Este documento centraliza os **Diagramas de Classe e Sequência** individuais em Português.
+Este documento centraliza os diagramas em conformidade com a interface e notação do Astah UML.
 
 ## 📑 Índice de Casos de Uso
 - [Realizar Login](#uc01-realizar-login)
@@ -24,16 +24,18 @@ Este documento centraliza os **Diagramas de Classe e Sequência** individuais em
 ## UC01_Realizar_Login - Realizar Login
 **Objetivo:** Acesso seguro do usuário ao sistema através de validação de credenciais.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_Usuarios {
-        +string email
-        +string senha
+        <<Entidade>>
+        +email : string
+        +senha : string
     }
     class ControladorAutenticacao {
-        +autenticar(email, senha)
+        <<Controle>>
+        +autenticar(email : string, senha : string) : bool
     }
     ControladorAutenticacao ..> MD_Usuarios : consulta
 ```
@@ -41,43 +43,44 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant U as Usuario
-    participant C as ControladorAutenticacao
+    participant U as Usuário (Ator)
+    participant C as :ControladorAutenticacao
     U->>C: login(email, senha)
     activate C
     C->>C: validarCredenciais()
-    C-->>U: Retorno (Sucesso/Erro)
+    C-->>U: Resultado (Sucesso/Erro)
     deactivate C
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC01_Realizar_Login/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC01_Realizar_Login/README.md)
 
 ---
 
 ## UC02_Cadastrar_Usuario - Cadastrar Usuário
 **Objetivo:** Registro de novos alunos com inicialização automática de perfil de gamificação.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
     MD_Usuarios <|-- MD_Alunos
     class MD_Usuarios {
-        +string nome
-        +string email
+        +nome : string
+        +email : string
     }
     class MD_Alunos {
-        +int pontos
-        +int moedas
+        <<Entidade>>
+        +pontos : int
+        +moedas : int
     }
 ```
 #### Diagrama de Sequência
 ```mermaid
 sequenceDiagram
     autonumber
-    participant V as Visitante
-    participant C as ControladorAutenticacao
-    participant A as MD_Alunos
+    participant V as :Visitante
+    participant C as :ControladorAutenticacao
+    participant A as :MD_Alunos
     V->>C: registrar(dados)
     activate C
     C-->>A: <<create>>
@@ -88,22 +91,24 @@ sequenceDiagram
     deactivate C
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC02_Cadastrar_Usuario/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC02_Cadastrar_Usuario/README.md)
 
 ---
 
 ## UC03_Realizar_Teste_Nivelamento - Teste de Nivelamento
 **Objetivo:** Avaliação diagnóstica para posicionamento do aluno no mapa de conhecimento.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_Alunos {
-        +definirFaseInicial(nota)
+        <<Entidade>>
+        +definirFaseInicial(nota : float)
     }
     class MD_Simulado {
-        +float nota
+        <<Entidade>>
+        +nota : float
         +iniciarTeste()
     }
     MD_Alunos --> MD_Simulado : realiza
@@ -112,25 +117,25 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant A as Aluno
-    participant S as MD_Simulado
+    participant A as :Aluno
+    participant S as :MD_Simulado
     A->>S: iniciarTeste()
     activate S
-    S-->>A: Lista de Questões
+    S-->>A: listaQuestoes[]
     A->>S: enviarRespostas()
     S-->>A: notaFinal
     deactivate S
     A->>A: definirFaseInicial(nota)
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC03_Realizar_Teste_Nivelamento/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC03_Realizar_Teste_Nivelamento/README.md)
 
 ---
 
 ## UC04_Gerenciar_Perfis_Acessos - Gerenciar Perfis e Acessos
-**Objetivo:** Administração de papéis (Admin, Tutor, Aluno) e permissões de sistema.
+**Objetivo:** Administração de papéis e permissões.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
@@ -138,7 +143,8 @@ classDiagram
         +gerenciarAcesso()
     }
     class MD_Usuarios {
-        +string papel
+        <<Entidade>>
+        +papel : string
     }
     MD_Admin --> MD_Usuarios : administra
 ```
@@ -146,25 +152,25 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant A as Admin
-    participant M as GerenciadorAcesso
-    participant U as MD_Usuarios
-    A->>M: alterarPapel(usuario_id, papel)
+    participant A as :Admin
+    participant M as :GerenciadorAcesso
+    participant U as :MD_Usuarios
+    A->>M: alterarPapel(id, papel)
     activate M
     M->>U: setPapel(papel)
     U-->>M: ok
-    M-->>A: Alteração Concluída
+    M-->>A: Sucesso
     deactivate M
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC04_Gerenciar_Perfis_Acessos/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC04_Gerenciar_Perfis_Acessos/README.md)
 
 ---
 
 ## UC05_Gerenciar_Conteudo_Cartas - Gerenciar Conteúdo e Cartas
-**Objetivo:** Criação e manutenção de flashcards e módulos de estudo pelos tutores.
+**Objetivo:** Criação de flashcards e módulos.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
@@ -173,30 +179,31 @@ classDiagram
         +gerenciarConteudo()
     }
     class MD_Modulos {
-        +string nomeModulo
+        <<Entidade>>
+        +nomeModulo : string
     }
 ```
 #### Diagrama de Sequência
 ```mermaid
 sequenceDiagram
     autonumber
-    participant T as Tutor
-    participant S as Sistema
-    participant M as MD_Modulos
+    participant T as :Tutor
+    participant S as :Sistema
+    participant M as :MD_Modulos
     T->>S: novoModulo(nome)
     S->>M: <<create>>
     T->>S: adicionarCarta(p, r)
-    S-->>T: Conteúdo Salvo
+    S-->>T: Salvo
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC05_Gerenciar_Conteudo_Cartas/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC05_Gerenciar_Conteudo_Cartas/README.md)
 
 ---
 
 ## UC06_Acompanhar_Desempenho - Acompanhar Desempenho
-**Objetivo:** Visualização de métricas de progresso e engajamento dos alunos.
+**Objetivo:** Métricas de progresso.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
@@ -204,7 +211,12 @@ classDiagram
         +acompanharDesempenho()
     }
     class MD_Alunos {
-        +float progresso
+        <<Entidade>>
+        +progresso : float
+    }
+    class PainelVisual {
+        <<Fronteira>>
+        +renderizar()
     }
     MD_Tutor ..> MD_Alunos : visualiza
 ```
@@ -212,33 +224,35 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant T as Tutor
-    participant D as PainelVisual
-    participant A as MD_Alunos
-    T->>D: visualizar(aluno_id)
+    participant T as :Tutor
+    participant D as :PainelVisual
+    participant A as :MD_Alunos
+    T->>D: visualizar(id)
     activate D
     D->>A: obterMetricas()
-    A-->>D: dados_progresso
+    A-->>D: dados
     D-->>T: Relatório Visual
     deactivate D
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC06_Acompanhar_Desempenho/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC06_Acompanhar_Desempenho/README.md)
 
 ---
 
 ## UC07_Escalar_Duvida_Tutor - Escalar Dúvida para Tutor
-**Objetivo:** Transferência de suporte da IA para um tutor humano quando a complexidade excede o limite do agente.
+**Objetivo:** Transferência IA -> Humano.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
     class AgenteIA {
-        +analisarAmbiguidade()
+        <<Controle>>
+        +analisar()
         +escalar(duvida)
     }
     class MD_Tutor {
+        <<Entidade>>
         +responderDuvida()
     }
     AgenteIA --> MD_Tutor : notifica
@@ -247,32 +261,33 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant IA as AgenteIA
-    participant T as MD_Tutor
-    participant Al as Aluno
+    participant IA as :AgenteIA
+    participant T as :MD_Tutor
+    participant Al as :Aluno
     IA->>IA: detectarComplexidade()
-    IA->>T: escalar(duvida, aluno_id)
-    Note right of T: Tutor analisa o contexto
-    T-->>Al: Resposta Detalhada (Email/App)
+    IA->>T: escalar(duvida, id)
+    T-->>Al: Resposta
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC07_Escalar_Duvida_Tutor/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC07_Escalar_Duvida_Tutor/README.md)
 
 ---
 
 ## UC08_Consultar_Agente_IA - Consultar Agente IA
-**Objetivo:** Interação instantânea com o especialista virtual para dúvidas pontuais.
+**Objetivo:** Interação instantânea.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
     class AgenteIA {
+        <<Controle>>
         +responder(pergunta)
     }
     class MD_Duvidas {
-        +string pergunta
-        +string resposta
+        <<Entidade>>
+        +pergunta : string
+        +resposta : string
     }
     AgenteIA ..> MD_Duvidas : consulta
 ```
@@ -280,31 +295,31 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant A as Aluno
-    participant IA as AgenteIA
+    participant A as :Aluno
+    participant IA as :AgenteIA
     A->>IA: enviarDuvida(texto)
-    activate IA
-    IA->>IA: processarLinguagemNatural()
-    IA-->>A: Resposta Sugerida
-    deactivate IA
+    IA->>IA: processarLinguagem()
+    IA-->>A: Resposta
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC08_Consultar_Agente_IA/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC08_Consultar_Agente_IA/README.md)
 
 ---
 
 ## UC09_Estudar_Flashcards - Estudar Flashcards (SM-2)
-**Objetivo:** Ciclo de estudo principal utilizando o algoritmo de repetição espaçada.
+**Objetivo:** Repetição espaçada.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_MotorSM2 {
+        <<Controle>>
         +aplicarSM2(feedback)
     }
     class MD_Flashcards {
-        +date proximaRevisao
+        <<Entidade>>
+        +proximaRevisao : date
     }
     MD_MotorSM2 --> MD_Flashcards : atualiza
 ```
@@ -312,34 +327,35 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant A as Aluno
-    participant M as MD_MotorSM2
-    participant F as MD_Flashcards
+    participant A as :Aluno
+    participant M as :MD_MotorSM2
+    participant F as :MD_Flashcards
     A->>F: lerPergunta()
-    A->>F: verResposta()
     A->>M: informarDificuldade(1-5)
     M->>M: aplicarSM2()
     M->>F: setProximaRevisao(data)
-    F-->>A: Carta Agendada
+    F-->>A: Ok
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC09_Estudar_Flashcards/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC09_Estudar_Flashcards/README.md)
 
 ---
 
 ## UC10_Criar_Flashcards - Criar Flashcards
-**Objetivo:** Funcionalidade que permite ao aluno personalizar seu próprio deck de estudos.
+**Objetivo:** Personalização de deck.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_Alunos {
+        <<Entidade>>
         +criarCarta()
     }
     class MD_Flashcards {
-        +string pergunta
-        +string resposta
+        <<Entidade>>
+        +pergunta : string
+        +resposta : string
     }
     MD_Alunos "1" --> "*" MD_Flashcards : cria
 ```
@@ -347,32 +363,33 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant A as Aluno
-    participant E as Editor
-    participant F as MD_Flashcards
-    A->>E: entradaDados(p, r)
-    E->>F: <<create>>(p, r, usuario_id)
-    F-->>A: Carta Adicionada ao Deck
+    participant A as :Aluno
+    participant E as :Editor
+    participant F as :MD_Flashcards
+    A->>E: entrada(p, r)
+    E->>F: <<create>>(p, r)
+    F-->>A: Sucesso
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC10_Criar_Flashcards/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC10_Criar_Flashcards/README.md)
 
 ---
 
 ## UC11_Realizar_Simulado_ENADE - Realizar Simulado ENADE
-**Objetivo:** Treinamento intensivo com tempo controlado e questões de exames oficiais.
+**Objetivo:** Treinamento intensivo.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_Simulado {
-        +int tempoRestante
+        <<Entidade>>
+        +tempoRestante : int
         +iniciarTeste()
-        +calcularNota()
     }
     class Questao {
-        +string texto
+        <<Entidade>>
+        +texto : string
     }
     MD_Simulado "1" *-- "*" Questao
 ```
@@ -380,39 +397,34 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant A as Aluno
-    participant S as MD_Simulado
-    participant T as Temporizador
+    participant A as :Aluno
+    participant S as :MD_Simulado
+    participant T as :Temporizador
     A->>S: iniciarTeste()
-    activate S
-    S->>T: iniciar(120min)
-    loop Cada Questão
-        A->>S: responder(id, opcao)
-    end
-    A->>S: finalizar()
-    S->>T: parar()
-    S-->>A: Nota e Feedback
-    deactivate S
+    S->>T: iniciar()
+    A->>S: responder()
+    S-->>A: Nota Final
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC11_Realizar_Simulado_ENADE/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC11_Realizar_Simulado_ENADE/README.md)
 
 ---
 
 ## UC12_Atribuir_XP_Moedas - Atribuir XP e Moedas
-**Objetivo:** Motor de recompensas automático baseado na conclusão de atividades.
+**Objetivo:** Motor de recompensas.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_Gamificacao {
+        <<Controle>>
         +calcularBonus()
-        +creditarXP(id, valor)
     }
     class MD_Alunos {
-        +int pontos
-        +int moedas
+        <<Entidade>>
+        +pontos : int
+        +moedas : int
     }
     MD_Gamificacao ..> MD_Alunos : credita
 ```
@@ -420,34 +432,34 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant S as Sistema
-    participant G as MD_Gamificacao
-    participant A as MD_Alunos
-    S->>G: notificarConclusao()
-    activate G
-    G->>G: calcularBonus()
-    G->>A: creditarXP(id, 100)
-    G-->>S: Atualizado
-    deactivate G
+    participant S as :Sistema
+    participant G as :MD_Gamificacao
+    participant A as :MD_Alunos
+    S->>G: concluirTarefa()
+    G->>G: calcular()
+    G->>A: creditarXP(100)
+    G-->>S: Ok
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC12_Atribuir_XP_Moedas/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC12_Atribuir_XP_Moedas/README.md)
 
 ---
 
 ## UC13_Desbloquear_Fases_Modulos - Desbloquear Fases e Módulos
-**Objetivo:** Progressão de conteúdo condicionada ao desempenho nas fases anteriores.
+**Objetivo:** Progressão condicionada.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_Fases {
-        +bool bloqueada
+        <<Entidade>>
+        +bloqueada : bool
         +desbloquear()
     }
     class MD_Alunos {
-        +float progresso
+        <<Entidade>>
+        +progresso : float
     }
     MD_Fases ..> MD_Alunos : verifica
 ```
@@ -455,32 +467,32 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant M as GerenciadorProgresso
-    participant A as MD_Alunos
-    participant F as MD_Fases
-    M->>A: obterProgressoTotal()
-    A-->>M: 0.85
+    participant M as :GerenciadorProgresso
+    participant A as :MD_Alunos
+    participant F as :MD_Fases
+    M->>A: obterProgresso()
     M->>F: desbloquear()
-    F->>F: setBloqueada(false)
-    F-->>M: Liberada
+    F-->>M: Sucesso
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC13_Desbloquear_Fases_Modulos/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC13_Desbloquear_Fases_Modulos/README.md)
 
 ---
 
 ## UC14_Visualizar_Painel_Progresso - Visualizar Painel de Progresso
-**Objetivo:** Hub central onde o aluno acompanha sua jornada e conquistas.
+**Objetivo:** Hub central.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
     class PainelVisual {
-        +renderizarDados()
+        <<Fronteira>>
+        +renderizar()
     }
     class MD_Alunos {
-        +obterProgressoTotal()
+        <<Entidade>>
+        +obterProgresso()
     }
     PainelVisual ..> MD_Alunos : lê
 ```
@@ -488,43 +500,41 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant Al as Aluno
-    participant D as PainelVisual
-    Al->>D: abrirInicio()
-    activate D
-    D->>D: renderizarDados()
-    D-->>Al: Visualização Completa
-    deactivate D
+    participant Al as :Aluno
+    participant D as :PainelVisual
+    Al->>D: abrirHome()
+    D->>D: renderizar()
+    D-->>Al: Ok
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC14_Visualizar_Painel_Progresso/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC14_Visualizar_Painel_Progresso/README.md)
 
 ---
 
 ## UC15_Ajustar_Acessibilidade - Ajustar Acessibilidade
-**Objetivo:** Personalização da interface para garantir inclusão e conforto visual.
+**Objetivo:** Personalização.
 
-### 📐 Diagramas Dedicados
+### 📐 Diagramas Féis ao Astah
 #### Diagrama de Classe
 ```mermaid
 classDiagram
     class MD_Acessibilidade {
-        +bool altoContraste
-        +int tamanhoFonte
-        +salvarConfiguracao()
+        <<Entidade>>
+        +altoContraste : bool
+        +tamanhoFonte : int
+        +salvar()
     }
 ```
 #### Diagrama de Sequência
 ```mermaid
 sequenceDiagram
     autonumber
-    participant U as Usuario
-    participant P as PainelConfiguracao
-    participant A as MD_Acessibilidade
-    U->>P: selecionarOpcoes(contraste, fonte)
-    P->>A: salvarConfiguracao()
+    participant U as :Usuario
+    participant P as :PainelConfiguracao
+    participant A as :MD_Acessibilidade
+    U->>P: selecionarOpcao()
+    P->>A: salvar()
     A-->>P: ok
-    P-->>U: Interface Atualizada
 ```
 
-[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC15_Ajustar_Acessibilidade/README.md)
+[👉 Abrir Manual de Modelagem Fiel](../02_Modelagem_UML_Astah/UC15_Ajustar_Acessibilidade/README.md)

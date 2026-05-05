@@ -1,32 +1,30 @@
-# 📘 Guia de Modelagem Detalhado: Gerenciar Conteúdo e Cartas
+# 📘 Guia de Modelagem Astah (Fiel à v10.x): Gerenciar Conteúdo e Cartas
 
 ## 🎯 Objetivo
-Criação e manutenção de flashcards e módulos de estudo pelos tutores.
+Criação de flashcards e módulos.
 
 > [!IMPORTANT]
-> Dica Astah: A Composição é representada por um losango preenchido no lado do Módulo.
+> Dica Astah: A Composição no Astah é o ícone do losango preto.
 
-## 🚀 Tutorial de Execução Passo a Passo no Astah
+## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
-### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
-Siga esta ordem exata para garantir a consistência:
+### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'MD_Modulos' e 'MD_Flashcards'.**
-   - [ ] 2. **Desenhe uma 'Composição' de MD_Modulos para MD_Flashcards (losango preto no Módulo).**
-   - [ ] 3. **Adicione em MD_Modulos o atributo '+ nomeModulo: texto'.**
+   - [ ] 2. **Ligue com 'Composição' (losango no Módulo).**
+   - [ ] 3. **Atributo em Módulo: '+ nomeModulo : string'.**
 
-**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+**Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
-### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
-Desenhe a interação temporal entre as classes:
-   - [ ] 1. **O Tutor solicita a criação de um 'novoModulo(nome)' ao Sistema.**
-   - [ ] 2. **O Sistema instancia (Create) um novo objeto 'MD_Modulos'.**
-   - [ ] 3. **O Tutor adiciona cartas chamando 'adicionarCarta(p, r)' no sistema, que vincula ao módulo criado.**
+### 2️⃣ Diagrama de Sequência (Processo)
+   - [ ] 1. **O Tutor solicita 'novoModulo()' ao Sistema.**
+   - [ ] 2. **O Sistema cria (Create) o objeto 'MD_Modulos'.**
+   - [ ] 3. **O Tutor adiciona cartas via 'adicionarCarta()'.**
 
-**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
+**Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
 ---
 
-## 📊 Referência Visual (Modelo Final)
+## 📊 Referência Visual (Estilo Astah UML)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
@@ -35,7 +33,8 @@ classDiagram
         +gerenciarConteudo()
     }
     class MD_Modulos {
-        +string nomeModulo
+        <<Entidade>>
+        +nomeModulo : string
     }
 ```
 
@@ -43,14 +42,14 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant T as Tutor
-    participant S as Sistema
-    participant M as MD_Modulos
+    participant T as :Tutor
+    participant S as :Sistema
+    participant M as :MD_Modulos
     T->>S: novoModulo(nome)
     S->>M: <<create>>
     T->>S: adicionarCarta(p, r)
-    S-->>T: Conteúdo Salvo
+    S-->>T: Salvo
 ```
 
 ---
-*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*
+*Este manual foi otimizado para a versão 10.1.0 do Astah UML.*

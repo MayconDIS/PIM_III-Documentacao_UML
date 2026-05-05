@@ -1,40 +1,40 @@
-# 📘 Guia de Modelagem Detalhado: Escalar Dúvida para Tutor
+# 📘 Guia de Modelagem Astah (Fiel à v10.x): Escalar Dúvida para Tutor
 
 ## 🎯 Objetivo
-Transferência de suporte da IA para um tutor humano quando a complexidade excede o limite do agente.
+Transferência IA -> Humano.
 
 > [!IMPORTANT]
-> Dica Astah: Represente a escala de dúvida como uma seta de 'Associação' simples entre os dois agentes.
+> Dica Astah: AgenteIA é um <<Controle>>.
 
-## 🚀 Tutorial de Execução Passo a Passo no Astah
+## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
-### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
-Siga esta ordem exata para garantir a consistência:
-   - [ ] 1. **Crie a classe 'AgenteIA' com os métodos '+ analisarAmbiguidade()' e '+ escalar(duvida)'.**
+### 1️⃣ Diagrama de Classe (Estrutura)
+   - [ ] 1. **Crie 'AgenteIA' (<<Controle>>) com '+ analisar()' e '+ escalar()'.**
    - [ ] 2. **Crie 'MD_Tutor' com '+ responderDuvida()'.**
-   - [ ] 3. **Ligue 'AgenteIA' a 'MD_Tutor' com uma seta de 'Associação'.**
+   - [ ] 3. **Associação simples entre os dois.**
 
-**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+**Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
-### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
-Desenhe a interação temporal entre as classes:
-   - [ ] 1. **O AgenteIA detecta internamente que a pergunta é complexa demais ('detectarComplexidade').**
-   - [ ] 2. **O AgenteIA dispara uma mensagem para o MD_Tutor: 'escalar(duvida, aluno_id)'.**
-   - [ ] 3. **O Tutor processa a dúvida e envia a resposta final diretamente ao Aluno.**
+### 2️⃣ Diagrama de Sequência (Processo)
+   - [ ] 1. **AgenteIA detecta complexidade.**
+   - [ ] 2. **AgenteIA envia 'escalar(duvida)' para :MD_Tutor.**
+   - [ ] 3. **Tutor responde ao Aluno.**
 
-**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
+**Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
 ---
 
-## 📊 Referência Visual (Modelo Final)
+## 📊 Referência Visual (Estilo Astah UML)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
     class AgenteIA {
-        +analisarAmbiguidade()
+        <<Controle>>
+        +analisar()
         +escalar(duvida)
     }
     class MD_Tutor {
+        <<Entidade>>
         +responderDuvida()
     }
     AgenteIA --> MD_Tutor : notifica
@@ -44,14 +44,13 @@ classDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    participant IA as AgenteIA
-    participant T as MD_Tutor
-    participant Al as Aluno
+    participant IA as :AgenteIA
+    participant T as :MD_Tutor
+    participant Al as :Aluno
     IA->>IA: detectarComplexidade()
-    IA->>T: escalar(duvida, aluno_id)
-    Note right of T: Tutor analisa o contexto
-    T-->>Al: Resposta Detalhada (Email/App)
+    IA->>T: escalar(duvida, id)
+    T-->>Al: Resposta
 ```
 
 ---
-*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*
+*Este manual foi otimizado para a versão 10.1.0 do Astah UML.*

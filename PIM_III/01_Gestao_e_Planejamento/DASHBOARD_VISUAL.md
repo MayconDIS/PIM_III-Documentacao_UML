@@ -50,7 +50,7 @@ sequenceDiagram
     deactivate C
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC01_Realizar_Login/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC01_Realizar_Login/README.md)
 
 ---
 
@@ -88,7 +88,7 @@ sequenceDiagram
     deactivate C
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC02_Cadastrar_Usuario/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC02_Cadastrar_Usuario/README.md)
 
 ---
 
@@ -123,7 +123,7 @@ sequenceDiagram
     A->>A: definirFaseInicial(nota)
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC03_Realizar_Teste_Nivelamento/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC03_Realizar_Teste_Nivelamento/README.md)
 
 ---
 
@@ -157,7 +157,7 @@ sequenceDiagram
     deactivate M
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC04_Gerenciar_Perfis_Acessos/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC04_Gerenciar_Perfis_Acessos/README.md)
 
 ---
 
@@ -189,7 +189,7 @@ sequenceDiagram
     S-->>T: Conteúdo Salvo
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC05_Gerenciar_Conteudo_Cartas/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC05_Gerenciar_Conteudo_Cartas/README.md)
 
 ---
 
@@ -223,7 +223,7 @@ sequenceDiagram
     deactivate D
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC06_Acompanhar_Desempenho/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC06_Acompanhar_Desempenho/README.md)
 
 ---
 
@@ -256,7 +256,7 @@ sequenceDiagram
     T-->>Al: Resposta Detalhada (Email/App)
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC07_Escalar_Duvida_Tutor/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC07_Escalar_Duvida_Tutor/README.md)
 
 ---
 
@@ -289,7 +289,7 @@ sequenceDiagram
     deactivate IA
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC08_Consultar_Agente_IA/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC08_Consultar_Agente_IA/README.md)
 
 ---
 
@@ -323,7 +323,7 @@ sequenceDiagram
     F-->>A: Carta Agendada
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC09_Estudar_Flashcards/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC09_Estudar_Flashcards/README.md)
 
 ---
 
@@ -355,7 +355,7 @@ sequenceDiagram
     F-->>A: Carta Adicionada ao Deck
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC10_Criar_Flashcards/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC10_Criar_Flashcards/README.md)
 
 ---
 
@@ -395,7 +395,7 @@ sequenceDiagram
     deactivate S
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC11_Realizar_Simulado_ENADE/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC11_Realizar_Simulado_ENADE/README.md)
 
 ---
 
@@ -431,7 +431,7 @@ sequenceDiagram
     deactivate G
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC12_Atribuir_XP_Moedas/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC12_Atribuir_XP_Moedas/README.md)
 
 ---
 
@@ -465,7 +465,7 @@ sequenceDiagram
     F-->>M: Liberada
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC13_Desbloquear_Fases_Modulos/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC13_Desbloquear_Fases_Modulos/README.md)
 
 ---
 
@@ -497,7 +497,7 @@ sequenceDiagram
     deactivate D
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC14_Visualizar_Painel_Progresso/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC14_Visualizar_Painel_Progresso/README.md)
 
 ---
 
@@ -527,4 +527,4 @@ sequenceDiagram
     P-->>U: Interface Atualizada
 ```
 
-[Abrir Guia de Modelagem Passo a Passo](../02_Modelagem_UML_Astah/UC15_Ajustar_Acessibilidade/README.md)
+[👉 Abrir Tutorial de Execução Detalhado](../02_Modelagem_UML_Astah/UC15_Ajustar_Acessibilidade/README.md)

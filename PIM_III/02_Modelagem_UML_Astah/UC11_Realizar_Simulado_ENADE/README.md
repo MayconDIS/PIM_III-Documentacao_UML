@@ -1,35 +1,33 @@
-# 📘 Guia de Modelagem: Realizar Simulado ENADE
+# 📘 Guia de Modelagem Detalhado: Realizar Simulado ENADE
 
-## 🎯 Objetivo do Caso de Uso
+## 🎯 Objetivo
 Treinamento intensivo com tempo controlado e questões de exames oficiais.
 
-> [!TIP]
-> Dica Astah: No diagrama de sequência, use um 'Fragmento Opt' para o caso de o tempo esgotar.
+> [!IMPORTANT]
+> Dica Astah: Utilize o 'Combined Fragment' do tipo 'Loop' para as questões e 'Opt' para o estouro de tempo.
 
-## 🚀 Tutorial de Criação Passo a Passo (Astah)
+## 🚀 Tutorial de Execução Passo a Passo no Astah
 
-### 1️⃣ Criando o Diagrama de Classe
-1. No Menu Superior, vá em **Projeto** > **Árvore de Estrutura**.
-2. Clique com o botão direito e selecione **Adicionar Diagrama** > **Diagrama de Classe**.
-3. Arraste as classes para a área de desenho:
-   - [ ] Criar **MD_Simulado**.
-   - [ ] Criar **Questao**.
-   - [ ] Criar **Atributo: tempoRestante: int**.
-4. Adicione os **Atributos** e **Métodos** clicando com o botão direito na classe.
-5. Use as ferramentas de **Associação, Dependência ou Herança** para ligar as classes conforme a referência abaixo.
+### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
+Siga esta ordem exata para garantir a consistência:
+   - [ ] 1. **Crie 'MD_Simulado' e 'Questao'.**
+   - [ ] 2. **Ligue-as com uma 'Composição' (losango preto no Simulado).**
+   - [ ] 3. **Em 'MD_Simulado', adicione '+ tempoRestante: int' e '+ calcularNota()'.**
 
-### 2️⃣ Criando o Diagrama de Sequência
-1. Clique com o botão direito no Caso de Uso (na Árvore) e selecione **Adicionar Diagrama** > **Diagrama de Sequência**.
-2. Adicione os **Participantes** (Linhas de Vida) no topo da tela.
-3. Desenhe as setas de mensagem seguindo rigorosamente esta ordem:
-   - [ ] 1. **Aluno -> MD_Simulado: iniciarTeste()**
-   - [ ] 2. **MD_Simulado -> MD_Simulado: calcularNota()**
-   - [ ] 3. **Simulado -->> Aluno: Resultado Final**
-4. Lembre-se de adicionar as **Barras de Ativação** clicando sobre a linha de vida onde houver processamento.
+**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+
+### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
+Desenhe a interação temporal entre as classes:
+   - [ ] 1. **O Aluno inicia o Simulado.**
+   - [ ] 2. **O Simulado aciona um 'Temporizador' para controlar os 120 minutos.**
+   - [ ] 3. **Dentro de um 'Loop', o Aluno responde cada questão.**
+   - [ ] 4. **Ao final, o Simulado desliga o cronômetro e devolve a Nota Final.**
+
+**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
 
 ---
 
-## 📊 Referência Visual (Padrão PT-BR)
+## 📊 Referência Visual (Modelo Final)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
@@ -64,4 +62,4 @@ sequenceDiagram
 ```
 
 ---
-*Manual técnico gerado em Português para conformidade com o PIM III.*
+*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*

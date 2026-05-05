@@ -1,36 +1,32 @@
-# 📘 Guia de Modelagem: Acompanhar Desempenho
+# 📘 Guia de Modelagem Detalhado: Acompanhar Desempenho
 
-## 🎯 Objetivo do Caso de Uso
+## 🎯 Objetivo
 Visualização de métricas de progresso e engajamento dos alunos.
 
-> [!TIP]
-> Dica Astah: No diagrama de sequência, represente o 'Painel' como uma classe de 'Fronteira' (Boundary).
+> [!IMPORTANT]
+> Dica Astah: O PainelVisual é uma classe de 'Fronteira' (Interface de Usuário).
 
-## 🚀 Tutorial de Criação Passo a Passo (Astah)
+## 🚀 Tutorial de Execução Passo a Passo no Astah
 
-### 1️⃣ Criando o Diagrama de Classe
-1. No Menu Superior, vá em **Projeto** > **Árvore de Estrutura**.
-2. Clique com o botão direito e selecione **Adicionar Diagrama** > **Diagrama de Classe**.
-3. Arraste as classes para a área de desenho:
-   - [ ] Criar **MD_Tutor**.
-   - [ ] Criar **MD_Alunos**.
-   - [ ] Criar **PainelVisual**.
-   - [ ] Criar **Atributo: progresso: decimal**.
-4. Adicione os **Atributos** e **Métodos** clicando com o botão direito na classe.
-5. Use as ferramentas de **Associação, Dependência ou Herança** para ligar as classes conforme a referência abaixo.
+### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
+Siga esta ordem exata para garantir a consistência:
+   - [ ] 1. **Crie as classes 'MD_Tutor', 'MD_Alunos' e 'PainelVisual'.**
+   - [ ] 2. **Em 'MD_Alunos', defina '+ progresso: decimal'.**
+   - [ ] 3. **Desenhe uma 'Dependência' do Tutor para o Aluno através do PainelVisual.**
 
-### 2️⃣ Criando o Diagrama de Sequência
-1. Clique com o botão direito no Caso de Uso (na Árvore) e selecione **Adicionar Diagrama** > **Diagrama de Sequência**.
-2. Adicione os **Participantes** (Linhas de Vida) no topo da tela.
-3. Desenhe as setas de mensagem seguindo rigorosamente esta ordem:
-   - [ ] 1. **Tutor -> PainelVisual: requisitarDados(aluno)**
-   - [ ] 2. **PainelVisual -> MD_Alunos: obterMetricas()**
-   - [ ] 3. **PainelVisual -->> Tutor: Renderiza Gráficos**
-4. Lembre-se de adicionar as **Barras de Ativação** clicando sobre a linha de vida onde houver processamento.
+**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+
+### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
+Desenhe a interação temporal entre as classes:
+   - [ ] 1. **Tutor interage com 'PainelVisual' solicitando 'visualizar(aluno_id)'.**
+   - [ ] 2. **O PainelVisual busca dados reais no objeto 'MD_Alunos' chamando 'obterMetricas()'.**
+   - [ ] 3. **O Aluno devolve os dados e o Painel renderiza o relatório final para o Tutor.**
+
+**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
 
 ---
 
-## 📊 Referência Visual (Padrão PT-BR)
+## 📊 Referência Visual (Modelo Final)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
@@ -59,4 +55,4 @@ sequenceDiagram
 ```
 
 ---
-*Manual técnico gerado em Português para conformidade com o PIM III.*
+*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*

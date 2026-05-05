@@ -1,34 +1,32 @@
-# 📘 Guia de Modelagem: Atribuir XP e Moedas
+# 📘 Guia de Modelagem Detalhado: Atribuir XP e Moedas
 
-## 🎯 Objetivo do Caso de Uso
+## 🎯 Objetivo
 Motor de recompensas automático baseado na conclusão de atividades.
 
-> [!TIP]
-> Dica Astah: No diagrama de classe, use uma 'Dependência' (seta tracejada) entre Sistema e Gamificação.
+> [!IMPORTANT]
+> Dica Astah: A dependência aqui mostra que a Gamificação 'atualiza' o Aluno.
 
-## 🚀 Tutorial de Criação Passo a Passo (Astah)
+## 🚀 Tutorial de Execução Passo a Passo no Astah
 
-### 1️⃣ Criando o Diagrama de Classe
-1. No Menu Superior, vá em **Projeto** > **Árvore de Estrutura**.
-2. Clique com o botão direito e selecione **Adicionar Diagrama** > **Diagrama de Classe**.
-3. Arraste as classes para a área de desenho:
-   - [ ] Criar **MD_Gamificacao**.
-   - [ ] Criar **MD_Alunos**.
-   - [ ] Criar **Método: creditarXP(valor)**.
-4. Adicione os **Atributos** e **Métodos** clicando com o botão direito na classe.
-5. Use as ferramentas de **Associação, Dependência ou Herança** para ligar as classes conforme a referência abaixo.
+### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
+Siga esta ordem exata para garantir a consistência:
+   - [ ] 1. **Crie 'MD_Gamificacao' e 'MD_Alunos'.**
+   - [ ] 2. **Em 'MD_Alunos', certifique-se de ter os atributos '+ pontos' e '+ moedas'.**
+   - [ ] 3. **Desenhe uma 'Dependência' de MD_Gamificacao para MD_Alunos.**
 
-### 2️⃣ Criando o Diagrama de Sequência
-1. Clique com o botão direito no Caso de Uso (na Árvore) e selecione **Adicionar Diagrama** > **Diagrama de Sequência**.
-2. Adicione os **Participantes** (Linhas de Vida) no topo da tela.
-3. Desenhe as setas de mensagem seguindo rigorosamente esta ordem:
-   - [ ] 1. **Sistema -> MD_Gamificacao: calcularBonus()**
-   - [ ] 2. **MD_Gamificacao -> MD_Alunos: creditarXP()**
-4. Lembre-se de adicionar as **Barras de Ativação** clicando sobre a linha de vida onde houver processamento.
+**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+
+### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
+Desenhe a interação temporal entre as classes:
+   - [ ] 1. **O Sistema notifica o motor de 'MD_Gamificacao' sobre uma tarefa concluída.**
+   - [ ] 2. **O motor executa o cálculo de bônus internamente ('calcularBonus').**
+   - [ ] 3. **O motor chama 'creditarXP(valor)' no objeto Aluno correspondente.**
+
+**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
 
 ---
 
-## 📊 Referência Visual (Padrão PT-BR)
+## 📊 Referência Visual (Modelo Final)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
@@ -59,4 +57,4 @@ sequenceDiagram
 ```
 
 ---
-*Manual técnico gerado em Português para conformidade com o PIM III.*
+*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*

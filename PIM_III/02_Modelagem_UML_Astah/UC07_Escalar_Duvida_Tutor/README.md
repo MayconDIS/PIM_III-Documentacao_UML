@@ -1,36 +1,32 @@
-# 📘 Guia de Modelagem: Escalar Dúvida para Tutor
+# 📘 Guia de Modelagem Detalhado: Escalar Dúvida para Tutor
 
-## 🎯 Objetivo do Caso de Uso
+## 🎯 Objetivo
 Transferência de suporte da IA para um tutor humano quando a complexidade excede o limite do agente.
 
-> [!TIP]
-> Dica Astah: Use uma 'Mensagem Assíncrona' para indicar que o Tutor não responderá instantaneamente.
+> [!IMPORTANT]
+> Dica Astah: Represente a escala de dúvida como uma seta de 'Associação' simples entre os dois agentes.
 
-## 🚀 Tutorial de Criação Passo a Passo (Astah)
+## 🚀 Tutorial de Execução Passo a Passo no Astah
 
-### 1️⃣ Criando o Diagrama de Classe
-1. No Menu Superior, vá em **Projeto** > **Árvore de Estrutura**.
-2. Clique com o botão direito e selecione **Adicionar Diagrama** > **Diagrama de Classe**.
-3. Arraste as classes para a área de desenho:
-   - [ ] Criar **AgenteIA**.
-   - [ ] Criar **MD_Tutor**.
-   - [ ] Criar **MD_Duvidas**.
-   - [ ] Criar **Associação: IA sinaliza Tutor**.
-4. Adicione os **Atributos** e **Métodos** clicando com o botão direito na classe.
-5. Use as ferramentas de **Associação, Dependência ou Herança** para ligar as classes conforme a referência abaixo.
+### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
+Siga esta ordem exata para garantir a consistência:
+   - [ ] 1. **Crie a classe 'AgenteIA' com os métodos '+ analisarAmbiguidade()' e '+ escalar(duvida)'.**
+   - [ ] 2. **Crie 'MD_Tutor' com '+ responderDuvida()'.**
+   - [ ] 3. **Ligue 'AgenteIA' a 'MD_Tutor' com uma seta de 'Associação'.**
 
-### 2️⃣ Criando o Diagrama de Sequência
-1. Clique com o botão direito no Caso de Uso (na Árvore) e selecione **Adicionar Diagrama** > **Diagrama de Sequência**.
-2. Adicione os **Participantes** (Linhas de Vida) no topo da tela.
-3. Desenhe as setas de mensagem seguindo rigorosamente esta ordem:
-   - [ ] 1. **AgenteIA -> AgenteIA: analisarAmbiguidade()**
-   - [ ] 2. **AgenteIA -> MD_Tutor: escalar(duvida)**
-   - [ ] 3. **Tutor -->> Aluno: Resposta (Offline)**
-4. Lembre-se de adicionar as **Barras de Ativação** clicando sobre a linha de vida onde houver processamento.
+**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+
+### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
+Desenhe a interação temporal entre as classes:
+   - [ ] 1. **O AgenteIA detecta internamente que a pergunta é complexa demais ('detectarComplexidade').**
+   - [ ] 2. **O AgenteIA dispara uma mensagem para o MD_Tutor: 'escalar(duvida, aluno_id)'.**
+   - [ ] 3. **O Tutor processa a dúvida e envia a resposta final diretamente ao Aluno.**
+
+**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
 
 ---
 
-## 📊 Referência Visual (Padrão PT-BR)
+## 📊 Referência Visual (Modelo Final)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
@@ -58,4 +54,4 @@ sequenceDiagram
 ```
 
 ---
-*Manual técnico gerado em Português para conformidade com o PIM III.*
+*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*

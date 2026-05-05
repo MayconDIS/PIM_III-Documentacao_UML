@@ -1,36 +1,34 @@
-# 📘 Guia de Modelagem: Cadastrar Usuário
+# 📘 Guia de Modelagem Detalhado: Cadastrar Usuário
 
-## 🎯 Objetivo do Caso de Uso
+## 🎯 Objetivo
 Registro de novos alunos com inicialização automática de perfil de gamificação.
 
-> [!TIP]
-> Dica Astah: Use a 'Generalização' (seta fechada) de MD_Alunos para MD_Usuarios para indicar herança.
+> [!IMPORTANT]
+> Dica Astah: A seta de Herança (Generalização) é a que possui o triângulo na ponta.
 
-## 🚀 Tutorial de Criação Passo a Passo (Astah)
+## 🚀 Tutorial de Execução Passo a Passo no Astah
 
-### 1️⃣ Criando o Diagrama de Classe
-1. No Menu Superior, vá em **Projeto** > **Árvore de Estrutura**.
-2. Clique com o botão direito e selecione **Adicionar Diagrama** > **Diagrama de Classe**.
-3. Arraste as classes para a área de desenho:
-   - [ ] Criar **MD_Usuarios (Base)**.
-   - [ ] Criar **MD_Alunos (Extensão)**.
-   - [ ] Criar **Herança: MD_Alunos herda de MD_Usuarios**.
-   - [ ] Criar **Atributos: pontos: int, moedas: int**.
-4. Adicione os **Atributos** e **Métodos** clicando com o botão direito na classe.
-5. Use as ferramentas de **Associação, Dependência ou Herança** para ligar as classes conforme a referência abaixo.
+### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
+Siga esta ordem exata para garantir a consistência:
+   - [ ] 1. **Crie a classe base 'MD_Usuarios' com 'nome' e 'email'.**
+   - [ ] 2. **Crie a classe 'MD_Alunos'.**
+   - [ ] 3. **Desenhe a 'Generalização' (Herança) de MD_Alunos apontando para MD_Usuarios.**
+   - [ ] 4. **Adicione em MD_Alunos os atributos: '+ pontos: int' e '+ moedas: int'.**
 
-### 2️⃣ Criando o Diagrama de Sequência
-1. Clique com o botão direito no Caso de Uso (na Árvore) e selecione **Adicionar Diagrama** > **Diagrama de Sequência**.
-2. Adicione os **Participantes** (Linhas de Vida) no topo da tela.
-3. Desenhe as setas de mensagem seguindo rigorosamente esta ordem:
-   - [ ] 1. **Visitante -> ControladorAutenticacao: registrar()**
-   - [ ] 2. **ControladorAutenticacao -> MD_Alunos: <<create>>**
-   - [ ] 3. **MD_Alunos -> MD_Alunos: inicializarPerfil()**
-4. Lembre-se de adicionar as **Barras de Ativação** clicando sobre a linha de vida onde houver processamento.
+**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+
+### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
+Desenhe a interação temporal entre as classes:
+   - [ ] 1. **Coloque os participantes: Visitante, ControladorAutenticacao e MD_Alunos.**
+   - [ ] 2. **Mensagem 1: Visitante solicita 'registrar(dados)' ao Controlador.**
+   - [ ] 3. **Mensagem 2: O Controlador cria o objeto 'MD_Alunos' (utilize a mensagem de criação 'Create').**
+   - [ ] 4. **Mensagem 3: O objeto recém-criado executa internamente 'inicializarPerfil()'.**
+
+**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
 
 ---
 
-## 📊 Referência Visual (Padrão PT-BR)
+## 📊 Referência Visual (Modelo Final)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
@@ -63,4 +61,4 @@ sequenceDiagram
 ```
 
 ---
-*Manual técnico gerado em Português para conformidade com o PIM III.*
+*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*

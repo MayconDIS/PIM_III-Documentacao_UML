@@ -1,37 +1,33 @@
-# 📘 Guia de Modelagem: Teste de Nivelamento
+# 📘 Guia de Modelagem Detalhado: Teste de Nivelamento
 
-## 🎯 Objetivo do Caso de Uso
+## 🎯 Objetivo
 Avaliação diagnóstica para posicionamento do aluno no mapa de conhecimento.
 
-> [!TIP]
-> Dica Astah: No diagrama de classe, use 'Agregação' para mostrar que um Simulado contém questões.
+> [!IMPORTANT]
+> Dica Astah: Use Agregação (losango vazio) para mostrar que o Simulado agrega questões.
 
-## 🚀 Tutorial de Criação Passo a Passo (Astah)
+## 🚀 Tutorial de Execução Passo a Passo no Astah
 
-### 1️⃣ Criando o Diagrama de Classe
-1. No Menu Superior, vá em **Projeto** > **Árvore de Estrutura**.
-2. Clique com o botão direito e selecione **Adicionar Diagrama** > **Diagrama de Classe**.
-3. Arraste as classes para a área de desenho:
-   - [ ] Criar **MD_Alunos**.
-   - [ ] Criar **MD_Simulado**.
-   - [ ] Criar **Método: definirFaseInicial(nota)**.
-   - [ ] Criar **Atributo: complexidade: texto**.
-4. Adicione os **Atributos** e **Métodos** clicando com o botão direito na classe.
-5. Use as ferramentas de **Associação, Dependência ou Herança** para ligar as classes conforme a referência abaixo.
+### 1️⃣ Construindo o Diagrama de Classe (O QUE criar)
+Siga esta ordem exata para garantir a consistência:
+   - [ ] 1. **Crie 'MD_Alunos' com o método '+ definirFaseInicial(nota)'.**
+   - [ ] 2. **Crie 'MD_Simulado' com o método '+ iniciarTeste()'.**
+   - [ ] 3. **Desenhe uma 'Associação Unidirecional' (seta simples) do Aluno para o Simulado.**
 
-### 2️⃣ Criando o Diagrama de Sequência
-1. Clique com o botão direito no Caso de Uso (na Árvore) e selecione **Adicionar Diagrama** > **Diagrama de Sequência**.
-2. Adicione os **Participantes** (Linhas de Vida) no topo da tela.
-3. Desenhe as setas de mensagem seguindo rigorosamente esta ordem:
-   - [ ] 1. **Aluno -> MD_Simulado: iniciarTeste()**
-   - [ ] 2. **MD_Simulado -->> Aluno: listaQuestoes[]**
-   - [ ] 3. **Aluno -> MD_Simulado: enviarRespostas()**
-   - [ ] 4. **Aluno -> Aluno: definirFaseInicial(nota)**
-4. Lembre-se de adicionar as **Barras de Ativação** clicando sobre a linha de vida onde houver processamento.
+**Como conectar?** Utilize as ferramentas de ligação na barra lateral do Astah. Se for Herança, procure pelo ícone de triângulo. Se for Dependência, use a linha tracejada.
+
+### 2️⃣ Construindo o Diagrama de Sequência (COMO o processo flui)
+Desenhe a interação temporal entre as classes:
+   - [ ] 1. **O Aluno chama 'iniciarTeste()' no objeto MD_Simulado.**
+   - [ ] 2. **O Simulado retorna uma lista de questões para o Aluno.**
+   - [ ] 3. **Após responder, o Aluno chama 'enviarRespostas()' no Simulado.**
+   - [ ] 4. **O Aluno executa em si mesmo 'definirFaseInicial(nota)' após receber o resultado.**
+
+**Dica Visual:** No Astah, as mensagens de retorno (setas tracejadas) são configuradas nas propriedades da mensagem enviada ou desenhadas separadamente.
 
 ---
 
-## 📊 Referência Visual (Padrão PT-BR)
+## 📊 Referência Visual (Modelo Final)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
@@ -61,4 +57,4 @@ sequenceDiagram
 ```
 
 ---
-*Manual técnico gerado em Português para conformidade com o PIM III.*
+*Este guia foi projetado para ser infalível. Siga os passos acima e sua modelagem estará tecnicamente perfeita.*

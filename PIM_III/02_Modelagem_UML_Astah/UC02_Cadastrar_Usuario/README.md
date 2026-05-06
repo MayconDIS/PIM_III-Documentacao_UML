@@ -24,6 +24,17 @@ Registro de novos alunos com inicialização automática de perfil de gamificaç
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
+
+---
+
+## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
+
+### Diagrama de Classe (Premium)
+![UC02_Classe](../../03_Artefatos_Gerados/UC02_Classe.png)
+
+### Diagrama de Sequência (Premium)
+![UC02_Sequencia](../../03_Artefatos_Gerados/UC02_Sequencia.png)
+
 ---
 
 ## 📊 Referência Visual (Estilo Astah UML)

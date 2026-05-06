@@ -22,6 +22,17 @@ Métricas de progresso.
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
+
+---
+
+## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
+
+### Diagrama de Classe (Premium)
+![UC06_Classe](../../03_Artefatos_Gerados/UC06_Classe.png)
+
+### Diagrama de Sequência (Premium)
+![UC06_Sequencia](../../03_Artefatos_Gerados/UC06_Sequencia.png)
+
 ---
 
 ## 📊 Referência Visual (Estilo Astah UML)

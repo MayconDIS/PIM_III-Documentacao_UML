@@ -1,0 +1,10 @@
+@startuml
+skinparam monochrome true
+class PainelVisual <<Fronteira>> {
+    +renderizar()
+}
+class MD_Alunos <<Entidade>> {
+    +obterProgresso()
+}
+PainelVisual ..> MD_Alunos : lê
+@enduml

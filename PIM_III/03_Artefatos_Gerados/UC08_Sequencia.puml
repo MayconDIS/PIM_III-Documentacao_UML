@@ -1,0 +1,9 @@
+@startuml
+skinparam monochrome true
+autonumber
+participant A as ":Aluno"
+participant IA as ":AgenteIA"
+A -> IA : enviarDuvida(texto)
+IA -> IA : processarLinguagem()
+IA --/ A : Resposta
+@enduml

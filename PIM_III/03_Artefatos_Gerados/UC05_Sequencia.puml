@@ -1,0 +1,11 @@
+@startuml
+skinparam monochrome true
+autonumber
+participant T as ":Tutor"
+participant S as ":Sistema"
+participant M as ":MD_Modulos"
+T -> S : novoModulo(nome)
+S -> M : <<create>>
+T -> S : adicionarCarta(p, r)
+S --/ T : Salvo
+@enduml

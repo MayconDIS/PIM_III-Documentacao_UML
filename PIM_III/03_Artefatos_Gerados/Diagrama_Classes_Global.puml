@@ -1,0 +1,116 @@
+@startuml
+skinparam monochrome true
+skinparam classAttributeIconSize 0
+
+' --- Entidades Base ---
+class MD_Usuarios <<Entidade>> {
+    +nome : string
+    +email : string
+    +senha : string
+    +papel : string
+}
+
+class MD_Alunos <<Entidade>> {
+    +pontos : int
+    +moedas : int
+    +progresso : float
+    +obterProgresso() : float
+    +definirFaseInicial(nota : float)
+    +criarCarta()
+}
+
+class MD_Tutor <<Entidade>> {
+    +gerenciarConteudo()
+    +acompanharDesempenho()
+    +responderDuvida()
+}
+
+class MD_Admin <<Entidade>> {
+    +gerenciarAcesso()
+}
+
+' --- Herança ---
+MD_Usuarios <|-- MD_Alunos
+MD_Usuarios <|-- MD_Tutor
+MD_Usuarios <|-- MD_Admin
+
+' --- Domínio de Estudo ---
+class MD_Modulos <<Entidade>> {
+    +nomeModulo : string
+}
+
+class MD_Flashcards <<Entidade>> {
+    +pergunta : string
+    +resposta : string
+    +proximaRevisao : date
+}
+
+class MD_Simulado <<Entidade>> {
+    +nota : float
+    +tempoRestante : int
+    +iniciarTeste()
+}
+
+class Questao <<Entidade>> {
+    +texto : string
+}
+
+MD_Modulos "1" *-- "*" MD_Flashcards
+MD_Simulado "1" *-- "*" Questao
+MD_Alunos "1" --> "*" MD_Flashcards : cria
+MD_Alunos --> MD_Simulado : realiza
+
+' --- Motores e Lógica ---
+class MD_MotorSM2 <<Controle>> {
+    +aplicarSM2(feedback : int)
+}
+
+class MD_Gamificacao <<Controle>> {
+    +calcularBonus()
+}
+
+class MD_Fases <<Entidade>> {
+    +bloqueada : bool
+    +desbloquear()
+}
+
+MD_MotorSM2 --> MD_Flashcards : atualiza
+MD_Gamificacao ..> MD_Alunos : credita
+MD_Fases ..> MD_Alunos : verifica
+
+' --- Suporte e IA ---
+class AgenteIA <<Controle>> {
+    +analisar()
+    +escalar(duvida)
+    +responder(pergunta)
+}
+
+class MD_Duvidas <<Entidade>> {
+    +pergunta : string
+    +resposta : string
+}
+
+AgenteIA ..> MD_Duvidas : consulta
+AgenteIA --> MD_Tutor : notifica
+
+' --- Interface e Acessibilidade ---
+class PainelVisual <<Fronteira>> {
+    +renderizar()
+}
+
+class MD_Acessibilidade <<Entidade>> {
+    +altoContraste : bool
+    +tamanhoFonte : int
+    +salvar()
+}
+
+PainelVisual ..> MD_Alunos : lê
+
+' --- Controladores de Sistema ---
+class ControladorAutenticacao <<Controle>> {
+    +autenticar(email, senha) : bool
+}
+
+ControladorAutenticacao ..> MD_Usuarios : consulta
+
+@enduml

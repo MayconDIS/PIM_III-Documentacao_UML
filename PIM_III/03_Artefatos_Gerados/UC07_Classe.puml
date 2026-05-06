@@ -1,0 +1,11 @@
+@startuml
+skinparam monochrome true
+class AgenteIA <<Controle>> {
+    +analisar()
+    +escalar(duvida)
+}
+class MD_Tutor <<Entidade>> {
+    +responderDuvida()
+}
+AgenteIA --> MD_Tutor : notifica
+@enduml

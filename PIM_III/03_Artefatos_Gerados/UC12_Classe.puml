@@ -1,0 +1,11 @@
+@startuml
+skinparam monochrome true
+class MD_Gamificacao <<Controle>> {
+    +calcularBonus()
+}
+class MD_Alunos <<Entidade>> {
+    +pontos : int
+    +moedas : int
+}
+MD_Gamificacao ..> MD_Alunos : credita
+@enduml

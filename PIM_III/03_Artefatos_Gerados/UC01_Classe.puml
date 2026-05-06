@@ -1,0 +1,11 @@
+@startuml
+skinparam monochrome true
+class MD_Usuarios <<Entidade>> {
+    +email : string
+    +senha : string
+}
+class ControladorAutenticacao <<Controle>> {
+    +autenticar(email : string, senha : string) : bool
+}
+ControladorAutenticacao ..> MD_Usuarios : consulta
+@enduml

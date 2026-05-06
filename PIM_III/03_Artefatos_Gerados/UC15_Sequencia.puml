@@ -1,0 +1,10 @@
+@startuml
+skinparam monochrome true
+autonumber
+participant U as ":Usuario"
+participant P as ":PainelConfiguracao"
+participant A as ":MD_Acessibilidade"
+U -> P : selecionarOpcao()
+P -> A : salvar()
+A --/ P : ok
+@enduml

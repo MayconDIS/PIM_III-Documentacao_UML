@@ -23,6 +23,17 @@ Administração de papéis e permissões.
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
+
+---
+
+## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
+
+### Diagrama de Classe (Premium)
+![UC04_Classe](../../03_Artefatos_Gerados/UC04_Classe.png)
+
+### Diagrama de Sequência (Premium)
+![UC04_Sequencia](../../03_Artefatos_Gerados/UC04_Sequencia.png)
+
 ---
 
 ## 📊 Referência Visual (Estilo Astah UML)

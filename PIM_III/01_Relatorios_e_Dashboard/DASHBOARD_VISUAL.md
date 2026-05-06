@@ -18,6 +18,14 @@ Este documento centraliza os diagramas em conformidade com a interface e notaç�
 - [Desbloquear Fases e Módulos](#uc13-desbloquear-fases-modulos)
 - [Visualizar Painel de Progresso](#uc14-visualizar-painel-progresso)
 - [Ajustar Acessibilidade](#uc15-ajustar-acessibilidade)
+- [**Diagrama de Classes Global (Sincronizado)**](#diagrama-de-classes-global)
+
+---
+
+## 🏛️ Diagrama de Classes Global
+Este diagrama unifica todas as entidades e controladores dos 15 Casos de Uso, servindo como a arquitetura de referência do sistema Nex_TI.
+
+![Diagrama_Classes_Global](../03_Artefatos_Gerados/Diagrama_Classes_Global.png)
 
 ---
 

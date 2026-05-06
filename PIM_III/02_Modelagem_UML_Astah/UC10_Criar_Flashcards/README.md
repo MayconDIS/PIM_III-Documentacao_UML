@@ -22,6 +22,28 @@ Personalização de deck.
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
+
+---
+
+## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
+
+### Diagrama de Classe (Premium)
+![UC10_Classe](../../03_Artefatos_Gerados/UC10_Classe.png)
+
+### Diagrama de Sequência (Premium)
+![UC10_Sequencia](../../03_Artefatos_Gerados/UC10_Sequencia.png)
+
+
+---
+
+## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
+
+### Diagrama de Classe (Premium)
+![UC10_Classe](../../03_Artefatos_Gerados/UC10_Classe.png)
+
+### Diagrama de Sequência (Premium)
+![UC10_Sequencia](../../03_Artefatos_Gerados/UC10_Sequencia.png)
+
 ---
 
 ## 📊 Referência Visual (Estilo Astah UML)

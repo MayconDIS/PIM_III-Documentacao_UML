@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+autonumber
+participant A as ":Admin"
+participant M as ":GerenciadorAcesso"
+participant U as ":MD_Usuarios"
+A -> M : alterarPapel(id, papel)
+activate M
+M -> U : setPapel(papel)
+U --/ M : ok
+M --/ A : Sucesso
+deactivate M
+@enduml

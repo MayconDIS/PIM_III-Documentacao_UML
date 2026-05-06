@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+autonumber
+participant T as ":Tutor"
+participant D as ":PainelVisual"
+participant A as ":MD_Alunos"
+T -> D : visualizar(id)
+activate D
+D -> A : obterMetricas()
+A --/ D : dados
+D --/ T : Relatório Visual
+deactivate D
+@enduml

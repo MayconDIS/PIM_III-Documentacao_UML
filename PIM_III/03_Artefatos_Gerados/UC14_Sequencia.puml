@@ -1,0 +1,9 @@
+@startuml
+skinparam monochrome true
+autonumber
+participant Al as ":Aluno"
+participant D as ":PainelVisual"
+Al -> D : abrirHome()
+D -> D : renderizar()
+D --/ Al : Ok
+@enduml

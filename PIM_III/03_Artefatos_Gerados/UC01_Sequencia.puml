@@ -1,0 +1,11 @@
+@startuml
+skinparam monochrome true
+autonumber
+actor "Usuário (Ator)" as U
+participant ":ControladorAutenticacao" as C
+U -> C : login(email, senha)
+activate C
+C -> C : validarCredenciais()
+C --/ U : Resultado (Sucesso/Erro)
+deactivate C
+@enduml

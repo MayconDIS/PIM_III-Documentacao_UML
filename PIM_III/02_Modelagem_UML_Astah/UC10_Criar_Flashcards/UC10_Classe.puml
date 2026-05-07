@@ -1,0 +1,11 @@
+@startuml
+skinparam monochrome true
+class Aluno <<Entidade>> {
+    +criarCarta()
+}
+class Flashcard_SM2 <<Entidade>> {
+    +pergunta : string
+    +resposta : string
+}
+Aluno "1" --> "*" Flashcard_SM2 : cria
+@enduml

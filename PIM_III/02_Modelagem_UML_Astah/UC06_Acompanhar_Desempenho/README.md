@@ -9,7 +9,7 @@ Métricas de progresso.
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie 'MD_Tutor', 'MD_Alunos' e 'PainelVisual' (<<Fronteira>>).**
+   - [ ] 1. **Crie 'Tutor', 'Aluno' e 'PainelVisual' (<<Fronteira>>).**
    - [ ] 2. **Em Alunos: '+ progresso : float'.**
    - [ ] 3. **Ligue Tutor a Aluno via Dependência através do Painel.**
 
@@ -17,7 +17,7 @@ Métricas de progresso.
 
 ### 2️⃣ Diagrama de Sequência (Processo)
    - [ ] 1. **Tutor pede 'visualizar(id)' no PainelVisual.**
-   - [ ] 2. **PainelVisual chama 'obterMetricas()' no objeto :MD_Alunos.**
+   - [ ] 2. **PainelVisual chama 'obterMetricas()' no objeto :Aluno.**
    - [ ] 3. **Painel renderiza o relatório final.**
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
@@ -28,10 +28,10 @@ Métricas de progresso.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC06_Classe](../../03_Artefatos_Gerados/UC06_Classe.png)
+![UC06_Classe](./UC06_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC06_Sequencia](../../03_Artefatos_Gerados/UC06_Sequencia.png)
+![UC06_Sequencia](./UC06_Sequencia.png)
 
 ---
 
@@ -39,10 +39,10 @@ Métricas de progresso.
 ### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Tutor {
+    class Tutor {
         +acompanharDesempenho()
     }
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
         +progresso : float
     }
@@ -50,7 +50,7 @@ classDiagram
         <<Fronteira>>
         +renderizar()
     }
-    MD_Tutor ..> MD_Alunos : visualiza
+    Tutor ..> Aluno : visualiza
 ```
 
 ### Diagrama de Sequência
@@ -59,7 +59,7 @@ sequenceDiagram
     autonumber
     participant T as :Tutor
     participant D as :PainelVisual
-    participant A as :MD_Alunos
+    participant A as :Aluno
     T->>D: visualizar(id)
     activate D
     D->>A: obterMetricas()
@@ -70,3 +70,11 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
+---
+
+## 🏛️ Contexto Arquitetural
+Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
+
+---
+
+[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

@@ -1,0 +1,11 @@
+@startuml
+skinparam monochrome true
+autonumber
+participant A as ":Aluno"
+participant S as ":Simulado"
+participant T as ":Temporizador"
+A -> S : iniciarTeste()
+S -> T : iniciar()
+A -> S : responder()
+S --/ A : Nota Final
+@enduml

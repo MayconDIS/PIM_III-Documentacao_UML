@@ -1,0 +1,12 @@
+@startuml
+skinparam monochrome true
+class Usuario {
+    +nome : string
+    +email : string
+}
+class Aluno <<Entidade>> {
+    +pontos : int
+    +moedas : int
+}
+Usuario <|-- Aluno
+@enduml

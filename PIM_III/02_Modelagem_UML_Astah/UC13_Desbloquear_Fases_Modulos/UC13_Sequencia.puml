@@ -1,0 +1,10 @@
+@startuml
+skinparam monochrome true
+autonumber
+participant M as ":GerenciadorProgresso"
+participant A as ":Aluno"
+participant F as ":Modulo"
+M -> A : obterProgresso()
+M -> F : desbloquear()
+F --/ M : Sucesso
+@enduml

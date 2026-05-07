@@ -9,7 +9,7 @@ Repetição espaçada.
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie 'MD_MotorSM2' (<<Controle>>) e 'MD_Flashcards'.**
+   - [ ] 1. **Crie 'MotorSM2' (<<Controle>>) e 'Flashcard_SM2'.**
    - [ ] 2. **Atributos no Flashcard: '+ proximaRevisao : date'.**
    - [ ] 3. **Associação do Motor para o Flashcard.**
 
@@ -17,7 +17,7 @@ Repetição espaçada.
 
 ### 2️⃣ Diagrama de Sequência (Processo)
    - [ ] 1. **Aluno lê pergunta.**
-   - [ ] 2. **Aluno informa dificuldade (1-5) ao :MD_MotorSM2.**
+   - [ ] 2. **Aluno informa dificuldade (1-5) ao :MotorSM2.**
    - [ ] 3. **Motor aplica algoritmo e atualiza data no Flashcard.**
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
@@ -28,10 +28,10 @@ Repetição espaçada.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC09_Classe](../../03_Artefatos_Gerados/UC09_Classe.png)
+![UC09_Classe](./UC09_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC09_Sequencia](../../03_Artefatos_Gerados/UC09_Sequencia.png)
+![UC09_Sequencia](./UC09_Sequencia.png)
 
 
 ---
@@ -39,10 +39,10 @@ Repetição espaçada.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC09_Classe](../../03_Artefatos_Gerados/UC09_Classe.png)
+![UC09_Classe](./UC09_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC09_Sequencia](../../03_Artefatos_Gerados/UC09_Sequencia.png)
+![UC09_Sequencia](./UC09_Sequencia.png)
 
 ---
 
@@ -50,15 +50,15 @@ Repetição espaçada.
 ### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_MotorSM2 {
+    class MotorSM2 {
         <<Controle>>
         +aplicarSM2(feedback)
     }
-    class MD_Flashcards {
+    class Flashcard_SM2 {
         <<Entidade>>
         +proximaRevisao : date
     }
-    MD_MotorSM2 --> MD_Flashcards : atualiza
+    MotorSM2 --> Flashcard_SM2 : atualiza
 ```
 
 ### Diagrama de Sequência
@@ -66,8 +66,8 @@ classDiagram
 sequenceDiagram
     autonumber
     participant A as :Aluno
-    participant M as :MD_MotorSM2
-    participant F as :MD_Flashcards
+    participant M as :MotorSM2
+    participant F as :Flashcard_SM2
     A->>F: lerPergunta()
     A->>M: informarDificuldade(1-5)
     M->>M: aplicarSM2()
@@ -77,3 +77,11 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
+---
+
+## 🏛️ Contexto Arquitetural
+Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
+
+---
+
+[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

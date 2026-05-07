@@ -4,14 +4,14 @@
 Interação instantânea.
 
 > [!IMPORTANT]
-> Dica Astah: Represente MD_Duvidas como <<Entidade>>.
+> Dica Astah: Represente Duvida como <<Entidade>>.
 
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'AgenteIA' com '+ responder()'.**
-   - [ ] 2. **Crie 'MD_Duvidas' com '+ pergunta : string' e '+ resposta : string'.**
-   - [ ] 3. **Dependência da IA para MD_Duvidas.**
+   - [ ] 2. **Crie 'Duvida' com '+ pergunta : string' e '+ resposta : string'.**
+   - [ ] 3. **Dependência da IA para Duvida.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
@@ -28,10 +28,10 @@ Interação instantânea.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC08_Classe](../../03_Artefatos_Gerados/UC08_Classe.png)
+![UC08_Classe](./UC08_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC08_Sequencia](../../03_Artefatos_Gerados/UC08_Sequencia.png)
+![UC08_Sequencia](./UC08_Sequencia.png)
 
 ---
 
@@ -43,12 +43,12 @@ classDiagram
         <<Controle>>
         +responder(pergunta)
     }
-    class MD_Duvidas {
+    class Duvida {
         <<Entidade>>
         +pergunta : string
         +resposta : string
     }
-    AgenteIA ..> MD_Duvidas : consulta
+    AgenteIA ..> Duvida : consulta
 ```
 
 ### Diagrama de Sequência
@@ -64,3 +64,11 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
+---
+
+## 🏛️ Contexto Arquitetural
+Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
+
+---
+
+[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

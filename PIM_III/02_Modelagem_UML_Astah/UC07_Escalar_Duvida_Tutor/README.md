@@ -10,14 +10,14 @@ Transferência IA -> Humano.
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'AgenteIA' (<<Controle>>) com '+ analisar()' e '+ escalar()'.**
-   - [ ] 2. **Crie 'MD_Tutor' com '+ responderDuvida()'.**
+   - [ ] 2. **Crie 'Tutor' com '+ responderDuvida()'.**
    - [ ] 3. **Associação simples entre os dois.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
 ### 2️⃣ Diagrama de Sequência (Processo)
    - [ ] 1. **AgenteIA detecta complexidade.**
-   - [ ] 2. **AgenteIA envia 'escalar(duvida)' para :MD_Tutor.**
+   - [ ] 2. **AgenteIA envia 'escalar(duvida)' para :Tutor.**
    - [ ] 3. **Tutor responde ao Aluno.**
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
@@ -28,10 +28,10 @@ Transferência IA -> Humano.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC07_Classe](../../03_Artefatos_Gerados/UC07_Classe.png)
+![UC07_Classe](./UC07_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC07_Sequencia](../../03_Artefatos_Gerados/UC07_Sequencia.png)
+![UC07_Sequencia](./UC07_Sequencia.png)
 
 ---
 
@@ -44,11 +44,11 @@ classDiagram
         +analisar()
         +escalar(duvida)
     }
-    class MD_Tutor {
+    class Tutor {
         <<Entidade>>
         +responderDuvida()
     }
-    AgenteIA --> MD_Tutor : notifica
+    AgenteIA --> Tutor : notifica
 ```
 
 ### Diagrama de Sequência
@@ -56,7 +56,7 @@ classDiagram
 sequenceDiagram
     autonumber
     participant IA as :AgenteIA
-    participant T as :MD_Tutor
+    participant T as :Tutor
     participant Al as :Aluno
     IA->>IA: detectarComplexidade()
     IA->>T: escalar(duvida, id)
@@ -65,3 +65,11 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
+---
+
+## 🏛️ Contexto Arquitetural
+Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
+
+---
+
+[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

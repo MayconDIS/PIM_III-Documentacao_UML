@@ -9,7 +9,7 @@ Hub central.
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie 'PainelVisual' (<<Fronteira>>) e 'MD_Alunos'.**
+   - [ ] 1. **Crie 'PainelVisual' (<<Fronteira>>) e 'Aluno'.**
    - [ ] 2. **PainelVisual: '+ renderizar()'.**
    - [ ] 3. **Dependência para leitura de dados.**
 
@@ -28,10 +28,10 @@ Hub central.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC14_Classe](../../03_Artefatos_Gerados/UC14_Classe.png)
+![UC14_Classe](./UC14_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC14_Sequencia](../../03_Artefatos_Gerados/UC14_Sequencia.png)
+![UC14_Sequencia](./UC14_Sequencia.png)
 
 ---
 
@@ -43,11 +43,11 @@ classDiagram
         <<Fronteira>>
         +renderizar()
     }
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
         +obterProgresso()
     }
-    PainelVisual ..> MD_Alunos : lê
+    PainelVisual ..> Aluno : lê
 ```
 
 ### Diagrama de Sequência
@@ -63,3 +63,11 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
+---
+
+## 🏛️ Contexto Arquitetural
+Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
+
+---
+
+[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

@@ -9,16 +9,16 @@ Acesso seguro do usuário ao sistema através de validação de credenciais.
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie a classe 'MD_Usuarios' e aplique o Estereótipo <<Entidade>>.**
+   - [ ] 1. **Crie a classe 'Usuario' e aplique o Estereótipo <<Entidade>>.**
    - [ ] 2. **Adicione os atributos: '+ email : string' e '+ senha : string'.**
-   - [ ] 3. **Crie a classe 'ControladorAutenticacao' e aplique o Estereótipo <<Controle>>.**
+   - [ ] 3. **Crie a classe 'ServicoAutenticacao' e aplique o Estereótipo <<Controle>>.**
    - [ ] 4. **Adicione o método: '+ autenticar(email : string, senha : string) : bool'.**
    - [ ] 5. **Desenhe uma seta de 'Dependência' (tracejada) saindo do Controlador para a Entidade.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
 ### 2️⃣ Diagrama de Sequência (Processo)
-   - [ ] 1. **Adicione o Ator 'Usuario' e a Linha de Vida ':ControladorAutenticacao'.**
+   - [ ] 1. **Adicione o Ator 'Usuario' e a Linha de Vida ':ServicoAutenticacao'.**
    - [ ] 2. **Mensagem 1: Usuario envia 'login(email, senha)' para o Controlador.**
    - [ ] 3. **Mensagem 1.1: O Controlador executa nele mesmo 'validarCredenciais()'.**
    - [ ] 4. **Mensagem de Retorno: Seta tracejada voltando para o Usuario com o Resultado.**
@@ -31,10 +31,10 @@ Acesso seguro do usuário ao sistema através de validação de credenciais.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC01_Classe](../../03_Artefatos_Gerados/UC01_Classe.png)
+![UC01_Classe](./UC01_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC01_Sequencia](../../03_Artefatos_Gerados/UC01_Sequencia.png)
+![UC01_Sequencia](./UC01_Sequencia.png)
 
 ---
 
@@ -42,16 +42,16 @@ Acesso seguro do usuário ao sistema através de validação de credenciais.
 ### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Usuarios {
+    class Usuario {
         <<Entidade>>
         +email : string
         +senha : string
     }
-    class ControladorAutenticacao {
+    class ServicoAutenticacao {
         <<Controle>>
         +autenticar(email : string, senha : string) : bool
     }
-    ControladorAutenticacao ..> MD_Usuarios : consulta
+    ServicoAutenticacao ..> Usuario : consulta
 ```
 
 ### Diagrama de Sequência
@@ -59,7 +59,7 @@ classDiagram
 sequenceDiagram
     autonumber
     participant U as Usuário (Ator)
-    participant C as :ControladorAutenticacao
+    participant C as :ServicoAutenticacao
     U->>C: login(email, senha)
     activate C
     C->>C: validarCredenciais()
@@ -69,3 +69,11 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
+---
+
+## 🏛️ Contexto Arquitetural
+Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
+
+---
+
+[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

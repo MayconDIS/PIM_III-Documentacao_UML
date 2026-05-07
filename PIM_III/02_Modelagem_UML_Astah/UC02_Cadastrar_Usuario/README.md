@@ -9,17 +9,17 @@ Registro de novos alunos com inicialização automática de perfil de gamificaç
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie a classe base 'MD_Usuarios' com 'nome : string' e 'email : string'.**
-   - [ ] 2. **Crie a classe 'MD_Alunos' (Estereótipo <<Entidade>>).**
-   - [ ] 3. **Desenhe a 'Generalização' (Herança) de MD_Alunos apontando para MD_Usuarios.**
-   - [ ] 4. **Adicione em MD_Alunos os atributos: '+ pontos : int' e '+ moedas : int'.**
+   - [ ] 1. **Crie a classe base 'Usuario' com 'nome : string' e 'email : string'.**
+   - [ ] 2. **Crie a classe 'Aluno' (Estereótipo <<Entidade>>).**
+   - [ ] 3. **Desenhe a 'Generalização' (Herança) de Aluno apontando para Usuario.**
+   - [ ] 4. **Adicione em Aluno os atributos: '+ pontos : int' e '+ moedas : int'.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
 ### 2️⃣ Diagrama de Sequência (Processo)
-   - [ ] 1. **Linhas de Vida: :Visitante, :ControladorAutenticacao e :MD_Alunos.**
+   - [ ] 1. **Linhas de Vida: :Visitante, :ServicoAutenticacao e :Aluno.**
    - [ ] 2. **Mensagem 1: Visitante solicita 'registrar(dados)'.**
-   - [ ] 3. **Mensagem 2: O Controlador cria o objeto 'MD_Alunos' usando a seta de 'Create Message'.**
+   - [ ] 3. **Mensagem 2: O Controlador cria o objeto 'Aluno' usando a seta de 'Create Message'.**
    - [ ] 4. **Mensagem 3: O objeto recém-criado executa internamente 'inicializarPerfil()'.**
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
@@ -30,10 +30,10 @@ Registro de novos alunos com inicialização automática de perfil de gamificaç
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC02_Classe](../../03_Artefatos_Gerados/UC02_Classe.png)
+![UC02_Classe](./UC02_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC02_Sequencia](../../03_Artefatos_Gerados/UC02_Sequencia.png)
+![UC02_Sequencia](./UC02_Sequencia.png)
 
 ---
 
@@ -41,12 +41,12 @@ Registro de novos alunos com inicialização automática de perfil de gamificaç
 ### Diagrama de Classe
 ```mermaid
 classDiagram
-    MD_Usuarios <|-- MD_Alunos
-    class MD_Usuarios {
+    Usuario <|-- Aluno
+    class Usuario {
         +nome : string
         +email : string
     }
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
         +pontos : int
         +moedas : int
@@ -58,8 +58,8 @@ classDiagram
 sequenceDiagram
     autonumber
     participant V as :Visitante
-    participant C as :ControladorAutenticacao
-    participant A as :MD_Alunos
+    participant C as :ServicoAutenticacao
+    participant A as :Aluno
     V->>C: registrar(dados)
     activate C
     C-->>A: <<create>>
@@ -72,3 +72,11 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
+---
+
+## 🏛️ Contexto Arquitetural
+Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
+
+---
+
+[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

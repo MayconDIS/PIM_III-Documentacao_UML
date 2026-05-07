@@ -9,7 +9,7 @@ Progressão condicionada.
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie 'MD_Fases' com '+ bloqueada : bool'.**
+   - [ ] 1. **Crie 'Modulo' com '+ bloqueada : bool'.**
    - [ ] 2. **Crie 'GerenciadorProgresso' (<<Controle>>).**
    - [ ] 3. **Dependência do Gerenciador para Alunos e Fases.**
 
@@ -17,7 +17,7 @@ Progressão condicionada.
 
 ### 2️⃣ Diagrama de Sequência (Processo)
    - [ ] 1. **Gerenciador pede progresso ao Aluno.**
-   - [ ] 2. **Se ok, chama 'desbloquear()' na :MD_Fases.**
+   - [ ] 2. **Se ok, chama 'desbloquear()' na :Modulo.**
    - [ ] 3. **Fase muda estado para liberada.**
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
@@ -28,10 +28,10 @@ Progressão condicionada.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC13_Classe](../../03_Artefatos_Gerados/UC13_Classe.png)
+![UC13_Classe](./UC13_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC13_Sequencia](../../03_Artefatos_Gerados/UC13_Sequencia.png)
+![UC13_Sequencia](./UC13_Sequencia.png)
 
 ---
 
@@ -39,16 +39,16 @@ Progressão condicionada.
 ### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Fases {
+    class Modulo {
         <<Entidade>>
         +bloqueada : bool
         +desbloquear()
     }
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
         +progresso : float
     }
-    MD_Fases ..> MD_Alunos : verifica
+    Modulo ..> Aluno : verifica
 ```
 
 ### Diagrama de Sequência
@@ -56,8 +56,8 @@ classDiagram
 sequenceDiagram
     autonumber
     participant M as :GerenciadorProgresso
-    participant A as :MD_Alunos
-    participant F as :MD_Fases
+    participant A as :Aluno
+    participant F as :Modulo
     M->>A: obterProgresso()
     M->>F: desbloquear()
     F-->>M: Sucesso
@@ -65,3 +65,11 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
+---
+
+## 🏛️ Contexto Arquitetural
+Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
+
+---
+
+[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

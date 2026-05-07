@@ -1,0 +1,11 @@
+@startuml
+skinparam monochrome true
+class Aluno <<Entidade>> {
+    +definirFaseInicial(nota : float)
+}
+class Simulado <<Entidade>> {
+    +nota : float
+    +iniciarTeste()
+}
+Aluno --> Simulado : realiza
+@enduml

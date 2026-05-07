@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+autonumber
+participant A as ":Aluno"
+participant S as ":Simulado"
+A -> S : iniciarTeste()
+activate S
+S --/ A : listaQuestoes[]
+A -> S : enviarRespostas()
+S --/ A : notaFinal
+deactivate S
+A -> A : definirFaseInicial(nota)
+@enduml

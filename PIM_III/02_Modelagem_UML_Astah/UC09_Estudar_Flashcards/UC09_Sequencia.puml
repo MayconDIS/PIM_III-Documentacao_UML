@@ -1,0 +1,12 @@
+@startuml
+skinparam monochrome true
+autonumber
+participant A as ":Aluno"
+participant M as ":MotorSM2"
+participant F as ":Flashcard_SM2"
+A -> F : lerPergunta()
+A -> M : informarDificuldade(1-5)
+M -> M : aplicarSM2()
+M -> F : setProximaRevisao(data)
+F --/ A : Ok
+@enduml

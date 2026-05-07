@@ -18,14 +18,26 @@ Este documento centraliza os diagramas em conformidade com a interface e notaç�
 - [Desbloquear Fases e Módulos](#uc13-desbloquear-fases-modulos)
 - [Visualizar Painel de Progresso](#uc14-visualizar-painel-progresso)
 - [Ajustar Acessibilidade](#uc15-ajustar-acessibilidade)
+- [**Diagrama de Casos de Uso Global**](#diagrama-de-casos-de-uso-global)
 - [**Diagrama de Classes Global (Sincronizado)**](#diagrama-de-classes-global)
+- [**Diagrama de Sequência Global (Arquitetura)**](#diagrama-de-sequencia-global)
 
 ---
 
-## 🏛️ Diagrama de Classes Global
-Este diagrama unifica todas as entidades e controladores dos 15 Casos de Uso, servindo como a arquitetura de referência do sistema Nex_TI.
+## 🏛️ Visão Global do Sistema Nex_TI
+Esta seção apresenta a arquitetura holística do sistema, unificando todos os 15 Casos de Uso em uma visão coerente e profissional.
 
+### 1. Diagrama de Casos de Uso Global (Mapa Geral)
+Representa a fronteira do sistema, os atores envolvidos e a distribuição dos módulos.
+![Diagrama_Casos_Uso_Global](../03_Artefatos_Gerados/Diagrama_Casos_Uso_Global.png)
+
+### 2. Diagrama de Classes Global (Estrutura de Dados)
+Unifica todas as entidades e controladores, servindo como a arquitetura de referência do sistema.
 ![Diagrama_Classes_Global](../03_Artefatos_Gerados/Diagrama_Classes_Global.png)
+
+### 3. Diagrama de Sequência Global (Fluxo Arquitetural)
+Ilustra o ciclo de vida de uma requisição típica, desde a interface até a persistência de dados.
+![Diagrama_Sequencia_Global](../03_Artefatos_Gerados/Diagrama_Sequencia_Global.png)
 
 ---
 

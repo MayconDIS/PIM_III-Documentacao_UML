@@ -1,0 +1,88 @@
+@startuml
+' --- Configurações Estilo Astah ---
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+
+skinparam participant {
+    BackgroundColor #FFFEE1
+    BorderColor #000000
+}
+
+center header
+<b>Sistema Nex_TI</b>
+endheader
+
+participant "MD_Aluno" as Aluno
+participant "MD_Interface (Front-End)" as UI
+participant "MD_Controle de Estado" as CTRL
+participant "MD_Motor SM-2 (Anki)" as SM2
+participant "MD_Gamificação" as GAME
+participant "MD_Banco de Dados" as DB
+
+== Início da Sessão de Estudos ==
+
+autonumber
+Aluno -> UI : 1: Seleciona Módulo()
+activate UI
+
+UI -> CTRL : 2: Requisita FlashCard()
+activate CTRL
+
+CTRL -> DB : 3: Buscar deck do módulo()
+activate DB
+DB -->> CTRL : 3.1: Retorna Array de FlashCards
+deactivate DB
+
+CTRL -> SM2 : 4: Filtrar Cartas Vencidas\n(dataProximaRevisao <= hoje)
+activate SM2
+SM2 -->> CTRL : 4.1: Retorna cartas para Revisão
+deactivate SM2
+
+CTRL -->> UI : Envia a primeira carta do Array
+deactivate CTRL
+
+UI -->> Aluno : Exibe pergunta (Frente da carta)
+deactivate UI
+
+== Interação e Algoritmo ==
+
+Aluno -> UI : 5: Clica em 'Revisar Resposta'()
+activate UI
+UI -->> Aluno : Exibe respostas e botões de dificuldade
+deactivate UI
+
+Aluno -> UI : 6: Seleciona nível()
+activate UI
+
+UI -> CTRL : 7: Envia FeedBack do Usuário()
+activate CTRL
+
+CTRL -> SM2 : 8: Calcular Nova Data (Algoritmo SM-2)
+activate SM2
+SM2 -->> CTRL : Retorna nova data de vencimento
+deactivate SM2
+
+CTRL -> DB : 9: Atualiza Registro da Carta()
+activate DB
+DB -->> CTRL : Confirma Gravação
+deactivate DB
+
+== Gamificação e Atualização Visual ==
+
+CTRL -> GAME : 10: Atribui Recompensa (+XP, +Moedas)
+activate GAME
+GAME -> DB : 11: Atualiza Saldo do usuário()
+activate DB
+DB -->> GAME : Confirma Saldo Novo
+deactivate DB
+GAME -->> CTRL : Confirma Gamificação
+deactivate GAME
+
+CTRL -->> UI : Retorna Status de Sucesso
+deactivate CTRL
+
+UI -->> Aluno : Dispara animação visual\n(+XP) e carrega próxima carta
+deactivate UI
+
+@enduml

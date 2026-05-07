@@ -1,0 +1,11 @@
+@startuml
+skinparam monochrome true
+class Simulado <<Entidade>> {
+    +tempoRestante : int
+    +iniciarTeste()
+}
+class Questao <<Entidade>> {
+    +texto : string
+}
+Simulado "1" *-- "*" Questao
+@enduml

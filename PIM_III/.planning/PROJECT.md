@@ -19,3 +19,9 @@ Transformar requisitos de negócio em uma documentação técnica UML de alta fi
 - **Analista de Sistemas:** Responsável pela lógica dos UCs.
 - **Arquiteto de Software:** Responsável pelo Diagrama de Classes Global.
 - **Desenvolvedor:** Responsável pela automação da documentação.
+
+
+### 🔄 Refatoração de Maio (PIM III - Nex_TI)
+- Todos os Casos de Uso (1-15) foram refatorados pelo agente GSD-Architect.
+- Nomes de classes obsoletos (MD_Usuarios, MD_Alunos) foram substituídos pelas entidades definitivas C# (Usuario, Aluno, Flashcard_SM2, etc).
+- O modelo UML agora está 100% aderente ao index.html do relatório final.

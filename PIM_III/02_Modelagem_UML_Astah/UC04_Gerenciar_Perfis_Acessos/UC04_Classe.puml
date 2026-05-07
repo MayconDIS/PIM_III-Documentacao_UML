@@ -1,0 +1,10 @@
+@startuml
+skinparam monochrome true
+class Administrador {
+    +gerenciarAcesso()
+}
+class Usuario <<Entidade>> {
+    +papel : string
+}
+Administrador --> Usuario : administra
+@enduml

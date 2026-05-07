@@ -1,0 +1,10 @@
+@startuml
+skinparam monochrome true
+class MotorSM2 <<Controle>> {
+    +aplicarSM2(feedback)
+}
+class Flashcard_SM2 <<Entidade>> {
+    +proximaRevisao : date
+}
+MotorSM2 --> Flashcard_SM2 : atualiza
+@enduml

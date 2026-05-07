@@ -9,7 +9,7 @@ Personalização de deck.
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie 'MD_Alunos' e 'MD_Flashcards'.**
+   - [ ] 1. **Crie 'Aluno' e 'Flashcard_SM2'.**
    - [ ] 2. **Método em Aluno: '+ criarCarta()'.**
    - [ ] 3. **Associação 1..*.**
 
@@ -17,7 +17,7 @@ Personalização de deck.
 
 ### 2️⃣ Diagrama de Sequência (Processo)
    - [ ] 1. **Aluno usa :Editor para digitar dados.**
-   - [ ] 2. **Editor envia dados para criar :MD_Flashcards.**
+   - [ ] 2. **Editor envia dados para criar :Flashcard_SM2.**
    - [ ] 3. **Confirmação de salvamento.**
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
@@ -28,10 +28,10 @@ Personalização de deck.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC10_Classe](../../03_Artefatos_Gerados/UC10_Classe.png)
+![UC10_Classe](./UC10_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC10_Sequencia](../../03_Artefatos_Gerados/UC10_Sequencia.png)
+![UC10_Sequencia](./UC10_Sequencia.png)
 
 
 ---
@@ -39,10 +39,10 @@ Personalização de deck.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC10_Classe](../../03_Artefatos_Gerados/UC10_Classe.png)
+![UC10_Classe](./UC10_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC10_Sequencia](../../03_Artefatos_Gerados/UC10_Sequencia.png)
+![UC10_Sequencia](./UC10_Sequencia.png)
 
 ---
 
@@ -50,16 +50,16 @@ Personalização de deck.
 ### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
         +criarCarta()
     }
-    class MD_Flashcards {
+    class Flashcard_SM2 {
         <<Entidade>>
         +pergunta : string
         +resposta : string
     }
-    MD_Alunos "1" --> "*" MD_Flashcards : cria
+    Aluno "1" --> "*" Flashcard_SM2 : cria
 ```
 
 ### Diagrama de Sequência
@@ -68,7 +68,7 @@ sequenceDiagram
     autonumber
     participant A as :Aluno
     participant E as :Editor
-    participant F as :MD_Flashcards
+    participant F as :Flashcard_SM2
     A->>E: entrada(p, r)
     E->>F: <<create>>(p, r)
     F-->>A: Sucesso
@@ -76,3 +76,11 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
+---
+
+## 🏛️ Contexto Arquitetural
+Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
+
+---
+
+[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

@@ -9,7 +9,7 @@ Treinamento intensivo.
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie 'MD_Simulado' e 'Questao'.**
+   - [ ] 1. **Crie 'Simulado' e 'Questao'.**
    - [ ] 2. **Composição (losango preto).**
    - [ ] 3. **Simulado: '+ tempoRestante : int'.**
 
@@ -28,10 +28,10 @@ Treinamento intensivo.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC11_Classe](../../03_Artefatos_Gerados/UC11_Classe.png)
+![UC11_Classe](./UC11_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC11_Sequencia](../../03_Artefatos_Gerados/UC11_Sequencia.png)
+![UC11_Sequencia](./UC11_Sequencia.png)
 
 
 ---
@@ -39,10 +39,10 @@ Treinamento intensivo.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC11_Classe](../../03_Artefatos_Gerados/UC11_Classe.png)
+![UC11_Classe](./UC11_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC11_Sequencia](../../03_Artefatos_Gerados/UC11_Sequencia.png)
+![UC11_Sequencia](./UC11_Sequencia.png)
 
 ---
 
@@ -50,7 +50,7 @@ Treinamento intensivo.
 ### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Simulado {
+    class Simulado {
         <<Entidade>>
         +tempoRestante : int
         +iniciarTeste()
@@ -59,7 +59,7 @@ classDiagram
         <<Entidade>>
         +texto : string
     }
-    MD_Simulado "1" *-- "*" Questao
+    Simulado "1" *-- "*" Questao
 ```
 
 ### Diagrama de Sequência
@@ -67,7 +67,7 @@ classDiagram
 sequenceDiagram
     autonumber
     participant A as :Aluno
-    participant S as :MD_Simulado
+    participant S as :Simulado
     participant T as :Temporizador
     A->>S: iniciarTeste()
     S->>T: iniciar()
@@ -77,3 +77,11 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
+---
+
+## 🏛️ Contexto Arquitetural
+Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
+
+---
+
+[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

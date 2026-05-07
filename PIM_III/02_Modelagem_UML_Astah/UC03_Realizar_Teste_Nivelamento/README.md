@@ -9,14 +9,14 @@ Avaliação diagnóstica para posicionamento do aluno no mapa de conhecimento.
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie 'MD_Alunos' com o método '+ definirFaseInicial(nota : float)'.**
-   - [ ] 2. **Crie 'MD_Simulado' (<<Entidade>>) com o método '+ iniciarTeste()'.**
+   - [ ] 1. **Crie 'Aluno' com o método '+ definirFaseInicial(nota : float)'.**
+   - [ ] 2. **Crie 'Simulado' (<<Entidade>>) com o método '+ iniciarTeste()'.**
    - [ ] 3. **Ligue-os com uma 'Associação Unidirecional' do Aluno para o Simulado.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
 ### 2️⃣ Diagrama de Sequência (Processo)
-   - [ ] 1. **Linhas de Vida: :Aluno e :MD_Simulado.**
+   - [ ] 1. **Linhas de Vida: :Aluno e :Simulado.**
    - [ ] 2. **Mensagem 1: Aluno chama 'iniciarTeste()' no Simulado.**
    - [ ] 3. **Mensagem de Retorno: Simulado devolve 'listaQuestoes'.**
    - [ ] 4. **Mensagem 2: Aluno envia 'enviarRespostas()'.**
@@ -30,10 +30,10 @@ Avaliação diagnóstica para posicionamento do aluno no mapa de conhecimento.
 ## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
 
 ### Diagrama de Classe (Premium)
-![UC03_Classe](../../03_Artefatos_Gerados/UC03_Classe.png)
+![UC03_Classe](./UC03_Classe.png)
 
 ### Diagrama de Sequência (Premium)
-![UC03_Sequencia](../../03_Artefatos_Gerados/UC03_Sequencia.png)
+![UC03_Sequencia](./UC03_Sequencia.png)
 
 ---
 
@@ -41,16 +41,16 @@ Avaliação diagnóstica para posicionamento do aluno no mapa de conhecimento.
 ### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
         +definirFaseInicial(nota : float)
     }
-    class MD_Simulado {
+    class Simulado {
         <<Entidade>>
         +nota : float
         +iniciarTeste()
     }
-    MD_Alunos --> MD_Simulado : realiza
+    Aluno --> Simulado : realiza
 ```
 
 ### Diagrama de Sequência
@@ -58,7 +58,7 @@ classDiagram
 sequenceDiagram
     autonumber
     participant A as :Aluno
-    participant S as :MD_Simulado
+    participant S as :Simulado
     A->>S: iniciarTeste()
     activate S
     S-->>A: listaQuestoes[]
@@ -70,3 +70,11 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
+---
+
+## 🏛️ Contexto Arquitetural
+Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
+
+---
+
+[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

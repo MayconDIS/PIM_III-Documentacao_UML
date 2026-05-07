@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+class Tutor {
+    +acompanharDesempenho()
+}
+class Aluno <<Entidade>> {
+    +progresso : float
+}
+class PainelVisual <<Fronteira>> {
+    +renderizar()
+}
+Tutor ..> Aluno : visualiza
+@enduml

@@ -27,9 +27,12 @@ actor "MD_Tutor" as Tutor
 actor "MD_Aluno" as Aluno
 
 ' Herança (Atores em árvore vertical no Astah)
-Admin -up-|> Usuario
-Tutor -up-|> Usuario
-Aluno -up-|> Usuario
+Usuario <|-- Admin
+Usuario <|-- Tutor
+Usuario <|-- Aluno
+
+Admin -[hidden]right- Tutor
+Tutor -[hidden]right- Aluno
 
 ' Ator IA (Lado Direito)
 actor "MD_Agente Especialista (IA)" as IA
@@ -56,7 +59,8 @@ rectangle "Sistema Nex_TI" {
 
     ' Ocultamos o empilhamento manual pois o PlantUML em 'left to right direction'
     ' transforma -[hidden]down- em deslocamento horizontal, esticando a caixa.
-    ' O algoritmo nativo distribuirá melhor os casos de uso baseado nas ligações reais.
+    ' O algoritmo nativo distribuirá melhor os casos de uso baseado nas ligações reais,
+    ' recriando as 3 colunas visíveis no Astah (devido aos includes/extends).
 }
 
 ' Relacionamentos de Atores
@@ -72,8 +76,8 @@ Aluno -- UC_Simulado
 Aluno -- UC_Desbloquear
 Aluno -- UC_Painel
 
-' IA
-IA -- UC_Consultar
+' IA (Posicionado à direita invertendo a ligação)
+UC_Consultar -- IA
 
 ' Relacionamentos Internos (Tracejados)
 UC_Cadastrar ..> UC_Login : <<extend>>

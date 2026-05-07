@@ -18,17 +18,17 @@ center header
 endheader
 
 class MD_Usuarios <<Entidade>> {
-    +id: int
-    +nome: string
-    +email: string
-    +senha: string
+    -id: int
+    -nome: string
+    -email: string
+    -senha: string
     +login()
 }
 
 class MD_Alunos <<Entidade>> {
-    +pontos: int
-    +moedas: int
-    +progresso: float
+    -pontos: int
+    -moedas: int
+    -progresso: float
     +estudarFlashcard()
     +realizarSimulado()
     +visualizarProgresso()
@@ -48,52 +48,52 @@ MD_Usuarios <|-- MD_Tutor
 MD_Usuarios <|-- MD_Admin
 
 class MD_Modulos <<Entidade>> {
-    +id: int
-    +nome: string
+    -id: int
+    -nome: string
 }
 
 class MD_Fases <<Entidade>> {
-    +id: int
-    +nome: string
+    -id: int
+    -nome: string
 }
 
 class MD_Flashcards <<Entidade>> {
-    +id: int
-    +pergunta: string
-    +resposta: string
-    +dica: string
-    +dataProximaRevisao: date
-    +nivelDificuldade: int
+    -id: int
+    -pergunta: string
+    -resposta: string
+    -dica: string
+    -dataProximaRevisao: date
+    -nivelDificuldade: int
 }
 
 MD_Modulos "1" *-- "0..*" MD_Fases : gerencia
 MD_Fases "1" -- "1" MD_Flashcards : contém
 
 class MD_Simulado <<Entidade>> {
-    +id: int
-    +nota: float
-    +dataRealizacao: date
+    -id: int
+    -nota: float
+    -dataRealizacao: date
 }
 
 MD_Alunos "1" -- "*" MD_Simulado : realiza
 MD_Alunos "1" -- "1" MD_Modulos : possui
 
 class MD_Duvidas <<Entidade>> {
-    +descricao: string
+    -descricao: string
 }
 
 MD_Alunos "1" -- "*" MD_Duvidas : abre
 MD_Tutor "1" -- "*" MD_Duvidas : responde
 
-class MD_Agente_Especialista_IA <<Entidade>> {
+class MD_Agente_Especialista_IA <<Control>> {
     +responderDuvida(duvida: MD_Duvidas): boolean
 }
 
 MD_Duvidas "*" -- "1" MD_Agente_Especialista_IA : analisa preliminarmente
 
 class MD_Acessibilidades <<Entidade>> {
-    +tamanhoFonte: int
-    +altoContraste: boolean
+    -tamanhoFonte: int
+    -altoContraste: boolean
 }
 
 MD_Alunos "1" -- "1" MD_Acessibilidades : realiza

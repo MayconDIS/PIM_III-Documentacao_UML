@@ -4,8 +4,8 @@ class MD_Alunos <<Entidade>> {
     +criarCarta()
 }
 class MD_Flashcards <<Entidade>> {
-    +pergunta : string
-    +resposta : string
+    -pergunta : string
+    -resposta : string
 }
 MD_Alunos "1" --> "*" MD_Flashcards : cria
 @enduml

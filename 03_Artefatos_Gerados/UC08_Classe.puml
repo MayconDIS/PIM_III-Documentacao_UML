@@ -4,8 +4,8 @@ class AgenteIA <<Controle>> {
     +responder(pergunta)
 }
 class MD_Duvidas <<Entidade>> {
-    +pergunta : string
-    +resposta : string
+    -pergunta : string
+    -resposta : string
 }
 AgenteIA ..> MD_Duvidas : consulta
 @enduml

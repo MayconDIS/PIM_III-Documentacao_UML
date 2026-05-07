@@ -1,12 +1,12 @@
 @startuml
 skinparam monochrome true
 class MD_Usuarios {
-    +nome : string
-    +email : string
+    -nome : string
+    -email : string
 }
 class MD_Alunos <<Entidade>> {
-    +pontos : int
-    +moedas : int
+    -pontos : int
+    -moedas : int
 }
 MD_Usuarios <|-- MD_Alunos
 @enduml

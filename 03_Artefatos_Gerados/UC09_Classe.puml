@@ -4,7 +4,7 @@ class MD_MotorSM2 <<Controle>> {
     +aplicarSM2(feedback)
 }
 class MD_Flashcards <<Entidade>> {
-    +proximaRevisao : date
+    -proximaRevisao : date
 }
 MD_MotorSM2 --> MD_Flashcards : atualiza
 @enduml

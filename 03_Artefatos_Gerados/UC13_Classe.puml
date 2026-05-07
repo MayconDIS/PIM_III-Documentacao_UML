@@ -1,11 +1,11 @@
 @startuml
 skinparam monochrome true
 class MD_Fases <<Entidade>> {
-    +bloqueada : bool
+    -bloqueada : bool
     +desbloquear()
 }
 class MD_Alunos <<Entidade>> {
-    +progresso : float
+    -progresso : float
 }
 MD_Fases ..> MD_Alunos : verifica
 @enduml

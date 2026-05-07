@@ -4,7 +4,7 @@ class MD_Tutor {
     +gerenciarConteudo()
 }
 class MD_Modulos <<Entidade>> {
-    +nomeModulo : string
+    -nomeModulo : string
 }
 class MD_Flashcards <<Entidade>>
 MD_Modulos *-- MD_Flashcards

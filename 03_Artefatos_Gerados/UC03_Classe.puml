@@ -4,7 +4,7 @@ class MD_Alunos <<Entidade>> {
     +definirFaseInicial(nota : float)
 }
 class MD_Simulado <<Entidade>> {
-    +nota : float
+    -nota : float
     +iniciarTeste()
 }
 MD_Alunos --> MD_Simulado : realiza

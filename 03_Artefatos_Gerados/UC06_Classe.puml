@@ -4,7 +4,7 @@ class MD_Tutor {
     +acompanharDesempenho()
 }
 class MD_Alunos <<Entidade>> {
-    +progresso : float
+    -progresso : float
 }
 class PainelVisual <<Fronteira>> {
     +renderizar()

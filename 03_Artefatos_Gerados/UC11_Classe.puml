@@ -1,11 +1,11 @@
 @startuml
 skinparam monochrome true
 class MD_Simulado <<Entidade>> {
-    +tempoRestante : int
+    -tempoRestante : int
     +iniciarTeste()
 }
 class Questao <<Entidade>> {
-    +texto : string
+    -texto : string
 }
 MD_Simulado "1" *-- "*" Questao
 @enduml

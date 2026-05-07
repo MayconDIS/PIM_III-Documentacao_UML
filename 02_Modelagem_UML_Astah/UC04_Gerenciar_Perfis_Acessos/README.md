@@ -3,6 +3,10 @@
 ## 🎯 Objetivo
 Administração de papéis e permissões.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** O Administrador acessa o painel de gestão de usuários. Ele pesquisa por um usuário específico e altera sua permissão de acesso (ex: promovendo um Aluno a Tutor). O sistema salva a alteração e aplica na próxima sessão do usuário modificado.
+- **Fluxo Alternativo:** O Administrador tenta revogar os seus próprios privilégios de administrador. O sistema bloqueia a ação para evitar que o sistema fique sem nenhum admin.
+
 > [!IMPORTANT]
 > Dica Astah: O GerenciadorAcesso é um <<Controle>>.
 
@@ -10,7 +14,7 @@ Administração de papéis e permissões.
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'Administrador' e 'Usuario'.**
-   - [ ] 2. **Em 'Usuario', adicione '+ papel : string'.**
+   - [ ] 2. **Em 'Usuario', adicione '- papel : string'.**
    - [ ] 3. **Crie 'GerenciadorAcesso' (<<Controle>>).**
    - [ ] 4. **Desenhe uma 'Associação' simples de Admin para Usuarios.**
 
@@ -45,7 +49,7 @@ classDiagram
     }
     class Usuario {
         <<Entidade>>
-        +papel : string
+        -papel : string
     }
     Administrador --> Usuario : administra
 ```

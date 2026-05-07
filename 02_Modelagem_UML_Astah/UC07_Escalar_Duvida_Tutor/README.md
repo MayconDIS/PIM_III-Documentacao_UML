@@ -3,6 +3,10 @@
 ## 🎯 Objetivo
 Transferência IA -> Humano.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** Durante uma sessão de estudos, o aluno clica no botão "Tenho uma dúvida" no flashcard. Ele digita a pergunta e envia. O sistema notifica o Tutor responsável pela área de conhecimento. O Tutor responde e o aluno é notificado.
+- **Fluxo Alternativo:** O prazo de resposta do Tutor (SLA) é ultrapassado. O sistema marca a dúvida com a flag de "Prioridade Alta" e dispara um e-mail de alerta para a coordenação (Admin).
+
 > [!IMPORTANT]
 > Dica Astah: AgenteIA é um <<Controle>>.
 

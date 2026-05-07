@@ -3,13 +3,17 @@
 ## 🎯 Objetivo
 Personalização.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** O usuário acessa o menu de configurações globais de interface e seleciona opções como "Aumentar Fonte" ou "Ativar Alto Contraste". O sistema aplica as regras de CSS na hora e salva a preferência na sessão ou banco de dados do usuário.
+- **Fluxo Alternativo:** O usuário ativa uma configuração que conflita com o layout da tela. Ele clica em "Restaurar Padrões", e o sistema limpa as injeções de estilo, retornando o layout à folha de estilo original.
+
 > [!IMPORTANT]
 > Dica Astah: Acessibilidade é uma <<Entidade>>.
 
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie 'Acessibilidade' com '+ altoContraste : bool' e '+ tamanhoFonte : int'.**
+   - [ ] 1. **Crie 'Acessibilidade' com '- altoContraste : bool' e '+ tamanhoFonte : int'.**
    - [ ] 2. **Método: '+ salvar()'.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
@@ -40,8 +44,8 @@ Personalização.
 classDiagram
     class Acessibilidade {
         <<Entidade>>
-        +altoContraste : bool
-        +tamanhoFonte : int
+        -altoContraste : bool
+        -tamanhoFonte : int
         +salvar()
     }
 ```

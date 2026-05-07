@@ -3,6 +3,10 @@
 ## 🎯 Objetivo
 Interação instantânea.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** O aluno solicita ajuda à IA no chat. A IA (Agente Especialista) recebe a dúvida, identifica o contexto do flashcard atual através de Processamento de Linguagem Natural (NLP) e retorna uma explicação detalhada e pedagógica.
+- **Fluxo Alternativo:** A IA não consegue interpretar a pergunta ou o aluno faz uma pergunta muito fora de contexto. A IA solicita reformulação ou sugere automaticamente "Escalar a dúvida para o Tutor humano".
+
 > [!IMPORTANT]
 > Dica Astah: Represente Duvida como <<Entidade>>.
 
@@ -10,7 +14,7 @@ Interação instantânea.
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'AgenteIA' com '+ responder()'.**
-   - [ ] 2. **Crie 'Duvida' com '+ pergunta : string' e '+ resposta : string'.**
+   - [ ] 2. **Crie 'Duvida' com '- pergunta : string' e '+ resposta : string'.**
    - [ ] 3. **Dependência da IA para Duvida.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
@@ -45,8 +49,8 @@ classDiagram
     }
     class Duvida {
         <<Entidade>>
-        +pergunta : string
-        +resposta : string
+        -pergunta : string
+        -resposta : string
     }
     AgenteIA ..> Duvida : consulta
 ```

@@ -3,6 +3,10 @@
 ## 🎯 Objetivo
 Registro de novos alunos com inicialização automática de perfil de gamificação.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** O usuário clica em "Criar Conta", preenche o formulário de registro com dados pessoais e escolhe uma senha. O sistema aplica o Hash na senha, persiste o usuário no banco de dados e o redireciona automaticamente para a etapa de Teste de Nivelamento.
+- **Fluxo Alternativo:** O usuário insere um e-mail que já existe no banco de dados. O sistema bloqueia o cadastro e exibe um alerta sugerindo a recuperação de senha.
+
 > [!IMPORTANT]
 > Dica Astah: A seta de Herança (Generalização) é a que possui o triângulo na ponta.
 
@@ -12,7 +16,7 @@ Registro de novos alunos com inicialização automática de perfil de gamificaç
    - [ ] 1. **Crie a classe base 'Usuario' com 'nome : string' e 'email : string'.**
    - [ ] 2. **Crie a classe 'Aluno' (Estereótipo <<Entidade>>).**
    - [ ] 3. **Desenhe a 'Generalização' (Herança) de Aluno apontando para Usuario.**
-   - [ ] 4. **Adicione em Aluno os atributos: '+ pontos : int' e '+ moedas : int'.**
+   - [ ] 4. **Adicione em Aluno os atributos: '- pontos : int' e '+ moedas : int'.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
@@ -43,13 +47,13 @@ Registro de novos alunos com inicialização automática de perfil de gamificaç
 classDiagram
     Usuario <|-- Aluno
     class Usuario {
-        +nome : string
-        +email : string
+        -nome : string
+        -email : string
     }
     class Aluno {
         <<Entidade>>
-        +pontos : int
-        +moedas : int
+        -pontos : int
+        -moedas : int
     }
 ```
 

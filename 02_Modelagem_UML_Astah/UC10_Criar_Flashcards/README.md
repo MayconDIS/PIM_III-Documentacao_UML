@@ -3,6 +3,10 @@
 ## 🎯 Objetivo
 Personalização de deck.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** O aluno deseja aprofundar um tema específico e clica em "Criar Card Pessoal". Preenche frente e verso e salva no seu deck privado, que agora também fará parte da rotina de repetição espaçada.
+- **Fluxo Alternativo:** O aluno tenta salvar o card deixando o verso em branco. O sistema desabilita o botão de salvar e destaca o campo obrigatório em vermelho.
+
 > [!IMPORTANT]
 > Dica Astah: Editor é uma classe de <<Fronteira>>.
 
@@ -56,8 +60,8 @@ classDiagram
     }
     class Flashcard_SM2 {
         <<Entidade>>
-        +pergunta : string
-        +resposta : string
+        -pergunta : string
+        -resposta : string
     }
     Aluno "1" --> "*" Flashcard_SM2 : cria
 ```

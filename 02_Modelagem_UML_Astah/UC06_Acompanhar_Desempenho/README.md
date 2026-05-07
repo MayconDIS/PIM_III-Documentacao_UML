@@ -3,6 +3,10 @@
 ## 🎯 Objetivo
 Métricas de progresso.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** O Tutor acessa a aba de estatísticas e seleciona uma turma ou aluno. O sistema extrai os dados do motor SM-2 (taxa de acertos/erros e tempo de resposta) e exibe gráficos interativos de retenção de conhecimento.
+- **Fluxo Alternativo:** O Tutor pesquisa por um aluno que ainda não iniciou nenhuma sessão de flashcards. O sistema exibe a mensagem: "Dados insuficientes para gerar estatísticas".
+
 > [!IMPORTANT]
 > Dica Astah: PainelVisual deve usar o Estereótipo <<Fronteira>> (Boundary).
 
@@ -10,7 +14,7 @@ Métricas de progresso.
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'Tutor', 'Aluno' e 'PainelVisual' (<<Fronteira>>).**
-   - [ ] 2. **Em Alunos: '+ progresso : float'.**
+   - [ ] 2. **Em Alunos: '- progresso : float'.**
    - [ ] 3. **Ligue Tutor a Aluno via Dependência através do Painel.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
@@ -44,7 +48,7 @@ classDiagram
     }
     class Aluno {
         <<Entidade>>
-        +progresso : float
+        -progresso : float
     }
     class PainelVisual {
         <<Fronteira>>

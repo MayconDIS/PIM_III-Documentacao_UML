@@ -3,6 +3,10 @@
 ## 🎯 Objetivo
 Hub central.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** O aluno abre seu Dashboard. O sistema renderiza o nível atual, barra de experiência, total de moedas e um "mapa de calor" (heatmap) mostrando sua frequência de estudo (ofensiva diária).
+- **Fluxo Alternativo:** É o primeiro acesso do aluno. O Dashboard exibe métricas zeradas, destacando botões interativos (Call to Action) que convidam o aluno a realizar a primeira sessão de estudos para preencher os gráficos.
+
 > [!IMPORTANT]
 > Dica Astah: PainelVisual é uma <<Fronteira>>.
 

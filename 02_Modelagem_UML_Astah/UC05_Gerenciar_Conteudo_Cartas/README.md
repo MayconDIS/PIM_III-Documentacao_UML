@@ -3,6 +3,10 @@
 ## 🎯 Objetivo
 Criação de flashcards e módulos.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** O Tutor acessa o repositório de disciplinas, cria um novo "Deck", cadastra os flashcards preenchendo as informações de "Frente" (Pergunta) e "Verso" (Resposta/Explicação) e publica o módulo para os alunos.
+- **Fluxo Alternativo:** O Tutor tenta excluir um Deck que já está ativamente sendo estudado por vários alunos. O sistema emite um alerta de dependência (ON DELETE) e sugere apenas ocultar (arquivar) o conteúdo para novos alunos.
+
 > [!IMPORTANT]
 > Dica Astah: A Composição no Astah é o ícone do losango preto.
 
@@ -11,7 +15,7 @@ Criação de flashcards e módulos.
 ### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'Modulo' e 'Flashcard_SM2'.**
    - [ ] 2. **Ligue com 'Composição' (losango no Módulo).**
-   - [ ] 3. **Atributo em Módulo: '+ nomeModulo : string'.**
+   - [ ] 3. **Atributo em Módulo: '- nomeModulo : string'.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
@@ -45,7 +49,7 @@ classDiagram
     }
     class Modulo {
         <<Entidade>>
-        +nomeModulo : string
+        -nomeModulo : string
     }
 ```
 

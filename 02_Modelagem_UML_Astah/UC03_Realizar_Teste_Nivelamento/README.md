@@ -3,6 +3,10 @@
 ## 🎯 Objetivo
 Avaliação diagnóstica para posicionamento do aluno no mapa de conhecimento.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** Logo após o primeiro acesso, o sistema apresenta um questionário diagnóstico. O aluno responde às questões, e o sistema processa a nota para calcular o nível base, liberando os módulos de estudo adequados à sua proficiência.
+- **Fluxo Alternativo:** O aluno decide pular o teste através do botão "Fazer depois". O sistema atribui o módulo básico (introdutório) por padrão.
+
 > [!IMPORTANT]
 > Dica Astah: Use Agregação (losango vazio) para mostrar que o Simulado agrega questões.
 
@@ -47,7 +51,7 @@ classDiagram
     }
     class Simulado {
         <<Entidade>>
-        +nota : float
+        -nota : float
         +iniciarTeste()
     }
     Aluno --> Simulado : realiza

@@ -3,6 +3,10 @@
 ## 🎯 Objetivo
 Treinamento intensivo.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** O aluno acessa a área de preparação e inicia um simulado temporizado de múltipla escolha. Ao finalizar e enviar, o sistema corrige com base no gabarito, exibe o percentual de acerto e fornece um relatório detalhado. (Aciona o *include* de Atribuir XP).
+- **Fluxo Alternativo:** A internet do aluno cai no meio do simulado. O sistema, utilizando persistência local (LocalStorage), salva o progresso e permite a retomada exata de onde parou ao reconectar.
+
 > [!IMPORTANT]
 > Dica Astah: Questao é uma <<Entidade>>.
 
@@ -11,7 +15,7 @@ Treinamento intensivo.
 ### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'Simulado' e 'Questao'.**
    - [ ] 2. **Composição (losango preto).**
-   - [ ] 3. **Simulado: '+ tempoRestante : int'.**
+   - [ ] 3. **Simulado: '- tempoRestante : int'.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
@@ -52,12 +56,12 @@ Treinamento intensivo.
 classDiagram
     class Simulado {
         <<Entidade>>
-        +tempoRestante : int
+        -tempoRestante : int
         +iniciarTeste()
     }
     class Questao {
         <<Entidade>>
-        +texto : string
+        -texto : string
     }
     Simulado "1" *-- "*" Questao
 ```

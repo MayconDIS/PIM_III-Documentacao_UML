@@ -3,6 +3,10 @@
 ## 🎯 Objetivo
 Acesso seguro do usuário ao sistema através de validação de credenciais.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** O usuário acessa a tela inicial e informa seu e-mail e senha. O sistema valida as credenciais criptografadas (Hash) no banco de dados e redireciona o usuário para o painel principal correspondente ao seu perfil (Aluno, Tutor ou Admin).
+- **Fluxo Alternativo:** O usuário informa uma senha incorreta ou um e-mail não cadastrado. O sistema exibe uma mensagem de erro ("Credenciais inválidas") e solicita uma nova tentativa, sem revelar se o erro foi no e-mail ou na senha (segurança).
+
 > [!IMPORTANT]
 > Dica Astah: Utilize 'Activation Bars' para mostrar o processamento no Controlador.
 
@@ -10,7 +14,7 @@ Acesso seguro do usuário ao sistema através de validação de credenciais.
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie a classe 'Usuario' e aplique o Estereótipo <<Entidade>>.**
-   - [ ] 2. **Adicione os atributos: '+ email : string' e '+ senha : string'.**
+   - [ ] 2. **Adicione os atributos: '- email : string' e '+ senha : string'.**
    - [ ] 3. **Crie a classe 'ServicoAutenticacao' e aplique o Estereótipo <<Controle>>.**
    - [ ] 4. **Adicione o método: '+ autenticar(email : string, senha : string) : bool'.**
    - [ ] 5. **Desenhe uma seta de 'Dependência' (tracejada) saindo do Controlador para a Entidade.**
@@ -44,8 +48,8 @@ Acesso seguro do usuário ao sistema através de validação de credenciais.
 classDiagram
     class Usuario {
         <<Entidade>>
-        +email : string
-        +senha : string
+        -email : string
+        -senha : string
     }
     class ServicoAutenticacao {
         <<Controle>>

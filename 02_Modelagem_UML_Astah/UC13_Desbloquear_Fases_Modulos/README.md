@@ -3,13 +3,17 @@
 ## 🎯 Objetivo
 Progressão condicionada.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** O aluno acessa a "Loja" virtual. Ele escolhe um módulo avançado restrito, verifica que possui moedas suficientes e clica em "Comprar". O sistema deduz as moedas do saldo e libera o acesso permanente ao módulo.
+- **Fluxo Alternativo:** O aluno tenta desbloquear um módulo, mas seu saldo de moedas virtuais é insuficiente. O botão de compra permanece inativo e o sistema exibe quanto falta para adquirir o item.
+
 > [!IMPORTANT]
 > Dica Astah: Use Dependência para mostrar verificação de progresso.
 
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie 'Modulo' com '+ bloqueada : bool'.**
+   - [ ] 1. **Crie 'Modulo' com '- bloqueada : bool'.**
    - [ ] 2. **Crie 'GerenciadorProgresso' (<<Controle>>).**
    - [ ] 3. **Dependência do Gerenciador para Alunos e Fases.**
 
@@ -41,12 +45,12 @@ Progressão condicionada.
 classDiagram
     class Modulo {
         <<Entidade>>
-        +bloqueada : bool
+        -bloqueada : bool
         +desbloquear()
     }
     class Aluno {
         <<Entidade>>
-        +progresso : float
+        -progresso : float
     }
     Modulo ..> Aluno : verifica
 ```

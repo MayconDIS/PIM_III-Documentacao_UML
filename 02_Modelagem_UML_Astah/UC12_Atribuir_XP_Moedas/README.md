@@ -3,6 +3,10 @@
 ## 🎯 Objetivo
 Motor de recompensas.
 
+## 🌊 Fluxos (Normal e Alternativo)
+- **Fluxo Normal:** Ao final de um evento de aprendizagem validado (simulado ou sessão de flashcards), a rotina de gamificação é acionada invisivelmente no backend. O sistema soma os XP ao histórico do aluno, verifica se ele subiu de nível, e deposita o valor equivalente em moedas virtuais.
+- **Fluxo Alternativo:** O sistema detecta que o aluno passou rápido demais pelas cartas (indício de burla/click spam). O sistema reduz drasticamente o multiplicador de XP para desestimular esse comportamento.
+
 > [!IMPORTANT]
 > Dica Astah: Gamificacao é um <<Controle>>.
 
@@ -10,7 +14,7 @@ Motor de recompensas.
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'SistemaGamificacao' (<<Controle>>) e 'Aluno'.**
-   - [ ] 2. **Alunos: '+ pontos : int', '+ moedas : int'.**
+   - [ ] 2. **Alunos: '- pontos : int', '+ moedas : int'.**
    - [ ] 3. **Dependência de Gamificação para Alunos.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
@@ -56,8 +60,8 @@ classDiagram
     }
     class Aluno {
         <<Entidade>>
-        +pontos : int
-        +moedas : int
+        -pontos : int
+        -moedas : int
     }
     SistemaGamificacao ..> Aluno : credita
 ```

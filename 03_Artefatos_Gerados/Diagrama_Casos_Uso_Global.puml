@@ -26,14 +26,10 @@ actor "MD_Admin" as Admin
 actor "MD_Tutor" as Tutor
 actor "MD_Aluno" as Aluno
 
-' Herança
-Usuario <|-- Admin
-Usuario <|-- Tutor
-Usuario <|-- Aluno
-
-' Alinhamento Vertical dos Atores
-Admin -[hidden]down- Tutor
-Tutor -[hidden]down- Aluno
+' Herança (Atores em árvore vertical no Astah)
+Admin -up-|> Usuario
+Tutor -up-|> Usuario
+Aluno -up-|> Usuario
 
 ' Ator IA (Lado Direito)
 actor "MD_Agente Especialista (IA)" as IA
@@ -58,21 +54,9 @@ rectangle "Sistema Nex_TI" {
     usecase "Visualizar Painel de Progresso" as UC_Painel
     usecase "Ajustar Acessibilidade" as UC_Acessibilidade
 
-    ' Forçando o empilhamento vertical (Pilar único)
-    UC_Login -[hidden]down- UC_Cadastrar
-    UC_Cadastrar -[hidden]down- UC_Teste
-    UC_Teste -[hidden]down- UC_GerenciarPerfis
-    UC_GerenciarPerfis -[hidden]down- UC_GerenciarConteudo
-    UC_GerenciarConteudo -[hidden]down- UC_Acompanhar
-    UC_Acompanhar -[hidden]down- UC_Escalar
-    UC_Escalar -[hidden]down- UC_Consultar
-    UC_Consultar -[hidden]down- UC_Estudar
-    UC_Estudar -[hidden]down- UC_Criar
-    UC_Criar -[hidden]down- UC_Simulado
-    UC_Simulado -[hidden]down- UC_Atribuir
-    UC_Atribuir -[hidden]down- UC_Desbloquear
-    UC_Desbloquear -[hidden]down- UC_Painel
-    UC_Painel -[hidden]down- UC_Acessibilidade
+    ' Ocultamos o empilhamento manual pois o PlantUML em 'left to right direction'
+    ' transforma -[hidden]down- em deslocamento horizontal, esticando a caixa.
+    ' O algoritmo nativo distribuirá melhor os casos de uso baseado nas ligações reais.
 }
 
 ' Relacionamentos de Atores

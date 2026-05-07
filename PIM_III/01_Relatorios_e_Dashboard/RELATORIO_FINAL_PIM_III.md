@@ -17,10 +17,10 @@ O sistema segue o padrão **MVC (Model-View-Controller)**:
 -   **View (Fronteiras)**: `PainelVisual`, `Editor`, `InterfaceConfiguracao`.
 
 ## 4. Artefatos de Entrega
--   **[Diagrama de Classes Global](file:///c:/Users/mayco/Documents/GitHub/Documentacao_UML/PIM_III/.agent/skills/uml-architect/artifacts/Diagrama_Classes_Global.png)**: Visão holística de todo o sistema.
+-   **[Diagrama de Classes Global](file:///c:/Users/mayco/Documents/GitHub/PIM_III-Documentacao_UML/PIM_III/.agent/skills/uml-architect/artifacts/Diagrama_Classes_Global.png)**: Visão holística de todo o sistema.
 -   **30 Diagramas Específicos**: Localizados em suas respectivas pastas de Casos de Uso.
--   **Galeria Central**: Disponível no [DASHBOARD_VISUAL.md](file:///c:/Users/mayco/Documents/GitHub/Documentacao_UML/PIM_III/01_Gestao_e_Planejamento/DASHBOARD_VISUAL.md).
--   **Guia de Estilo**: Localizado em [.planning/ARCHITECTURE_VISUAL_GUIDE.md](file:///c:/Users/mayco/Documents/GitHub/Documentacao_UML/PIM_III/.planning/ARCHITECTURE_VISUAL_GUIDE.md).
+-   **Galeria Central**: Disponível no [DASHBOARD_VISUAL.md](file:///c:/Users/mayco/Documents/GitHub/PIM_III-Documentacao_UML/PIM_III/01_Gestao_e_Planejamento/DASHBOARD_VISUAL.md).
+-   **Guia de Estilo**: Localizado em [.planning/ARCHITECTURE_VISUAL_GUIDE.md](file:///c:/Users/mayco/Documents/GitHub/PIM_III-Documentacao_UML/PIM_III/.planning/ARCHITECTURE_VISUAL_GUIDE.md).
 
 ## 5. Conclusão
 O projeto Nex_TI UML atinge 100% de cobertura dos requisitos funcionais, com uma documentação que equilibra profundidade técnica e clareza visual, pronta para ser apresentada como entrega final de excelência.

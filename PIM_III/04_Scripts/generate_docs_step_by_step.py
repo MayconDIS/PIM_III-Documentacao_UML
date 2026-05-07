@@ -281,8 +281,8 @@ use_cases = [
 ]
 
 # Caminhos organizados
-base_path = "c:/Users/mayco/Documents/GitHub/Documentacao_UML/PIM_III/02_Modelagem_UML_Astah"
-dashboard_path = "c:/Users/mayco/Documents/GitHub/Documentacao_UML/PIM_III/01_Gestao_e_Planejamento/DASHBOARD_VISUAL.md"
+base_path = "c:/Users/mayco/Documents/GitHub/PIM_III-Documentacao_UML/PIM_III/02_Modelagem_UML_Astah"
+dashboard_path = "c:/Users/mayco/Documents/GitHub/PIM_III-Documentacao_UML/PIM_III/01_Gestao_e_Planejamento/DASHBOARD_VISUAL.md"
 
 # 1. Gerar os READMEs individuais (Nível de Fidelidade Astah)
 for uc in use_cases:

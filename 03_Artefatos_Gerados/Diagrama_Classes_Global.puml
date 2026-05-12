@@ -14,88 +14,89 @@ skinparam class {
 }
 
 center header
-<b>Sistema Nex_TI</b>
+<b>Sistema Nex_TI - Modelo de Classes Global</b>
 endheader
 
-class MD_Usuarios <<Entidade>> {
-    +id: int
-    +nome: string
-    +email: string
-    +senha: string
+abstract class Usuario <<Entidade>> {
+    -id: int
+    -nome: string
+    -email: string
+    -senha: string
     +login()
 }
 
-class MD_Alunos <<Entidade>> {
-    +pontos: int
-    +moedas: int
-    +progresso: float
+class Aluno <<Entidade>> {
+    -pontos: int
+    -moedas: int
+    -progresso: float
     +estudarFlashcard()
     +realizarSimulado()
     +visualizarProgresso()
 }
 
-class MD_Tutor <<Entidade>> {
+class Tutor <<Entidade>> {
     +acompanharDesempenho()
     +gerenciarConteudo()
 }
 
-class MD_Admin <<Entidade>> {
+class Admin <<Entidade>> {
     +gerenciarAcesso()
 }
 
-MD_Usuarios <|-- MD_Alunos
-MD_Usuarios <|-- MD_Tutor
-MD_Usuarios <|-- MD_Admin
+Usuario <|-- Aluno
+Usuario <|-- Tutor
+Usuario <|-- Admin
 
-class MD_Modulos <<Entidade>> {
-    +id: int
-    +nome: string
+class Modulo <<Entidade>> {
+    -id: int
+    -nome: string
 }
 
-class MD_Fases <<Entidade>> {
-    +id: int
-    +nome: string
+class Fase <<Entidade>> {
+    -id: int
+    -nome: string
 }
 
-class MD_Flashcards <<Entidade>> {
-    +id: int
-    +pergunta: string
-    +resposta: string
-    +dica: string
-    +dataProximaRevisao: date
-    +nivelDificuldade: int
+class Flashcard_SM2 <<Entidade>> {
+    -id: int
+    -pergunta: string
+    -resposta: string
+    -dica: string
+    -dataProximaRevisao: date
+    -nivelDificuldade: int
 }
 
-MD_Modulos "1" *-- "0..*" MD_Fases : gerencia
-MD_Fases "1" -- "1" MD_Flashcards : contém
+Modulo "1" *-- "0..*" Fase : gerencia
+Fase "1" -- "1" Flashcard_SM2 : contém
 
-class MD_Simulado <<Entidade>> {
-    +id: int
-    +nota: float
-    +dataRealizacao: date
+class Simulado <<Entidade>> {
+    -id: int
+    -nota: float
+    -dataRealizacao: date
 }
 
-MD_Alunos "1" -- "*" MD_Simulado : realiza
-MD_Alunos "1" -- "1" MD_Modulos : possui
+Aluno "1" -- "*" Simulado : realiza
+Aluno "1" -- "1" Modulo : possui
 
-class MD_Duvidas <<Entidade>> {
-    +descricao: string
+class Duvida <<Entidade>> {
+    -descricao: string
 }
 
-MD_Alunos "1" -- "*" MD_Duvidas : abre
-MD_Tutor "1" -- "*" MD_Duvidas : responde
+Aluno "1" -- "*" Duvida : abre
+Tutor "1" -- "*" Duvida : responde
 
-class MD_Agente_Especialista_IA <<Entidade>> {
-    +responderDuvida(duvida: MD_Duvidas): boolean
+class Agente_IA <<Control>> {
+    +responderDuvida(duvida: Duvida): boolean
 }
 
-MD_Duvidas "*" -- "1" MD_Agente_Especialista_IA : analisa preliminarmente
+Duvida "*" -- "1" Agente_IA : analisa preliminarmente
 
-class MD_Acessibilidades <<Entidade>> {
-    +tamanhoFonte: int
-    +altoContraste: boolean
+class Acessibilidade <<Entidade>> {
+    -tamanhoFonte: int
+    -altoContraste: boolean
 }
 
-MD_Alunos "1" -- "1" MD_Acessibilidades : realiza
+Aluno "1" -- "1" Acessibilidade : configura
 
 @enduml
+

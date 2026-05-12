@@ -3,6 +3,7 @@
 skinparam backgroundColor white
 skinparam shadowing false
 skinparam sequenceMessageAlign center
+skinparam sequenceLogicColor #000000
 
 skinparam participant {
     BackgroundColor #FFFEE1
@@ -10,79 +11,97 @@ skinparam participant {
 }
 
 center header
-<b>Sistema Nex_TI</b>
+<b>Sistema Nex_TI - Fluxo Global de Operação</b>
 endheader
 
-participant "MD_Aluno" as Aluno
-participant "MD_Interface (Front-End)" as UI
-participant "MD_Controle de Estado" as CTRL
-participant "MD_Motor SM-2 (Anki)" as SM2
-participant "MD_Gamificação" as GAME
-participant "MD_Banco de Dados" as DB
+actor "Aluno" as User
+participant ":Interface_Principal" as UI <<Fronteira>>
+participant ":Controlador_Geral" as CTRL <<Controle>>
+participant ":Motor_SM2" as SM2 <<Controle>>
+participant ":Agente_IA" as IA <<Controle>>
+participant ":Aluno" as EntityAluno <<Entidade>>
+participant ":Flashcard_SM2" as Flashcard <<Entidade>>
 
-== Início da Sessão de Estudos ==
+== 1. Autenticação e Carregamento ==
 
 autonumber
-Aluno -> UI : 1: Seleciona Módulo()
+User -> UI : realizarLogin(credenciais)
 activate UI
 
-UI -> CTRL : 2: Requisita FlashCard()
+UI -> CTRL : validarAcesso(credenciais)
 activate CTRL
 
-CTRL -> DB : 3: Buscar deck do módulo()
-activate DB
-DB -->> CTRL : 3.1: Retorna Array de FlashCards
-deactivate DB
+CTRL -> EntityAluno : verificarCredenciais()
+activate EntityAluno
+EntityAluno -->> CTRL : usuarioAutenticado
+deactivate EntityAluno
 
-CTRL -> SM2 : 4: Filtrar Cartas Vencidas\n(dataProximaRevisao <= hoje)
-activate SM2
-SM2 -->> CTRL : 4.1: Retorna cartas para Revisão
-deactivate SM2
-
-CTRL -->> UI : Envia a primeira carta do Array
+CTRL -->> UI : loginSucesso()
 deactivate CTRL
 
-UI -->> Aluno : Exibe pergunta (Frente da carta)
+UI -->> User : exibeDashboard()
 deactivate UI
 
-== Interação e Algoritmo ==
+== 2. Ciclo de Estudo (Algoritmo SM-2) ==
 
-Aluno -> UI : 5: Clica em 'Revisar Resposta'()
-activate UI
-UI -->> Aluno : Exibe respostas e botões de dificuldade
-deactivate UI
-
-Aluno -> UI : 6: Seleciona nível()
+User -> UI : iniciarSessaoEstudo()
 activate UI
 
-UI -> CTRL : 7: Envia FeedBack do Usuário()
+UI -> CTRL : buscarProximasRevisoes()
 activate CTRL
 
-CTRL -> SM2 : 8: Calcular Nova Data (Algoritmo SM-2)
-activate SM2
-SM2 -->> CTRL : Retorna nova data de vencimento
-deactivate SM2
+CTRL -> Flashcard : filtrarCartasVencidas(dataAtual)
+activate Flashcard
+Flashcard -->> CTRL : listaDeFlashcards
+deactivate Flashcard
 
-CTRL -> DB : 9: Atualiza Registro da Carta()
-activate DB
-DB -->> CTRL : Confirma Gravação
-deactivate DB
-
-== Gamificação e Atualização Visual ==
-
-CTRL -> GAME : 10: Atribui Recompensa (+XP, +Moedas)
-activate GAME
-GAME -> DB : 11: Atualiza Saldo do usuário()
-activate DB
-DB -->> GAME : Confirma Saldo Novo
-deactivate DB
-GAME -->> CTRL : Confirma Gamificação
-deactivate GAME
-
-CTRL -->> UI : Retorna Status de Sucesso
+CTRL -->> UI : exibirPrimeiraCarta(pergunta)
 deactivate CTRL
 
-UI -->> Aluno : Dispara animação visual\n(+XP) e carrega próxima carta
+User -> UI : informarFeedback(facilidade)
+activate UI
+
+UI -> CTRL : processarResposta(facilidade)
+activate CTRL
+
+CTRL -> SM2 : calcularNovoIntervalo(facilidade)
+activate SM2
+SM2 -->> CTRL : novaDataRevisao
+deactivate SM2
+
+CTRL -> Flashcard : atualizarData(novaDataRevisao)
+activate Flashcard
+Flashcard -->> CTRL : confirmacao
+deactivate Flashcard
+
+CTRL -> CTRL : atribuirGamificacao(XP)
+note right: Atribui XP e Moedas\nbaseado na performance
+
+CTRL -->> UI : feedbackSucesso(XP_Ganhado)
+deactivate CTRL
+
+UI -->> User : animacaoProgresso()
+deactivate UI
+
+== 3. Suporte Inteligente (IA) ==
+
+User -> UI : solicitarAjudaIA(duvida)
+activate UI
+
+UI -> CTRL : processarDuvida(duvida)
+activate CTRL
+
+CTRL -> IA : analisarDuvida(duvida)
+activate IA
+IA -> IA : gerarExplicacaoContextual()
+IA -->> CTRL : respostaSugerida
+deactivate IA
+
+CTRL -->> UI : exibirRespostaIA()
+deactivate CTRL
+
+UI -->> User : exibeExplicacao()
 deactivate UI
 
 @enduml
+

@@ -1,4 +1,4 @@
-# Plano da Fase 10: Simplificação Estrutural e Atualização de Classes
+# Plano da Fase 2: Simplificação Estrutural e Atualização de Classes
 
 ## 🎯 Objetivos
 1. Consolidar e simplificar a estrutura de pastas do repositório, focando no modelo Astah fonte, imagens exportadas globais, PDFs de documentação teórica e o código gerado em C#.

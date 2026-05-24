@@ -21,15 +21,15 @@ Transformar requisitos de negócio em uma documentação técnica UML de alta fi
 - **Desenvolvedor:** Responsável pela automação da documentação.
 
 
-### 🔄 Refatoração de Maio (PIM III - Nex_TI)
-- Todos os Casos de Uso (1-15) foram refatorados pelo agente GSD-Architect.
-- Nomes de classes obsoletos (MD_Usuarios, MD_Alunos) foram substituídos pelas entidades definitivas C# (Usuario, Aluno, Flashcard_SM2, etc).
-- O modelo UML agora está 100% aderente ao index.html do relatório final.
+### 🏁 Refatoração de Casos de Uso (Fase 1)
+- Todos os Casos de Uso (1-15) foram modelados de forma estruturada.
+- O modelo UML agora está 100% aderente às entidades finais da parte prática.
 
-### 🧹 Simplificação Estrutural e Atualização de Classes (Fase 10)
+### 🧹 Simplificação Estrutural e Atualização de Classes (Fase 2)
 - Reorganização do repositório para focar na entrega direta da modelagem UML do sistema Nex_TI.
 - Atualização do modelo fonte no Astah e exportação das classes C# atualizadas (ex: `Flashcards`, `Usuario`, `Aluno`, `Tutor`, etc.) para a raiz em `03_Codigo_Gerado/`.
 - Remoção de scripts locais de automação redundantes de geração de Markdown, centralizando o foco nos diagramas de modelagem originais.
 - Ajuste do `README.md` principal para direcionar a banca avaliadora aos arquivos reais do projeto.
+
 
 

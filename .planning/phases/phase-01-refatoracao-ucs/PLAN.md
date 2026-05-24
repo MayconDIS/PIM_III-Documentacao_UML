@@ -1,4 +1,4 @@
-# Plano de Fase: Refatoração dos 15 UCs com PlantUML
+# Plano da Fase 1: Refatoração dos 15 UCs com PlantUML
 
 ## 🎯 Objetivo
 Migrar a documentação visual de Mermaid.js para PlantUML utilizando a skill `uml-architect`, gerando artefatos profissionais (.puml e .png) para todos os 15 Casos de Uso.

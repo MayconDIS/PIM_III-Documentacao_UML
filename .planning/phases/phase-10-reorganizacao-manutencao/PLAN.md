@@ -1,21 +1,15 @@
-# Plano da Fase 10: Reorganização e Manutenção Geral do Repositório
+# Plano da Fase 10: Simplificação Estrutural e Atualização de Classes
 
 ## 🎯 Objetivos
-1. Corrigir os caminhos de arquivos "hardcoded" nos scripts de automação Python em `04_Scripts/`.
-2. Sincronizar e alinhar a nomenclatura de classes no script de automação com o modelo de classes definitivo (substituir prefixos `MD_` por classes reais).
-3. Eliminar backups de imagens exportadas em `02_Modelagem_UML/`.
-4. Mover a pasta legada de código C# `03_Codigo_Gerado/` para `05_Legacy/`.
-5. Eliminar arquivos locais duplicados de casos de uso na pasta de exportações gerais `03_Artefatos_Gerados/`.
-6. Regenerar e atualizar todos os manuais de casos de uso e o Dashboard centralizado usando o script atualizado.
-7. Atualizar a documentação principal (`README.md`, `.planning/PROJECT.md` e `.planning/STATE.md`).
-8. Limpar e estruturar a pasta `.planning/phases/`.
+1. Consolidar e simplificar a estrutura de pastas do repositório, focando no modelo Astah fonte, imagens exportadas globais, PDFs de documentação teórica e o código gerado em C#.
+2. Alinhar e salvar na raiz a nova pasta `03_Codigo_Gerado/` com as classes definitivas (sem prefixo `MD_`), geradas automaticamente a partir do modelo final do Astah.
+3. Excluir scripts Python e manuais locais redundantes de Casos de Uso.
+4. Eliminar arquivos residuais de edição `.png.bak` em `02_Modelagem_UML/`.
+5. Atualizar o `README.md` principal, PROJECT.md e STATE.md.
 
 ## 🛠️ Passos de Execução
-- [x] Ajustar scripts em `04_Scripts/generate_docs_step_by_step.py` e `04_Scripts/update_all.py` para usar caminhos relativos.
-- [x] Substituir o dicionário de dados no gerador de manuais pelas novas classes e propriedades.
-- [x] Deletar arquivos `.png.bak` de backup em `02_Modelagem_UML/`.
-- [x] Mover `03_Codigo_Gerado/` para `05_Legacy/Codigo_Gerado_Astah_Legado/`.
-- [x] Remover arquivos locais de imagens de UCs em `03_Artefatos_Gerados/`.
-- [x] Executar `generate_docs_step_by_step.py` e `update_all.py` para atualizar os manuais e Dashboard.
-- [x] Limpar a pasta `.planning/phases/` deixando apenas as fases relevantes documentadas.
-- [x] Atualizar referências no `README.md` principal.
+- [x] Consolidar a remoção de scripts e manuais automatizados locais para manter o repositório simples.
+- [x] Salvar a pasta `03_Codigo_Gerado/` com as entidades finais C# atualizadas na raiz.
+- [x] Remover backups temporários `.png.bak` de imagens na pasta `02_Modelagem_UML/`.
+- [x] Ajustar links e árvore do repositório no `README.md` para evitar links quebrados.
+- [x] Atualizar progresso e metas de manutenção em `.planning/PROJECT.md` e `.planning/STATE.md`.

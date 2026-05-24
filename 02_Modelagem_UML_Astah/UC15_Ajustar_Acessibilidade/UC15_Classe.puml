@@ -1,8 +1,0 @@
-@startuml
-skinparam monochrome true
-class Acessibilidade <<Entidade>> {
-    +altoContraste : bool
-    +tamanhoFonte : int
-    +salvar()
-}
-@enduml

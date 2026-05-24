@@ -26,9 +26,10 @@ Transformar requisitos de negócio em uma documentação técnica UML de alta fi
 - Nomes de classes obsoletos (MD_Usuarios, MD_Alunos) foram substituídos pelas entidades definitivas C# (Usuario, Aluno, Flashcard_SM2, etc).
 - O modelo UML agora está 100% aderente ao index.html do relatório final.
 
-### 🧹 Reorganização e Manutenção Geral (Fase 10)
-- Scripts de automação Python atualizados para utilizar caminhos relativos portáveis.
-- Nomenclatura obsoleta com prefixo `MD_` removida dos manuais locais de Casos de Uso e do Dashboard Visual.
-- Remoção de arquivos duplicados de imagens e arquivos temporários de backup `.bak`.
-- Pasta de código gerado obsoleta (`03_Codigo_Gerado`) movida para `05_Legacy/Codigo_Gerado_Astah_Legado` para manter a raiz limpa.
+### 🧹 Simplificação Estrutural e Atualização de Classes (Fase 10)
+- Reorganização do repositório para focar na entrega direta da modelagem UML do sistema Nex_TI.
+- Atualização do modelo fonte no Astah e exportação das classes C# atualizadas (ex: `Flashcards`, `Usuario`, `Aluno`, `Tutor`, etc.) para a raiz em `03_Codigo_Gerado/`.
+- Remoção de scripts locais de automação redundantes de geração de Markdown, centralizando o foco nos diagramas de modelagem originais.
+- Ajuste do `README.md` principal para direcionar a banca avaliadora aos arquivos reais do projeto.
+
 

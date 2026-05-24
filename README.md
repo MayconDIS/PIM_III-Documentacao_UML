@@ -16,28 +16,24 @@ O **Nex_TI** é um sistema educacional revolucionário que utiliza o algoritmo d
 
 Para facilitar a navegação pelos principais artefatos do projeto:
 
-- 📊 **[Dashboard Visual Completo](./01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)**: Visão interativa de todos os Casos de Uso, Diagramas Globais e Arquitetura.
-- 📄 **[Relatório Final PIM III (Teórico)](./01_Relatorios_e_Dashboard/RELATORIO_FINAL_PIM_III.md)**: Base teórica e fundamentos arquiteturais (POO).
-- 🧩 **[Artefatos Gerados (Diagramas PNG)](./03_Artefatos_Gerados)**: Repositório com todas as imagens renderizadas dos diagramas de Classe, Sequência e Casos de Uso.
-- 🧠 **[Detalhamento e Fluxos dos 15 Casos de Uso](./02_Modelagem_UML_Astah)**: Documentação granular com Fluxo Normal, Fluxo Alternativo e diagramas locais.
+- 📊 **[Diagramas Globais e Modelagem (.asta)](./02_Modelagem_UML)**: Diagramas globais de Classe, Sequência e Casos de Uso em alta definição (PNG), além do arquivo fonte `.asta` para ser carregado diretamente no software **Astah UML**.
+- 📄 **[Documentação Teórica e Planejamento](./01_Documentacao_Teorica)**: Fundamentos teóricos, Backlog do produto Nex_TI e atas de planejamento de sprint em PDF.
+- 💻 **[Classes C# Geradas (.cs)](./03_Codigo_Gerado)**: Esboço de arquivos de classe em C# gerados automaticamente pelo Astah a partir do modelo de classes final.
 
 ---
 
 ## 🏗️ Estrutura do Repositório
 
-Organizamos este repositório focando na alta legibilidade, separação de conceitos (SoC) e manutenção contínua:
+Organizamos este repositório focando na simplicidade, clareza e separação de conceitos:
 
 ```text
 📁 PIM_III-Documentacao_UML/
 ├── 📁 .planning/                      # Gerenciamento ágil GSD (Roadmaps, Fases, Specs)
-├── 📁 01_Documentacao_Teorica/        # Documentações complementares em PDF (Atas, Backlogs)
-├── 📁 01_Relatorios_e_Dashboard/      # Relatório final PIM III e Painel de Controle Visual
-├── 📁 02_Modelagem_UML/               # Modelagem fonte no Astah (.asta) e diagramas globais
-├── 📁 02_Modelagem_UML_Astah/         # Manuais passo-a-passo e Mermaid de cada um dos 15 UCs
-├── 📁 03_Artefatos_Gerados/           # Diagramas globais exportados (.png e códigos PlantUML)
-├── 📁 04_Scripts/                     # Automações portáveis em Python (Geração de Docs, Compilação UML)
-└── 📁 05_Legacy/                      # Códigos gerados antigos e diagramas antigos legados
+├── 📁 01_Documentacao_Teorica/        # Documentações teóricas e atas de planejamento em PDF
+├── 📁 02_Modelagem_UML/               # Modelagem fonte do Astah (.asta) e imagens globais (.png)
+└── 📁 03_Codigo_Gerado/               # Esboço das classes C# exportadas do modelo de classes
 ```
+
 
 
 ## 📐 Padrões Arquiteturais Adotados

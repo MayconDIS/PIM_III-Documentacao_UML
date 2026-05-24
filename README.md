@@ -17,7 +17,7 @@ O **Nex_TI** é um sistema educacional revolucionário que utiliza o algoritmo d
 Para facilitar a navegação pelos principais artefatos do projeto:
 
 - 📊 **[Diagramas Globais e Modelagem (.asta)](./02_Modelagem_UML)**: Diagramas globais de Classe, Sequência e Casos de Uso em alta definição (PNG), além do arquivo fonte `.asta` para ser carregado diretamente no software **Astah UML**.
-- 📄 **[Documentação Teórica e Planejamento](./01_Documentacao_Teorica)**: Fundamentos teóricos, Backlog do produto Nex_TI e atas de planejamento de sprint em PDF.
+- 📄 **[Documentação Teórica e Planejamento](./01_Documentacao_Teorica)**: Visão detalhada do Backlog do Produto (US01 a US15), atas de planejamento da Sprint e conceitos teóricos em Markdown e PDF.
 - 💻 **[Classes C# Geradas (.cs)](./03_Codigo_Gerado)**: Esboço de arquivos de classe em C# gerados automaticamente pelo Astah a partir do modelo de classes final.
 
 ---

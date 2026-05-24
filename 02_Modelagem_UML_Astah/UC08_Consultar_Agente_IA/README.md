@@ -13,29 +13,18 @@ Interação instantânea.
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie 'AgenteIA' com '+ responder()'.**
-   - [ ] 2. **Crie 'Duvida' com '- pergunta : string' e '+ resposta : string'.**
+   - [ ] 1. **Crie 'Agente_IA' com '+ responderDuvida()'.**
+   - [ ] 2. **Crie 'Duvida' com '- descricao : string'.**
    - [ ] 3. **Dependência da IA para Duvida.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
 ### 2️⃣ Diagrama de Sequência (Processo)
-   - [ ] 1. **Aluno envia dúvida para :AgenteIA.**
-   - [ ] 2. **AgenteIA processa linguagem natural.**
-   - [ ] 3. **AgenteIA retorna resposta ao Aluno.**
+   - [ ] 1. **Aluno envia dúvida para :Agente_IA.**
+   - [ ] 2. **Agente_IA processa linguagem natural.**
+   - [ ] 3. **Agente_IA retorna resposta ao Aluno.**
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
-
-
----
-
-## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
-
-### Diagrama de Classe (Premium)
-![UC08_Classe](./UC08_Classe.png)
-
-### Diagrama de Sequência (Premium)
-![UC08_Sequencia](./UC08_Sequencia.png)
 
 ---
 
@@ -43,16 +32,15 @@ Interação instantânea.
 ### Diagrama de Classe
 ```mermaid
 classDiagram
-    class AgenteIA {
+    class Agente_IA {
         <<Controle>>
-        +responder(pergunta)
+        +responderDuvida(duvida)
     }
     class Duvida {
         <<Entidade>>
-        -pergunta : string
-        -resposta : string
+        -descricao : string
     }
-    AgenteIA ..> Duvida : consulta
+    Agente_IA ..> Duvida : consulta
 ```
 
 ### Diagrama de Sequência
@@ -60,7 +48,7 @@ classDiagram
 sequenceDiagram
     autonumber
     participant A as :Aluno
-    participant IA as :AgenteIA
+    participant IA as :Agente_IA
     A->>IA: enviarDuvida(texto)
     IA->>IA: processarLinguagem()
     IA-->>A: Resposta
@@ -68,11 +56,3 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
----
-
-## 🏛️ Contexto Arquitetural
-Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
-
----
-
-[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

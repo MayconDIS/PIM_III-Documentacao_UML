@@ -14,7 +14,7 @@ Acesso seguro do usuário ao sistema através de validação de credenciais.
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie a classe 'Usuario' e aplique o Estereótipo <<Entidade>>.**
-   - [ ] 2. **Adicione os atributos: '- email : string' e '+ senha : string'.**
+   - [ ] 2. **Adicione os atributos: '- email : string' e '- senha : string'.**
    - [ ] 3. **Crie a classe 'ServicoAutenticacao' e aplique o Estereótipo <<Controle>>.**
    - [ ] 4. **Adicione o método: '+ autenticar(email : string, senha : string) : bool'.**
    - [ ] 5. **Desenhe uma seta de 'Dependência' (tracejada) saindo do Controlador para a Entidade.**
@@ -28,17 +28,6 @@ Acesso seguro do usuário ao sistema através de validação de credenciais.
    - [ ] 4. **Mensagem de Retorno: Seta tracejada voltando para o Usuario com o Resultado.**
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
-
-
----
-
-## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
-
-### Diagrama de Classe (Premium)
-![UC01_Classe](./UC01_Classe.png)
-
-### Diagrama de Sequência (Premium)
-![UC01_Sequencia](./UC01_Sequencia.png)
 
 ---
 
@@ -73,11 +62,3 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
----
-
-## 🏛️ Contexto Arquitetural
-Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
-
----
-
-[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

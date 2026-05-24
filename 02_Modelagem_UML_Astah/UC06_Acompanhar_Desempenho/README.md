@@ -14,7 +14,7 @@ Métricas de progresso.
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'Tutor', 'Aluno' e 'PainelVisual' (<<Fronteira>>).**
-   - [ ] 2. **Em Alunos: '- progresso : float'.**
+   - [ ] 2. **Em Aluno: '- progresso : float'.**
    - [ ] 3. **Ligue Tutor a Aluno via Dependência através do Painel.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
@@ -25,17 +25,6 @@ Métricas de progresso.
    - [ ] 3. **Painel renderiza o relatório final.**
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
-
-
----
-
-## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
-
-### Diagrama de Classe (Premium)
-![UC06_Classe](./UC06_Classe.png)
-
-### Diagrama de Sequência (Premium)
-![UC06_Sequencia](./UC06_Sequencia.png)
 
 ---
 
@@ -74,11 +63,3 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
----
-
-## 🏛️ Contexto Arquitetural
-Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
-
----
-
-[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

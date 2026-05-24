@@ -3,8 +3,13 @@ import re
 
 print("Iniciando a atualização em massa...")
 
+# Caminhos dinâmicos baseados no diretório do script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+puml_dir = os.path.abspath(os.path.join(script_dir, "..", "03_Artefatos_Gerados"))
+artifact_path = os.path.abspath(os.path.join(script_dir, "..", "01_Relatorios_e_Dashboard", "fluxos_casos_uso.md"))
+astah_dir = os.path.abspath(os.path.join(script_dir, "..", "02_Modelagem_UML_Astah"))
+
 # 1. Update attributes from public (+) to private (-) in UC*_Classe.puml files
-puml_dir = "03_Artefatos_Gerados"
 if os.path.exists(puml_dir):
     for filename in os.listdir(puml_dir):
         if filename.startswith("UC") and filename.endswith("_Classe.puml"):
@@ -40,8 +45,7 @@ if os.path.exists(puml_dir):
                 print(f"Atualizado: {filename} (IA <<Control>>)")
 
 # 2. Inject Flows into README.mds
-# First, let's load the flows from the artifact
-artifact_path = r"C:\Users\mayco\.gemini\antigravity\brain\e8f8b43a-8e3e-4d53-8b7e-1798fe3a2e5e\fluxos_casos_uso.md"
+# First, let's load the flows from the local flows_casos_uso.md
 flows_dict = {}
 if os.path.exists(artifact_path):
     with open(artifact_path, 'r', encoding='utf-8') as f:
@@ -60,7 +64,6 @@ if os.path.exists(artifact_path):
         flows_dict[uc_num] = flows_text.strip()
 
 # Now inject them into the READMEs
-astah_dir = "02_Modelagem_UML_Astah"
 if os.path.exists(astah_dir):
     for root, dirs, files in os.walk(astah_dir):
         if "README.md" in files:

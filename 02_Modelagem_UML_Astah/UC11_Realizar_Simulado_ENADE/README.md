@@ -13,7 +13,7 @@ Treinamento intensivo.
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie 'Simulado' e 'Questao'.**
+   - [ ] 1. **Crie 'Simulado' and 'Questao'.**
    - [ ] 2. **Composição (losango preto).**
    - [ ] 3. **Simulado: '- tempoRestante : int'.**
 
@@ -25,28 +25,6 @@ Treinamento intensivo.
    - [ ] 3. **Após responder tudo, Simulado desliga e dá a nota.**
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
-
-
----
-
-## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
-
-### Diagrama de Classe (Premium)
-![UC11_Classe](./UC11_Classe.png)
-
-### Diagrama de Sequência (Premium)
-![UC11_Sequencia](./UC11_Sequencia.png)
-
-
----
-
-## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
-
-### Diagrama de Classe (Premium)
-![UC11_Classe](./UC11_Classe.png)
-
-### Diagrama de Sequência (Premium)
-![UC11_Sequencia](./UC11_Sequencia.png)
 
 ---
 
@@ -81,11 +59,3 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
----
-
-## 🏛️ Contexto Arquitetural
-Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
-
----
-
-[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

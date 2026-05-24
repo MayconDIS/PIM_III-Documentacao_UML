@@ -13,10 +13,10 @@ Administração de papéis e permissões.
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie 'Administrador' e 'Usuario'.**
+   - [ ] 1. **Crie 'Admin' e 'Usuario'.**
    - [ ] 2. **Em 'Usuario', adicione '- papel : string'.**
    - [ ] 3. **Crie 'GerenciadorAcesso' (<<Controle>>).**
-   - [ ] 4. **Desenhe uma 'Associação' simples de Admin para Usuarios.**
+   - [ ] 4. **Desenhe uma 'Associação' simples de Admin para Usuario.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
@@ -27,31 +27,20 @@ Administração de papéis e permissões.
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
 
-
----
-
-## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
-
-### Diagrama de Classe (Premium)
-![UC04_Classe](./UC04_Classe.png)
-
-### Diagrama de Sequência (Premium)
-![UC04_Sequencia](./UC04_Sequencia.png)
-
 ---
 
 ## 📊 Referência Visual (Estilo Astah UML)
 ### Diagrama de Classe
 ```mermaid
 classDiagram
-    class Administrador {
+    class Admin {
         +gerenciarAcesso()
     }
     class Usuario {
         <<Entidade>>
         -papel : string
     }
-    Administrador --> Usuario : administra
+    Admin --> Usuario : administra
 ```
 
 ### Diagrama de Sequência
@@ -71,11 +60,3 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
----
-
-## 🏛️ Contexto Arquitetural
-Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
-
----
-
-[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

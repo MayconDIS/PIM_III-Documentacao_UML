@@ -18,9 +18,6 @@ Este documento centraliza os diagramas em conformidade com a interface e notaç�
 - [Desbloquear Fases e Módulos](#uc13-desbloquear-fases-modulos)
 - [Visualizar Painel de Progresso](#uc14-visualizar-painel-progresso)
 - [Ajustar Acessibilidade](#uc15-ajustar-acessibilidade)
-- [**Diagrama de Casos de Uso Global**](#diagrama-de-casos-de-uso-global)
-- [**Diagrama de Classes Global (Sincronizado)**](#diagrama-de-classes-global)
-- [**Diagrama de Sequência Global (Arquitetura)**](#diagrama-de-sequencia-global)
 
 ---
 
@@ -48,23 +45,23 @@ Ilustra o ciclo de vida de uma requisição típica, desde a interface até a pe
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Usuarios {
+    class Usuario {
         <<Entidade>>
-        +email : string
-        +senha : string
+        -email : string
+        -senha : string
     }
-    class ControladorAutenticacao {
+    class ServicoAutenticacao {
         <<Controle>>
         +autenticar(email : string, senha : string) : bool
     }
-    ControladorAutenticacao ..> MD_Usuarios : consulta
+    ServicoAutenticacao ..> Usuario : consulta
 ```
 #### Diagrama de Sequência
 ```mermaid
 sequenceDiagram
     autonumber
     participant U as Usuário (Ator)
-    participant C as :ControladorAutenticacao
+    participant C as :ServicoAutenticacao
     U->>C: login(email, senha)
     activate C
     C->>C: validarCredenciais()
@@ -83,15 +80,15 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    MD_Usuarios <|-- MD_Alunos
-    class MD_Usuarios {
-        +nome : string
-        +email : string
+    Usuario <|-- Aluno
+    class Usuario {
+        -nome : string
+        -email : string
     }
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
-        +pontos : int
-        +moedas : int
+        -pontos : int
+        -moedas : int
     }
 ```
 #### Diagrama de Sequência
@@ -99,8 +96,8 @@ classDiagram
 sequenceDiagram
     autonumber
     participant V as :Visitante
-    participant C as :ControladorAutenticacao
-    participant A as :MD_Alunos
+    participant C as :ServicoAutenticacao
+    participant A as :Aluno
     V->>C: registrar(dados)
     activate C
     C-->>A: <<create>>
@@ -122,23 +119,23 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
         +definirFaseInicial(nota : float)
     }
-    class MD_Simulado {
+    class Simulado {
         <<Entidade>>
-        +nota : float
+        -nota : float
         +iniciarTeste()
     }
-    MD_Alunos --> MD_Simulado : realiza
+    Aluno --> Simulado : realiza
 ```
 #### Diagrama de Sequência
 ```mermaid
 sequenceDiagram
     autonumber
     participant A as :Aluno
-    participant S as :MD_Simulado
+    participant S as :Simulado
     A->>S: iniciarTeste()
     activate S
     S-->>A: listaQuestoes[]
@@ -159,14 +156,14 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Admin {
+    class Admin {
         +gerenciarAcesso()
     }
-    class MD_Usuarios {
+    class Usuario {
         <<Entidade>>
-        +papel : string
+        -papel : string
     }
-    MD_Admin --> MD_Usuarios : administra
+    Admin --> Usuario : administra
 ```
 #### Diagrama de Sequência
 ```mermaid
@@ -174,7 +171,7 @@ sequenceDiagram
     autonumber
     participant A as :Admin
     participant M as :GerenciadorAcesso
-    participant U as :MD_Usuarios
+    participant U as :Usuario
     A->>M: alterarPapel(id, papel)
     activate M
     M->>U: setPapel(papel)
@@ -194,13 +191,13 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    MD_Modulos *-- MD_Flashcards
-    class MD_Tutor {
+    Modulo *-- Flashcard_SM2
+    class Tutor {
         +gerenciarConteudo()
     }
-    class MD_Modulos {
+    class Modulo {
         <<Entidade>>
-        +nomeModulo : string
+        -nome : string
     }
 ```
 #### Diagrama de Sequência
@@ -209,7 +206,7 @@ sequenceDiagram
     autonumber
     participant T as :Tutor
     participant S as :Sistema
-    participant M as :MD_Modulos
+    participant M as :Modulo
     T->>S: novoModulo(nome)
     S->>M: <<create>>
     T->>S: adicionarCarta(p, r)
@@ -227,18 +224,18 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Tutor {
+    class Tutor {
         +acompanharDesempenho()
     }
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
-        +progresso : float
+        -progresso : float
     }
     class PainelVisual {
         <<Fronteira>>
         +renderizar()
     }
-    MD_Tutor ..> MD_Alunos : visualiza
+    Tutor ..> Aluno : visualiza
 ```
 #### Diagrama de Sequência
 ```mermaid
@@ -246,7 +243,7 @@ sequenceDiagram
     autonumber
     participant T as :Tutor
     participant D as :PainelVisual
-    participant A as :MD_Alunos
+    participant A as :Aluno
     T->>D: visualizar(id)
     activate D
     D->>A: obterMetricas()
@@ -266,23 +263,22 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    class AgenteIA {
+    class Agente_IA {
         <<Controle>>
-        +analisar()
-        +escalar(duvida)
+        +responderDuvida(duvida)
     }
-    class MD_Tutor {
+    class Tutor {
         <<Entidade>>
         +responderDuvida()
     }
-    AgenteIA --> MD_Tutor : notifica
+    Agente_IA --> Tutor : notifica
 ```
 #### Diagrama de Sequência
 ```mermaid
 sequenceDiagram
     autonumber
-    participant IA as :AgenteIA
-    participant T as :MD_Tutor
+    participant IA as :Agente_IA
+    participant T as :Tutor
     participant Al as :Aluno
     IA->>IA: detectarComplexidade()
     IA->>T: escalar(duvida, id)
@@ -300,23 +296,22 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    class AgenteIA {
+    class Agente_IA {
         <<Controle>>
-        +responder(pergunta)
+        +responderDuvida(duvida)
     }
-    class MD_Duvidas {
+    class Duvida {
         <<Entidade>>
-        +pergunta : string
-        +resposta : string
+        -descricao : string
     }
-    AgenteIA ..> MD_Duvidas : consulta
+    Agente_IA ..> Duvida : consulta
 ```
 #### Diagrama de Sequência
 ```mermaid
 sequenceDiagram
     autonumber
     participant A as :Aluno
-    participant IA as :AgenteIA
+    participant IA as :Agente_IA
     A->>IA: enviarDuvida(texto)
     IA->>IA: processarLinguagem()
     IA-->>A: Resposta
@@ -333,27 +328,27 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_MotorSM2 {
+    class MotorSM2 {
         <<Controle>>
         +aplicarSM2(feedback)
     }
-    class MD_Flashcards {
+    class Flashcard_SM2 {
         <<Entidade>>
-        +proximaRevisao : date
+        -dataProximaRevisao : date
     }
-    MD_MotorSM2 --> MD_Flashcards : atualiza
+    MotorSM2 --> Flashcard_SM2 : atualiza
 ```
 #### Diagrama de Sequência
 ```mermaid
 sequenceDiagram
     autonumber
     participant A as :Aluno
-    participant M as :MD_MotorSM2
-    participant F as :MD_Flashcards
+    participant M as :MotorSM2
+    participant F as :Flashcard_SM2
     A->>F: lerPergunta()
     A->>M: informarDificuldade(1-5)
     M->>M: aplicarSM2()
-    M->>F: setProximaRevisao(data)
+    M->>F: setDataProximaRevisao(data)
     F-->>A: Ok
 ```
 
@@ -368,16 +363,16 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
         +criarCarta()
     }
-    class MD_Flashcards {
+    class Flashcard_SM2 {
         <<Entidade>>
-        +pergunta : string
-        +resposta : string
+        -pergunta : string
+        -resposta : string
     }
-    MD_Alunos "1" --> "*" MD_Flashcards : cria
+    Aluno "1" --> "*" Flashcard_SM2 : cria
 ```
 #### Diagrama de Sequência
 ```mermaid
@@ -385,7 +380,7 @@ sequenceDiagram
     autonumber
     participant A as :Aluno
     participant E as :Editor
-    participant F as :MD_Flashcards
+    participant F as :Flashcard_SM2
     A->>E: entrada(p, r)
     E->>F: <<create>>(p, r)
     F-->>A: Sucesso
@@ -402,23 +397,23 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Simulado {
+    class Simulado {
         <<Entidade>>
-        +tempoRestante : int
+        -tempoRestante : int
         +iniciarTeste()
     }
     class Questao {
         <<Entidade>>
-        +texto : string
+        -texto : string
     }
-    MD_Simulado "1" *-- "*" Questao
+    Simulado "1" *-- "*" Questao
 ```
 #### Diagrama de Sequência
 ```mermaid
 sequenceDiagram
     autonumber
     participant A as :Aluno
-    participant S as :MD_Simulado
+    participant S as :Simulado
     participant T as :Temporizador
     A->>S: iniciarTeste()
     S->>T: iniciar()
@@ -437,24 +432,24 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Gamificacao {
+    class Gamificacao {
         <<Controle>>
         +calcularBonus()
     }
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
-        +pontos : int
-        +moedas : int
+        -pontos : int
+        -moedas : int
     }
-    MD_Gamificacao ..> MD_Alunos : credita
+    Gamificacao ..> Aluno : credita
 ```
 #### Diagrama de Sequência
 ```mermaid
 sequenceDiagram
     autonumber
     participant S as :Sistema
-    participant G as :MD_Gamificacao
-    participant A as :MD_Alunos
+    participant G as :Gamificacao
+    participant A as :Aluno
     S->>G: concluirTarefa()
     G->>G: calcular()
     G->>A: creditarXP(100)
@@ -472,24 +467,24 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Fases {
+    class Fase {
         <<Entidade>>
-        +bloqueada : bool
+        -bloqueada : bool
         +desbloquear()
     }
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
-        +progresso : float
+        -progresso : float
     }
-    MD_Fases ..> MD_Alunos : verifica
+    Fase ..> Aluno : verifica
 ```
 #### Diagrama de Sequência
 ```mermaid
 sequenceDiagram
     autonumber
     participant M as :GerenciadorProgresso
-    participant A as :MD_Alunos
-    participant F as :MD_Fases
+    participant A as :Aluno
+    participant F as :Fase
     M->>A: obterProgresso()
     M->>F: desbloquear()
     F-->>M: Sucesso
@@ -510,11 +505,11 @@ classDiagram
         <<Fronteira>>
         +renderizar()
     }
-    class MD_Alunos {
+    class Aluno {
         <<Entidade>>
         +obterProgresso()
     }
-    PainelVisual ..> MD_Alunos : lê
+    PainelVisual ..> Aluno : lê
 ```
 #### Diagrama de Sequência
 ```mermaid
@@ -538,10 +533,10 @@ sequenceDiagram
 #### Diagrama de Classe
 ```mermaid
 classDiagram
-    class MD_Acessibilidade {
+    class Acessibilidade {
         <<Entidade>>
-        +altoContraste : bool
-        +tamanhoFonte : int
+        -altoContraste : bool
+        -tamanhoFonte : int
         +salvar()
     }
 ```
@@ -551,7 +546,7 @@ sequenceDiagram
     autonumber
     participant U as :Usuario
     participant P as :PainelConfiguracao
-    participant A as :MD_Acessibilidade
+    participant A as :Acessibilidade
     U->>P: selecionarOpcao()
     P->>A: salvar()
     A-->>P: ok

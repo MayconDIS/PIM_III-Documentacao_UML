@@ -14,7 +14,7 @@ Repetição espaçada.
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
    - [ ] 1. **Crie 'MotorSM2' (<<Controle>>) e 'Flashcard_SM2'.**
-   - [ ] 2. **Atributos no Flashcard: '- proximaRevisao : date'.**
+   - [ ] 2. **Atributos no Flashcard: '- dataProximaRevisao : date'.**
    - [ ] 3. **Associação do Motor para o Flashcard.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
@@ -22,31 +22,9 @@ Repetição espaçada.
 ### 2️⃣ Diagrama de Sequência (Processo)
    - [ ] 1. **Aluno lê pergunta.**
    - [ ] 2. **Aluno informa dificuldade (1-5) ao :MotorSM2.**
-   - [ ] 3. **Motor aplica algoritmo e atualiza data no Flashcard.**
+   - [ ] 3. **Motor aplica algoritmo e atualiza data no Flashcard_SM2.**
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
-
-
----
-
-## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
-
-### Diagrama de Classe (Premium)
-![UC09_Classe](./UC09_Classe.png)
-
-### Diagrama de Sequência (Premium)
-![UC09_Sequencia](./UC09_Sequencia.png)
-
-
----
-
-## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
-
-### Diagrama de Classe (Premium)
-![UC09_Classe](./UC09_Classe.png)
-
-### Diagrama de Sequência (Premium)
-![UC09_Sequencia](./UC09_Sequencia.png)
 
 ---
 
@@ -60,7 +38,7 @@ classDiagram
     }
     class Flashcard_SM2 {
         <<Entidade>>
-        -proximaRevisao : date
+        -dataProximaRevisao : date
     }
     MotorSM2 --> Flashcard_SM2 : atualiza
 ```
@@ -75,17 +53,9 @@ sequenceDiagram
     A->>F: lerPergunta()
     A->>M: informarDificuldade(1-5)
     M->>M: aplicarSM2()
-    M->>F: setProximaRevisao(data)
+    M->>F: setDataProximaRevisao(data)
     F-->>A: Ok
 ```
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
----
-
-## 🏛️ Contexto Arquitetural
-Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
-
----
-
-[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

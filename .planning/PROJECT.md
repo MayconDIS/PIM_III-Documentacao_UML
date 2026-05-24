@@ -25,3 +25,10 @@ Transformar requisitos de negócio em uma documentação técnica UML de alta fi
 - Todos os Casos de Uso (1-15) foram refatorados pelo agente GSD-Architect.
 - Nomes de classes obsoletos (MD_Usuarios, MD_Alunos) foram substituídos pelas entidades definitivas C# (Usuario, Aluno, Flashcard_SM2, etc).
 - O modelo UML agora está 100% aderente ao index.html do relatório final.
+
+### 🧹 Reorganização e Manutenção Geral (Fase 10)
+- Scripts de automação Python atualizados para utilizar caminhos relativos portáveis.
+- Nomenclatura obsoleta com prefixo `MD_` removida dos manuais locais de Casos de Uso e do Dashboard Visual.
+- Remoção de arquivos duplicados de imagens e arquivos temporários de backup `.bak`.
+- Pasta de código gerado obsoleta (`03_Codigo_Gerado`) movida para `05_Legacy/Codigo_Gerado_Astah_Legado` para manter a raiz limpa.
+

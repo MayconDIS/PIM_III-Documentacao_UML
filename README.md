@@ -29,13 +29,16 @@ Organizamos este repositório focando na alta legibilidade, separação de conce
 
 ```text
 📁 PIM_III-Documentacao_UML/
-├── 📁 .planning/                      # Gerenciamento ágil GSD (Roadmaps, Specs)
-├── 📁 01_Relatorios_e_Dashboard/      # Relatório final e painéis de controle
-├── 📁 02_Modelagem_UML_Astah/         # Tutoriais, Mermaid e fluxos passo-a-passo de cada UC
-├── 📁 03_Artefatos_Gerados/           # Exportações em .png e códigos-fonte .puml
-├── 📁 04_Scripts/                     # Automações em Python (Geração de Docs, Compilação UML)
-└── 📁 05_Legacy/                      # Arquivos históricos e PDFs antigos mantidos para registro
+├── 📁 .planning/                      # Gerenciamento ágil GSD (Roadmaps, Fases, Specs)
+├── 📁 01_Documentacao_Teorica/        # Documentações complementares em PDF (Atas, Backlogs)
+├── 📁 01_Relatorios_e_Dashboard/      # Relatório final PIM III e Painel de Controle Visual
+├── 📁 02_Modelagem_UML/               # Modelagem fonte no Astah (.asta) e diagramas globais
+├── 📁 02_Modelagem_UML_Astah/         # Manuais passo-a-passo e Mermaid de cada um dos 15 UCs
+├── 📁 03_Artefatos_Gerados/           # Diagramas globais exportados (.png e códigos PlantUML)
+├── 📁 04_Scripts/                     # Automações portáveis em Python (Geração de Docs, Compilação UML)
+└── 📁 05_Legacy/                      # Códigos gerados antigos e diagramas antigos legados
 ```
+
 
 ## 📐 Padrões Arquiteturais Adotados
 

@@ -13,10 +13,10 @@ Registro de novos alunos com inicialização automática de perfil de gamificaç
 ## 🚀 Tutorial Passo a Passo Detalhado (Interface Astah)
 
 ### 1️⃣ Diagrama de Classe (Estrutura)
-   - [ ] 1. **Crie a classe base 'Usuario' com 'nome : string' e 'email : string'.**
+   - [ ] 1. **Crie a classe base 'Usuario' com '- nome : string' e '- email : string'.**
    - [ ] 2. **Crie a classe 'Aluno' (Estereótipo <<Entidade>>).**
    - [ ] 3. **Desenhe a 'Generalização' (Herança) de Aluno apontando para Usuario.**
-   - [ ] 4. **Adicione em Aluno os atributos: '- pontos : int' e '+ moedas : int'.**
+   - [ ] 4. **Adicione em Aluno os atributos: '- pontos : int' e '- moedas : int'.**
 
 **Como configurar no Astah:** Para adicionar o Estereótipo (ex: <<Entidade>>), selecione a classe, vá na aba **Stereotype** (na base da tela) e clique em **Add**.
 
@@ -27,17 +27,6 @@ Registro de novos alunos com inicialização automática de perfil de gamificaç
    - [ ] 4. **Mensagem 3: O objeto recém-criado executa internamente 'inicializarPerfil()'.**
 
 **Dica de Notação:** Note que os nomes das Linhas de Vida agora começam com dois pontos (ex: `:Controlador`), indicando que são instâncias anônimas da classe.
-
-
----
-
-## 🛠️ Artefatos de Alta Fidelidade (PlantUML)
-
-### Diagrama de Classe (Premium)
-![UC02_Classe](./UC02_Classe.png)
-
-### Diagrama de Sequência (Premium)
-![UC02_Sequencia](./UC02_Sequencia.png)
 
 ---
 
@@ -76,11 +65,3 @@ sequenceDiagram
 
 ---
 *Este manual foi otimizado para a versão 10.1.0 do Astah UML.*
----
-
-## 🏛️ Contexto Arquitetural
-Este Caso de Uso integra a arquitetura modular do sistema Nex_TI. Para uma visão das relações entre todas as classes, consulte o [Diagrama de Classes Global](./Diagrama_Classes_Global.png).
-
----
-
-[⬅️ Voltar para o Dashboard Visual](../../01_Relatorios_e_Dashboard/DASHBOARD_VISUAL.md)

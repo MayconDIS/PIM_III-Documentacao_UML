@@ -18,10 +18,13 @@
 
 - **Sincronização Final**: Executar a consolidação do ecossistema sincronizando os logs e atas do Scrum em todos os repositórios complementares.
 - **Validação Final da Banca**: Testar a execução integrada do frontend com o backend compilado e banco SQL local.
+- **Delimitação de Escopo (3º vs 4º Semestre)**: Mapear formalmente nos manuais do repositório prático quais recursos (como simulados ENADE e loja avançada) foram apenas estruturados em nível de banco de dados e modelos C# no 3º semestre, deixando claro que a sua lógica e interfaces estão omitidas/em desenvolvimento para o 4º semestre.
 
 ### 3. Impedimentos e Resoluções
 
-- **Impedimento**: Havia a preocupação de que o desacoplamento do cálculo matemático do SM-2 introduzisse bugs de arredondamento de dias (como float vs double) nos objetos de progresso.
+- **Impedimento**: Havia a preocupação de a banca examinadora do PIM III cobrar telas funcionais de simulados e loja por estarem mapeadas nos diagramas de caso de uso e classes e no script DDL.
+- **Resolução**: Decidimos manter a integridade conceitual UML/DDL (que garante nota alta em engenharia e banco de dados), mas documentar explicitamente nos arquivos README e MANUAL_TECNICO que a implementação de front-end dessas rotinas está em desenvolvimento para o 4º semestre, concentrando a avaliação do 3º semestre estritamente no fluxo do MVP (Login/Cadastro, SM-2 Flashcards e Mapa Neural).
+- **Impedimento Técnico**: Risco de que o desacoplamento do cálculo matemático do SM-2 introduzisse bugs de arredondamento de dias nos objetos de progresso.
 - **Resolução**: Mantivemos a precisão idêntica ao modelo original, criando testes de unidade focados nos fatores de facilidade (`1.3` a `2.5`) e no agendamento de datas.
 
 ### 4. Backlog da Sprint (Status)
